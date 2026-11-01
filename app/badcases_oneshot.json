@@ -1,0 +1,35 @@
+{
+  "适合中年人看的电视剧": {
+    "steps": [
+      {
+        "id": "s1",
+        "toolName": "vod_fuzzy_search",
+        "parameters": {
+          "retext": "适合中年人看的电视剧"
+        }
+      }
+    ],
+    "stop": true
+  },
+  "单田芳最经典的评书作品是什么": {
+    "steps": [
+      {
+        "id": "s1",
+        "toolName": "fan_knowledge_agent",
+        "parameters": {
+          "messages": [
+            { "role": "user", "content": "查询单田芳最经典的评书作品" }
+          ],
+          "riskRespStrategy": "all_replace",
+          "sceneTypeIntentList": [
+            { "sceneType": "audio_qa" }
+          ]
+        },
+        "plan": null,
+        "dependsOn": []
+      }
+    ],
+    "stop": true,
+    "forceStop": true
+  }
+}
