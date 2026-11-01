@@ -72,8 +72,12 @@ _ANCHORS = """
 """
 
 
-def build_oneshot_prompt(catalog_block: str = "") -> str:
-    """一把出 system prompt：目录块非空时注入工具+参数目录，并追加锚例。"""
+def build_oneshot_prompt(catalog_block: str = "", slot_block: str = "") -> str:
+    """一把出 system prompt：目录块非空时注入工具+参数目录，并追加锚例。
+
+    slot_block（槽值检索补充块，随 query 变化）**只能追加在最末尾**：其前的
+    prompt+目录+锚例对所有请求逐字节相同，才能复用 KV cache 前缀。
+    """
     base = ONESHOT_PROMPT
     if catalog_block:
         base = base.replace("__TOOLS__", catalog_block)
@@ -81,7 +85,7 @@ def build_oneshot_prompt(catalog_block: str = "") -> str:
         # 目录为空（hcTools 未起/拉取失败）：仍可拆句定域，工具与参数留空由下游兜底。
         base = base.replace("【工具与参数目录】\n__TOOLS__\n",
                             "【工具与参数目录】（当前不可用：只填 q 与 d，tool/params 留空）\n")
-    return base + _ANCHORS
+    return base + _ANCHORS + (slot_block or "")
 
 
 # T1 续跑：把【待执行意图】用上一步真实结果改写成自包含 query，并**同时**给出 tool+params。

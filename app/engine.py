@@ -27,7 +27,7 @@ import time
 import uuid
 from typing import Any
 
-from . import catalog, fanparams, llm
+from . import catalog, fanparams, llm, slots
 from .config import get_settings
 from .models import OneIntent
 from .parser import parse_oneshot
@@ -675,9 +675,10 @@ class TraceStateMachine:
         if weak_hint:
             user += f"\n【判定提示】{weak_hint}"
         block = _catalog_block()
+        slot_block = await slots.slot_block_for(query)
         try:
             message = await llm.chat(
-                [{"role": "system", "content": build_oneshot_prompt(block)},
+                [{"role": "system", "content": build_oneshot_prompt(block, slot_block)},
                  {"role": "user", "content": user}])
         except llm.LLMError as exc:
             logger.error("首轮计划 LLM 失败：%s", exc)
@@ -903,7 +904,7 @@ async def run_oneshot(query: str, metadata: dict[str, Any] | None = None):
     """一把出原生格式：一次 LLM 调出 [{q,d,tool,params}]（不做串行续跑）。"""
     from .models import OneResponse
     started = time.perf_counter()
-    system = build_oneshot_prompt(_catalog_block())
+    system = build_oneshot_prompt(_catalog_block(), await slots.slot_block_for(query))
     messages = [
         {"role": "system", "content": system},
         {"role": "user", "content": f"用户请求：{query}"},

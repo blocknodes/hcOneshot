@@ -36,6 +36,13 @@ class Settings(BaseSettings):
     # 空目录重试 TTL（秒）：文件暂缺（如编译中）时不至于永久空目录。
     catalog_empty_ttl: float = 60.0
 
+    # ---- 槽值检索（slot retrieval）：结果追加到首轮 system prompt 末尾 ----
+    # 置空即关闭；失败/超时降级为无补充块，不影响主干。
+    slot_retrieve_url: str = "http://aibi-model.hisense.com:8091/retrieve"
+    slot_retrieve_timeout: float = 1.5
+    # 补充块最多收录的命中条数（防 prompt 膨胀）
+    slot_max_hits: int = 30
+
     # ---- 服务 ----
     max_query_len: int = 2000
 

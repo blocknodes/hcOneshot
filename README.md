@@ -92,6 +92,9 @@ runtime 回传 `toolHistory` 后，同一 `deviceId` 触发续跑（一次 LLM �
 | `HC_MAX_QUERY_LEN` | `2000` | query 长度上限（超限回结构化 error） |
 | `HC_MAX_PLAN_STEPS` | `6` | 单计划最多条数（`next_batch` 截断） |
 | `HC_PLAN_TRACE_TTL` | `300` | 串行状态（按 `deviceId` 存 plan）存活秒数 |
+| `HC_SLOT_RETRIEVE_URL` | `http://aibi-model.hisense.com:8091/retrieve` | 槽值检索接口；置空即关闭 |
+| `HC_SLOT_RETRIEVE_TIMEOUT` | `1.5` | 槽值检索超时秒数（超时/失败降级为无补充块） |
+| `HC_SLOT_MAX_HITS` | `30` | 补充块最多收录的命中条数 |
 | `HC_PORT` | `8088` | 服务端口 |
 
 ## 结构
@@ -127,6 +130,15 @@ hcOneshot **运行期不依赖任何其他项目**：工具目录只读本地产
 
 `description` 在构建期**不截断**：目录块裁剪口径唯一收归 `app/catalog.py` 的 `_brief_of`，
 产物与渲染逐字节可复现（8912 字符 / 56 工具）。单测有「目录加载不触网」不变量钉住此约束。
+
+**例外：槽值检索**（`app/slots.py`，可关）。首轮计划前按本轮 query 调
+`POST HC_SLOT_RETRIEVE_URL {"query":...}`，把命中渲染成「槽位检索参考」块，**追加在首轮
+system prompt 最末尾**（锚例之后）。前面的 prompt+目录+锚例对所有请求逐字节相同，KV cache
+前缀可复用，只有末尾这段随 query 变。块按域固定顺序、去重，确定性渲染；检索服务的
+`educ`→`children`、`edu`→`education`。超时/失败降级为无块，不影响主干；不是 LLM 调用，
+不改变「单轮 1 次 LLM」。只接入首轮（`_plan` / `run_oneshot`），续跑 T1 与 MT 改写未接入。
+实测「早教学数字123国语」：无检索时出 `title=数字123`、`language=国语`；有检索时出
+`children_third_genre=数字`、`language=普通话`。
 
 ## 已验证
 

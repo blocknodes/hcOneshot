@@ -31,5 +31,26 @@
     ],
     "stop": true,
     "forceStop": true
+  },
+  "托马斯和他的朋友们系列动画的衍生作品有哪些": {
+    "steps": [
+      {
+        "id": "s1",
+        "toolName": "fan_knowledge_agent",
+        "parameters": {
+          "messages": [
+            { "role": "user", "content": "托马斯和他的朋友们系列动画的衍生作品有哪些" }
+          ],
+          "riskRespStrategy": "all_replace",
+          "sceneTypeIntentList": [
+            { "sceneType": "child" }
+          ]
+        },
+        "plan": null,
+        "dependsOn": []
+      }
+    ],
+    "stop": true,
+    "forceStop": true
   }
 }

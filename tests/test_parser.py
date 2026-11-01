@@ -17,6 +17,9 @@ from app.parser import parse_oneshot  # noqa: E402
 
 def _set_file_catalog() -> None:
     # 目录恒为本地文件（自包含，无 HC_CATALOG_SOURCE 开关）；仅清缓存确保重读。
+    # 槽值检索默认指向线上服务：单测关掉，保持无网络（需要时由用例显式打桩）。
+    import os
+    os.environ["HC_SLOT_RETRIEVE_URL"] = ""
     from app import config
     config.get_settings.cache_clear()
 
@@ -895,6 +898,77 @@ def main() -> int:
         _eng2._sm = _orig_sm3
         with _MTL2:
             _MT_CONTEXT.clear()
+
+    # --- 槽值检索补充块：渲染 / 降级 / KV cache 前缀不变 / 接入首轮 prompt ---
+    print("slots:")
+    from app import slots as _slots  # noqa: E402
+    from app.prompts import build_oneshot_prompt as _bop  # noqa: E402
+    _resp = {"ok": True, "hits": [
+        {"domain": "music", "field": "tag", "value": "国语", "alias": "国语", "similarity": 1.0},
+        {"domain": "educ", "field": "children_second_genre", "value": "早教", "alias": "早教",
+         "similarity": 1.0},
+        {"domain": "educ", "field": "language", "value": "普通话", "alias": "国语", "similarity": 1.0},
+        {"domain": "vod", "field": "language", "value": "普通话", "alias": "国语", "similarity": 0.8},
+        {"domain": "vod", "field": "language", "value": "普通话", "alias": "国语", "similarity": 0.8},
+        {"domain": "xx", "field": "f", "value": "v"},
+        {"domain": "vod", "field": "", "value": "v"},
+    ]}
+    _blk = _slots.render_slot_block(_resp)
+    results.append(case("slot 块：educ→children、按域固定顺序、去重、丢坏行",
+                        "- vod：国语 → language=普通话（相似度0.80）\n"
+                        "- children：早教 → children_second_genre=早教；国语 → language=普通话\n"
+                        "- music：国语 → tag=国语\n" in _blk
+                        and _blk.count("language=普通话（") == 1 and "xx" not in _blk))
+    results.append(case("slot 块：确定性（同输入同输出）",
+                        _blk == _slots.render_slot_block(_resp)))
+    results.append(case("slot 块：无命中/坏响应 → 空串",
+                        _slots.render_slot_block({"ok": True, "hits": []}) == ""
+                        and _slots.render_slot_block(None) == ""
+                        and _slots.render_slot_block({"hits": "x"}) == ""))
+    results.append(case("slot 块：max_hits 截断",
+                        _slots.render_slot_block(_resp, max_hits=1).count(" → ") == 1))
+    _base_p = _bop("CAT")
+    _with_p = _bop("CAT", _blk)
+    results.append(case("KV cache：带 slot 块的 prompt 以无块 prompt 为前缀、块在最末",
+                        _with_p.startswith(_base_p) and _with_p.endswith(_blk)
+                        and _bop("CAT", "") == _base_p))
+    results.append(case("检索未配置 → None（不触网）",
+                        asyncio.get_event_loop().run_until_complete(
+                            _slots.retrieve("早教")) is None))
+    _osl = __import__("os")
+    _osl.environ["HC_SLOT_RETRIEVE_URL"] = "http://127.0.0.1:9/retrieve"
+    _config_mod = __import__("app.config", fromlist=["get_settings"])
+    _config_mod.get_settings.cache_clear()
+    try:
+        results.append(case("检索失败（连接拒绝）→ 降级 None，不抛",
+                            asyncio.get_event_loop().run_until_complete(
+                                _slots.retrieve("早教")) is None))
+    finally:
+        _osl.environ["HC_SLOT_RETRIEVE_URL"] = ""
+        _config_mod.get_settings.cache_clear()
+
+    # 接入：首轮 system prompt 末尾带检索块，且检索用的是本轮 query
+    _seen_sys: list = []
+    _seen_q: list = []
+
+    async def _fake_block(q):
+        _seen_q.append(q)
+        return _blk
+
+    async def _sys_chat(messages, metadata=None):
+        _seen_sys.append(messages[0]["content"])
+        return {"content": "[]"}
+
+    _orig_sb, _orig_chat4 = _slots.slot_block_for, _eng2.llm.chat
+    _slots.slot_block_for, _eng2.llm.chat = _fake_block, _sys_chat
+    try:
+        asyncio.get_event_loop().run_until_complete(
+            _TSM2()._plan("早教学数字123国语"))
+        results.append(case("首轮 _plan：system prompt 以 slot 块结尾、检索参数为本轮 query",
+                            len(_seen_sys) == 1 and _seen_sys[0].endswith(_blk)
+                            and _seen_q == ["早教学数字123国语"]))
+    finally:
+        _slots.slot_block_for, _eng2.llm.chat = _orig_sb, _orig_chat4
 
     ok = all(results)
     print(f"\n{'ALL PASS' if ok else 'SOME FAILED'} ({sum(results)}/{len(results)})")
