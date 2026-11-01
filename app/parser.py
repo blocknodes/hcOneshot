@@ -188,6 +188,11 @@ def parse_oneshot(text: str) -> tuple[list[OneIntent], str]:
         dep_raw = item.get("dep")
         if dep_raw is None:
             dep_raw = item.get("depends_on_previous")
+        if dep_raw is None and "dep" in params:
+            # 实测模型会把 dep 写进 params（`"params":{"messages":..,"dep":1}`）：
+            # 不是任何工具的参数，取出作依赖标记，避免串行依赖被静默当成并行。
+            dep_raw = params.pop("dep")
+            logger.info("dep 写在 params 内，提到顶层: tool=%s dep=%r", tool, dep_raw)
         dep_on = _coerce_dep(dep_raw, i)
         out.append(OneIntent(
             q=q.strip(), d=dom, tool=tool,

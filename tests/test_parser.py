@@ -600,6 +600,9 @@ def main() -> int:
                 '[{"q":"先预测","d":"sports","tool":"sports_match_forecast","params":{"query":"甲队乙队"}},'
                 '{"q":"介绍两队近况","d":"sports","tool":"fan_knowledge_agent","params":{},"dep":1}]')
             _with_source(_pin, "预测胜负并介绍近况")
+            # 依赖步的工具只可能由系统挂起（如 _arm_forecast_serial_plan 的 fan s2），
+            # parse_plan 会丢弃模型给依赖步的工具，故这里按挂起口径显式设定。
+            _pin.intents[1].tool = "fan_knowledge_agent"
             _sm4._store("dev-pin", _pin)
             _sm4._state["dev-pin"]["plan"].intents[1].include_tool_result = True
             _batch, _stop = asyncio.get_event_loop().run_until_complete(
@@ -969,6 +972,75 @@ def main() -> int:
                             and _seen_q == ["早教学数字123国语"]))
     finally:
         _slots.slot_block_for, _eng2.llm.chat = _orig_sb, _orig_chat4
+
+    # --- 多步架构：并行一把出；串行首轮出 s1 全量 + 后续子请求/依赖，续跑每步一次 LLM ---
+    print("multistep:")
+    _p = parse_plan('[{"q":"搜索刘德华的电影","d":"vod","tool":"vod_search_all",'
+                    '"params":{"action":"search"}},'
+                    '{"q":"第二部的导演是谁","d":"vod","tool":"fan_knowledge_agent",'
+                    '"params":{"messages":"x"},"dep":1}]')
+    results.append(case("依赖条目丢弃首轮 tool/params、保留 q/d/dep",
+                        _p.intents[1].tool == "" and _p.intents[1].params == {}
+                        and _p.intents[1].domain == "vod" and _p.intents[1].dep_on == 1
+                        and _p.intents[0].tool == "vod_search_all"))
+    _pd, _ = parse_oneshot('[{"q":"a","d":"vod","tool":"vod_search_all","params":{}},'
+                           '{"q":"b","d":"vod","tool":"fan_knowledge_agent",'
+                           '"params":{"messages":"x","dep":1}}]')
+    results.append(case("dep 写进 params → 提到顶层且不留在 params",
+                        len(_pd) == 2 and _pd[1].dep == 1 and "dep" not in _pd[1].params))
+    _pp = parse_plan('[{"q":"播放战狼2","d":"vod","tool":"vod_search_all","params":{"action":"play"}},'
+                     '{"q":"音量调到30","d":"device","tool":"numeric_adjust","params":{"value":"30"}}]')
+    results.append(case("并行条目各自保留 tool/params、一批全发",
+                        [i.tool for i in next_batch(_pp, set())]
+                        == ["vod_search_all", "numeric_adjust"]))
+
+    _t1_in: list = []
+    _replies = [
+        '[{"q":"搜索刘德华的电影","d":"vod","tool":"vod_search_all",'
+        '"params":{"action":"search","retext":"搜索刘德华的电影"}},'
+        '{"q":"第二部的导演是谁","d":"vod","dep":1}]',
+        '{"q":"《无间道》的导演是谁","tool":"fan_knowledge_agent",'
+        '"params":{"messages":"《无间道》的导演是谁"}}',
+    ]
+
+    async def _seq_chat(messages, metadata=None):
+        _t1_in.append(messages[-1]["content"])
+        return {"content": _replies[len(_t1_in) - 1]}
+
+    _orig_chat5, _orig_sm5 = _eng2.llm.chat, _eng2._sm
+    _sm5 = _TSM2()
+    _eng2.llm.chat, _eng2._sm = _seq_chat, (lambda: _sm5)
+    try:
+        with _MTL2:
+            _MT_CONTEXT.clear()
+        _r1 = asyncio.get_event_loop().run_until_complete(_eng2.build_response(
+            SlowRequest(traceId="m1", deviceId="dm1",
+                        data={"query": "刘德华的电影，第二部导演是谁？"})))
+        _hist = [{"index": 1, "id": "s1", "toolName": "vod_search_all",
+                  "result": {"data": {"memoryData": [{"data": [{"mediaTitle": "天若有情"},
+                                                               {"mediaTitle": "无间道"}]}]}}}]
+        _n1 = len(_t1_in)
+        _r2 = asyncio.get_event_loop().run_until_complete(_eng2.build_response(
+            SlowRequest(traceId="m2", deviceId="dm1",
+                        data={"query": "刘德华的电影，第二部导演是谁？", "toolHistory": _hist})))
+        _s2 = _r2["data"]["steps"]
+        results.append(case("串行 tick1：只发 s1、stop=false、1 次 LLM",
+                            [s["id"] for s in _r1["data"]["steps"]] == ["s1"]
+                            and _r1["stop"] is False and _n1 == 1))
+        results.append(case("串行 tick2：1 次 LLM 出 s2 的 q/tool/params，dependsOn=s1，stop",
+                            len(_t1_in) == 2 and len(_s2) == 1 and _s2[0]["id"] == "s2"
+                            and _s2[0]["toolName"] == "fan_knowledge_agent"
+                            and _s2[0]["dependsOn"] == ["s1"]
+                            and _s2[0]["hitQuery"] == "《无间道》的导演是谁"
+                            and _s2[0]["parameters"]["messages"][0]["content"] == "《无间道》的导演是谁"
+                            and _r2["stop"] is True))
+        results.append(case("续跑输入含用户原话/所属域/前序结果（漏 d 时补计划域，fan 不被清空）",
+                            "用户原话:刘德华的电影，第二部导演是谁？" in _t1_in[1]
+                            and "所属域:vod" in _t1_in[1] and "第2部" in _t1_in[1]))
+    finally:
+        _eng2.llm.chat, _eng2._sm = _orig_chat5, _orig_sm5
+        with _MTL2:
+            _MT_CONTEXT.clear()
 
     ok = all(results)
     print(f"\n{'ALL PASS' if ok else 'SOME FAILED'} ({sum(results)}/{len(results)})")

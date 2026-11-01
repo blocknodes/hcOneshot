@@ -30,7 +30,7 @@ from typing import Any
 from . import catalog, fanparams, llm, slots
 from .config import get_settings
 from .models import OneIntent
-from .parser import parse_oneshot
+from .parser import parse_json_loose, parse_oneshot
 from .prompts import build_oneshot_prompt, build_t1_prompt, MT_REWRITE_PROMPT
 
 logger = logging.getLogger("hcOneshot.engine")
@@ -295,13 +295,21 @@ class Plan:
 # 再把 OneIntent 映射成引擎 Intent。
 # ---------------------------------------------------------------------------
 def parse_plan(text: str) -> Plan:
-    """LLM 输出 → Plan。复用一把出 parser 的全部容错；解析失败 → 空 Plan。"""
+    """LLM 输出 → Plan。复用一把出 parser 的全部容错；解析失败 → 空 Plan。
+
+    多步架构：首轮只为【可立即执行】条目定 tool/params；依赖条目只保留 q/d/dep，
+    其 tool/params 由续跑轮（拿到前序结果、完成指代消解后）再生成。模型若仍给了依赖条目的
+    tool/params，这里一律丢弃——否则续跑会把这个"盲猜"的工具当计划工具钉死。
+    """
     intents, _err = parse_oneshot(text)
     out: list[Intent] = []
     for i, it in enumerate(intents, start=1):
+        dep = bool(it.dep)
         out.append(Intent(
-            query=it.q, domain=it.d or "", tool=it.tool or "", params=it.params,
-            index=i, depends=bool(it.dep), dep_on=it.dep, src=it.q,
+            query=it.q, domain=it.d or "",
+            tool="" if dep else (it.tool or ""),
+            params={} if dep else it.params,
+            index=i, depends=dep, dep_on=it.dep, src=it.q,
         ))
     return Plan(out)
 
@@ -726,31 +734,51 @@ class TraceStateMachine:
 
     async def _rewrite_step(self, q: str, tool_result: str, step: int = 0,
                             plan: Plan | None = None) -> tuple[str, str, dict[str, Any]]:
-        """续跑一次 LLM：改写依赖步为自包含 query，并同时给出 tool+params。
+        """续跑一次 LLM：拿前序结果做指代消解，生成当前步的 q + tool + params。
 
-        失败降级：原 q + 原步骤工具（若有）；由 _steps_from_batch 决定是否走 fan 兜底。
+        输入：用户原话 + 该步所属域 + 待办子请求 + 前一步工具结果。
+        失败降级：原 q + 计划工具（依赖步通常为空）→ 由 _steps_from_batch 走域内 fan 兜底。
         """
-        user = f"待办意图:{q}" + (f"\n工具结果:{tool_result}" if tool_result else "")
         prev = None
         if plan is not None:
             prev = next((i for i in plan.intents if i.index == step), None)
+        lines = []
+        if prev is not None and prev.src and prev.src != q:
+            lines.append(f"用户原话:{prev.src}")
+        if prev is not None and prev.domain:
+            lines.append(f"所属域:{prev.domain}")
+        lines.append(f"待办意图:{q}")
+        if tool_result:
+            lines.append(f"工具结果:{tool_result}")
+        user = "\n".join(lines)
+        fb_tool = prev.tool if prev else ""
+        fb_params = dict(prev.params) if prev else {}
         try:
             message = await llm.chat(
                 [{"role": "system", "content": build_t1_prompt(_catalog_block())},
                  {"role": "user", "content": user}])
         except llm.LLMError as exc:
             logger.error("续跑改写 LLM 失败（降级原样）：%s", exc)
-            return q, (prev.tool if prev else ""), (dict(prev.params) if prev else {})
+            return q, fb_tool, fb_params
         raw = message.get("content")
         text = raw if isinstance(raw, str) else str(raw or "")
-        _intents, _err = parse_oneshot(text if text.strip().startswith("[") else f"[{text}]")
-        if _intents:
-            it = _intents[0]
-            return (it.q or q), (it.tool or (prev.tool if prev else "")), \
-                   (it.params or (dict(prev.params) if prev else {}))
-        # 退化：模型只回了改写句（纯文本）→ 保留 q 与新工具为空
+        obj = parse_json_loose(text)
+        if isinstance(obj, list) and obj and isinstance(obj[0], dict):
+            obj = obj[0]
+        if isinstance(obj, dict):
+            # 模型漏写 d 时补上计划里的域：fan_knowledge_agent 在 7 个域都有，
+            # 无域就无法反推、会被 parser 当非法工具清空。
+            if not (obj.get("d") or obj.get("domain")) and prev is not None and prev.domain:
+                obj = {**obj, "d": prev.domain}
+            _intents, _err = parse_oneshot(json.dumps([obj], ensure_ascii=False))
+            if _intents:
+                it = _intents[0]
+                return (it.q or q), (it.tool or fb_tool), (it.params or fb_params)
+        # 退化：模型只回了改写句（纯文本）→ 用改写句，工具沿用计划（通常为空 → 兜底）
         cleaned = text.strip().strip('"')
-        return (cleaned or q), (prev.tool if prev else ""), (dict(prev.params) if prev else {})
+        if cleaned.startswith(("{", "[")):
+            cleaned = ""
+        return (cleaned or q), fb_tool, fb_params
 
     # -- 状态 --
     def _store(self, key: str, plan: Plan) -> None:

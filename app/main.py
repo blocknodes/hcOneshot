@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
@@ -88,8 +89,10 @@ async def get_catalog(block: int = 0) -> dict:
 @app.post("/slowAgent/{poc_id}")
 async def slow_agent(poc_id: str, req: SlowRequest, request: Request) -> JSONResponse:
     """唯一对外接口：poc 慢任务请求 → 编排 steps（一把出）。"""
+    started = time.perf_counter()
     raw = (await request.body()).decode("utf-8", "replace")
     logger.info("REQ %s raw_body=%s", poc_id, raw)
     body = await build_response(req)
-    logger.info("RESP %s body=%s", poc_id, json.dumps(body, ensure_ascii=False))
+    logger.info("RESP %s cost=%.0fms body=%s", poc_id,
+                (time.perf_counter() - started) * 1000, json.dumps(body, ensure_ascii=False))
     return JSONResponse(content=body, status_code=body.get("code", 200))

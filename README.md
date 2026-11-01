@@ -5,8 +5,11 @@ orchestrator 慢任务接口），自包含、可直接替换。区别只有一�
 hcAgent 走「hcAgent T0 选 vt → hcTools pinned 填参」两跳，hcOneshot 一次调用即同时产出
 `拆句 / 改写 / 落域 / 选工具 / 填参数`（`{q, d, tool, params, dep?}`），不再依赖 hcTools 运行时。
 
-多步仍走 hcAgent 式续跑状态机（按 `deviceId` 缓存 plan，跨 tick 推进依赖链），
-但**每个 tick 也恰好一次 LLM**：首轮一次出整份计划，续跑每次一次改写依赖步并重填参。
+多步仍走 hcAgent 式续跑状态机（按 `deviceId` 缓存 plan，跨 tick 推进依赖链）：
+- **并行**：一次 LLM 直接出多条 `{q,d,tool,params}`，一批全发。
+- **串行**：首轮一次 LLM 出第 1 步的 `{q,d,tool,params}` + 后续步的 `{q,d,dep}`（只有子请求与依赖，
+  不出 tool/params）；后续每个 tick 一次 LLM，拿用户原话 + 所属域 + 前序工具结果做指代消解，
+  生成当步的 `q/tool/params`。只有串行才涉及多次 LLM（N 步 = N 次）。
 
 ## 为什么
 
