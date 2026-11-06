@@ -37,6 +37,9 @@ logger = logging.getLogger("hcOneshot")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    import asyncio
+    from . import fewshot
+    await asyncio.to_thread(fewshot.warmup)     # 开启 few-shot 时预建 BM25 索引（关闭时无操作）
     yield
     from . import llm
     await llm.close()

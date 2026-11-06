@@ -148,7 +148,8 @@ def parse_oneshot(text: str) -> tuple[list[OneIntent], str]:
             continue
         dom = str(item.get("d") or item.get("domain") or "").strip()
         dom = dom if dom in DOMAINS else ""
-        tool = str(item.get("tool") or item.get("toolName") or "").strip()
+        # 新格式 vt="域:工具"（与评测集 tool 列对齐）；兼容旧 tool / toolName。
+        tool = str(item.get("vt") or item.get("tool") or item.get("toolName") or "").strip()
         # 目录块按 `域:工具` 渲染，模型常把整串照抄进 tool；兼容 "vod:vod_search_all"
         # 与裸 "vod_search_all"，并让前缀顺带补全 d（vt 含域）。
         if ":" in tool:
@@ -183,6 +184,10 @@ def parse_oneshot(text: str) -> tuple[list[OneIntent], str]:
                 if k in known and k not in params and k not in _RESERVED_TOP:
                     params[k] = item[k]
                     logger.info("外层参数折回 params: tool=%s key=%s", tool, k)
+        # 系统代填参数（retext=用户原句）不由模型给：即使模型填了也丢掉，由引擎统一补，
+        # 保证计划 params 与评测集口径（无 retext）一致。
+        for k in catalog.system_filled(tool):
+            params.pop(k, None)
         # dep 取「模型原始条序号」；别名 depends_on_previous 为布尔 true 时=紧邻前一条。
         # 注意别用 `or`：dep=false/0 会被 or 吞掉再去取别名，幸好二者同义；显式判 None 更稳。
         dep_raw = item.get("dep")

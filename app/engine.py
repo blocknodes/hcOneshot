@@ -20,6 +20,8 @@ hcOneshot 是 hcAgent 的完整替代品，暴露同一 `POST /slowAgent/{poc_id
 from __future__ import annotations
 
 import asyncio
+import contextvars
+import datetime
 import json
 import logging
 import threading
@@ -27,7 +29,7 @@ import time
 import uuid
 from typing import Any
 
-from . import catalog, fanparams, llm, slots
+from . import catalog, fanparams, fewshot, llm, slots
 from .config import get_settings
 from .models import OneIntent
 from .parser import parse_json_loose, parse_oneshot
@@ -83,6 +85,33 @@ def weak_device_hint(query: str) -> str:
 # ---------------------------------------------------------------------------
 _MT_CONTEXT: dict[str, dict[str, Any]] = {}
 _MT_LOCK = threading.Lock()
+
+
+# ---------------------------------------------------------------------------
+# 当前时间：相对时间（今天/明天/上周…）的换算基准。两跳时代由 hcTools 填参 prompt 注入
+# 「今天是 {today}」；一把出必须自己给，否则模型会臆造日期。
+# 放在 **user message**（不进 system prompt），保持 system 前缀逐字节不变以复用 KV cache。
+# 取请求 data.timestamp（毫秒/秒 epoch），缺失或离谱（偏离本机时钟 >2 天）时用本机时间。
+# ---------------------------------------------------------------------------
+_TZ = datetime.timezone(datetime.timedelta(hours=8))      # Asia/Shanghai
+_WEEKDAY = "一二三四五六日"
+_REQ_TS: contextvars.ContextVar[Any] = contextvars.ContextVar("hc_req_ts", default=None)
+
+
+def _now_line(ts: Any = None) -> str:
+    """渲染「当前时间」行，如 `当前时间：2026-11-01 17:17 星期日（北京时间）`。"""
+    now = time.time()
+    t = now
+    try:
+        v = float(ts) if ts not in (None, "", True, False) else None
+    except (TypeError, ValueError):
+        v = None
+    if v:
+        v = v / 1000.0 if v > 1e11 else v                   # 毫秒 → 秒
+        if abs(v - now) <= 2 * 86400:
+            t = v
+    d = datetime.datetime.fromtimestamp(t, _TZ)
+    return f"当前时间：{d:%Y-%m-%d %H:%M} 星期{_WEEKDAY[d.weekday()]}（北京时间）"
 
 
 def _mt_get(device_id: str) -> list[dict[str, str]]:
@@ -621,6 +650,18 @@ def _steps_from_batch(batch: list[Intent],
                 fallback_query=fb_q or it.query,
             )
 
+        # 系统代填参数：retext = 用户原句。模型不填（目录不列、parser 丢弃），这里按工具 schema
+        # 是否含 retext 统一补上（vod_search_all / educ_search_all / 各 fuzzy / music 系列）。
+        # 用原句而非改写 q：与 hcTools 透传口径一致，下游检索/改写服务吃原话。
+        if tool_name != _TURNSLOW_QA_TOOL and isinstance(params, dict):
+            dom = it.domain or catalog.domain_of_tool(tool_name)
+            src = it.src or it.query or query
+            names = catalog.param_names_for(dom, tool_name)
+            if src:
+                for k in catalog.system_filled(tool_name):
+                    if k in names:              # retext / audio_search.query = 用户原句
+                        params = {**params, k: src}
+
         # 串行预测第二步：把上一步结果写入 current_media（与 hcAgent 同口径）。
         if it.include_tool_result and it.tool_result:
             params = dict(params) if isinstance(params, dict) else {}
@@ -679,14 +720,15 @@ class TraceStateMachine:
 
     async def _plan(self, query: str, has_history: bool = False,
                     weak_hint: str = "") -> Plan:
-        user = f"用户请求：{query}"
+        user = f"{_now_line(_REQ_TS.get())}\n用户请求：{query}"
         if weak_hint:
             user += f"\n【判定提示】{weak_hint}"
         block = _catalog_block()
         slot_block = await slots.slot_block_for(query)
         try:
             message = await llm.chat(
-                [{"role": "system", "content": build_oneshot_prompt(block, slot_block)},
+                [{"role": "system",
+                  "content": fewshot.system_prompt(build_oneshot_prompt(block, slot_block), query)},
                  {"role": "user", "content": user}])
         except llm.LLMError as exc:
             logger.error("首轮计划 LLM 失败：%s", exc)
@@ -742,7 +784,7 @@ class TraceStateMachine:
         prev = None
         if plan is not None:
             prev = next((i for i in plan.intents if i.index == step), None)
-        lines = []
+        lines = [_now_line(_REQ_TS.get())]
         if prev is not None and prev.src and prev.src != q:
             lines.append(f"用户原话:{prev.src}")
         if prev is not None and prev.domain:
@@ -857,6 +899,8 @@ async def build_response(req) -> dict[str, Any]:
         return _error(f"query too long (>{get_settings().max_query_len})")
     trace_id = req.traceId or ""
     device_id = req.deviceId or ""
+    # 本请求的时间基准（data.timestamp）：供首轮/续跑 prompt 的「当前时间」行使用。
+    _REQ_TS.set(getattr(req.data, "timestamp", None))
 
     # badcase 精确覆盖层（debug 专用，默认关）：命中即直出给定响应，跳过 LLM 主干。
     from . import badcase
@@ -932,10 +976,11 @@ async def run_oneshot(query: str, metadata: dict[str, Any] | None = None):
     """一把出原生格式：一次 LLM 调出 [{q,d,tool,params}]（不做串行续跑）。"""
     from .models import OneResponse
     started = time.perf_counter()
-    system = build_oneshot_prompt(_catalog_block(), await slots.slot_block_for(query))
+    system = fewshot.system_prompt(
+        build_oneshot_prompt(_catalog_block(), await slots.slot_block_for(query)), query)
     messages = [
         {"role": "system", "content": system},
-        {"role": "user", "content": f"用户请求：{query}"},
+        {"role": "user", "content": f"{_now_line()}\n用户请求：{query}"},
     ]
     try:
         message = await llm.chat(messages, metadata=metadata)

@@ -33,6 +33,20 @@ class Settings(BaseSettings):
     # 运行期只读本文件，无网络、无跨项目依赖。
     catalog_file: str = str(_BASE / "catalog.full.json")
 
+    # 目录块档位：0=完整版（~38k token）；1=精简版，逐字重复说明改「同 <工具id>」（~30.7k）；
+    # 2=极简版，每工具只留用途/边界句 + 签名 + 字段名及短标签/枚举/格式（按整句取舍，不截断）；
+    # 3=超简版（~6.9k）；4=工具索引版，id|签名|用途短句 + 字段名（候选值交给动态层）。
+    catalog_compact: int = 0
+
+    # ---- 动态 few-shot context（实验移植，见 app/fewshot.py）：默认关 ----
+    # 开启后首轮 system 末尾追加「规则提示 + BM25 相似示例」，并修正静态 prompt 两处冲突。
+    fewshot_enabled: bool = False
+    fewshot_lib: str = "experiments/retrieval/lib/para_all.csv"   # 相对路径按项目根解析
+    fewshot_topk: int = 4
+    fewshot_min_score: float = 4.0
+    # 检索时排除与本轮 query 完全相同的库条目（评测时防止直接命中本题金标）
+    fewshot_exclude_self: bool = True
+
     # 空目录重试 TTL（秒）：文件暂缺（如编译中）时不至于永久空目录。
     catalog_empty_ttl: float = 60.0
 

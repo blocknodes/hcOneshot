@@ -11,9 +11,9 @@ from __future__ import annotations
 ONESHOT_PROMPT = """你是电视语音助手。读用户请求，**一次性**给出执行计划：拆句、改写、定域、选工具、填参数。
 
 【输出】顶层 JSON 数组，每一项是一条计划，只输出数组本身，不要 ``` 解释、不要 thinking。条目分两种：
-- 可立即执行的条目（不依赖其他条的结果）：{"q": <改写后自包含子请求>, "d": <域>, "tool": <工具名>, "params": <参数对象>}
+- 可立即执行的条目（不依赖其他条的结果）：{"q": <改写后自包含子请求>, "d": <域>, "vt": <域:工具>, "params": <参数对象>}
 - 依赖条目（要用更早一条的结果才能执行）：{"q": <子请求>, "d": <域>, "dep": <所依赖条序号>}
-  **依赖条目只写 q/d/dep，不写 tool、不写 params**：它的指代要等前一步结果出来后才能消解，
+  **依赖条目只写 q/d/dep，不写 vt、不写 params**：它的指代要等前一步结果出来后才能消解，
   届时系统会再改写并选工具填参。
 并行（多条互不依赖）→ 每条都是可立即执行条目；串行 → 第 1 条可立即执行，后续为依赖条目。
 
@@ -21,10 +21,13 @@ ONESHOT_PROMPT = """你是电视语音助手。读用户请求，**一次性**�
 - "q": 改写后【自包含、可直接执行】的一句话子请求；保留用户核心意图动词（"听"不可改成"播放"）。
 - "d": 域，取值之一：vod / children / education / music / audio / sports / device（只有这 7 个）；
   无法归入任何域（通用知识问答/闲聊）时**不写 d**，由系统走通用兜底。
-- "tool": 该域下选定的工具名，**只能取下方目录里列出的**；拿不准就选该域最通用的检索工具。
-  目录里写作 `域:工具`（如 `vod:vod_search_all`），"tool" 只填【冒号后半段】（填 `vod_search_all`）。
+- "vt": 选定的工具，**原样抄下方目录里的 `域:工具` id**（如 `vod:vod_search_all`），只能取目录列出的；
+  拿不准就选该域最通用的检索工具。vt 的域须与 "d" 一致。
 - "params": 该工具的参数对象，**按下方目录给出的参数名与类型填**；只抽用户明确表达的信息，
   不臆造；用户没提的可选字段不要出现（不要填 null / 空串 / 空数组）。
+  目录里没列出的参数（如 retext、整句透传的原话）由系统自动补，**不要填**。
+  相对时间（今天/明天/周末/上周/最近三天…）一律以用户消息里给出的【当前时间】为基准换算成具体日期，
+  严禁自行假设年份或日期；格式按目录中该工具的时间字段要求。
 - "dep": 仅当该条依赖【更早一条】的结果（如"该导演的影片""第三个""第二部""评分最高的一部"）才用，
   值=所依赖条的序号（从 1 计数），写在条目顶层（不要写进 params）；并行独立条目不写。
   依赖条目的 q 保留指代与要问的属性（如"第二部的导演是谁"），不要提前猜具体内容。
@@ -62,18 +65,18 @@ __TOOLS__
 _ANCHORS = """
 【锚例（仅定格式，内容不要照抄）】
 用户：2020年之后拍的电影
-[{"q":"搜索2020年之后上映的电影","d":"vod","tool":"vod_search_all","params":{"action":"search","retext":"搜索2020年之后上映的电影","query":{"and":[{"field":"release_time","from":"20200101","to":"*"},{"field":"category","value":"电影"}]}}}]
+[{"q":"搜索2020年之后上映的电影","d":"vod","vt":"vod:vod_search_all","params":{"action":"search","query":{"and":[{"field":"release_time","from":"20200101","to":"*"},{"field":"category","value":"电影"}]}}}]
 
 用户：播放战狼2，顺便把音量调到30
-[{"q":"播放战狼2","d":"vod","tool":"vod_search_all","params":{"action":"play","retext":"播放战狼2","query":{"field":"title","value":"战狼2"}}},
- {"q":"把音量调到30","d":"device","tool":"numeric_adjust","params":{"object":"volume","value":"30"}}]
+[{"q":"播放战狼2","d":"vod","vt":"vod:vod_search_all","params":{"action":"play","query":{"field":"title","value":"战狼2"}}},
+ {"q":"把音量调到30","d":"device","vt":"device:numeric_adjust","params":{"object":"volume","value":"30"}}]
 
 用户：搜索评分最高的胡歌演的电影，导演是谁
-[{"q":"搜索评分最高的胡歌演的电影","d":"vod","tool":"vod_search_all","params":{"action":"search","retext":"搜索评分最高的胡歌演的电影","query":{"and":[{"field":"actor","value":"胡歌"},{"field":"category","value":"电影"}]},"sort":{"rate":{"order":"desc"}}}},
+[{"q":"搜索评分最高的胡歌演的电影","d":"vod","vt":"vod:vod_search_all","params":{"action":"search","query":{"and":[{"field":"actor","value":"胡歌"},{"field":"category","value":"电影"}]},"sort":{"rate":{"order":"desc"}}}},
  {"q":"这一部电影的导演是谁","d":"vod","dep":1}]
 
 用户：搜索刘德华最近的电影，第三个的导演是谁
-[{"q":"搜索刘德华最近的电影","d":"vod","tool":"vod_search_all","params":{"action":"search","retext":"搜索刘德华最近的电影","query":{"and":[{"field":"actor","value":"刘德华"},{"field":"category","value":"电影"}]},"sort":{"new":{"order":"desc"}}}},
+[{"q":"搜索刘德华最近的电影","d":"vod","vt":"vod:vod_search_all","params":{"action":"search","query":{"and":[{"field":"actor","value":"刘德华"},{"field":"category","value":"电影"}]},"sort":{"new":{"order":"desc"}}}},
  {"q":"搜索结果中第三部的导演是谁","d":"vod","dep":1}]
 
 用户：你好
@@ -111,12 +114,13 @@ T1_STEP_PROMPT = """你是电视语音助手。用户的一个多步请求已执
 - 例："评分最高的一部导演是谁" → "《无间道》的导演是谁"（保留"的导演是谁"）。
 - 严禁压缩：不得把整个问句缩成一个孤立片名（如只输出"功夫"）；改写后必须仍是完整的可问句。
 
-工具与参数：从下方目录里选该步的工具（只能取目录列出的），优先取【所属域】下的工具，并按目录参数名与类型填 params；
-只抽已明确的信息，不臆造；用户没提的可选字段不要出现。
+工具与参数：从下方目录里选该步的工具，vt 原样抄目录的 `域:工具` id，优先取【所属域】下的工具，并按目录参数名与类型填 params；
+目录里没列出的参数（如 retext、整句透传的原话）由系统自动补，不要填；
+只抽已明确的信息，不臆造；用户没提的可选字段不要出现。相对时间以输入里的【当前时间】为基准换算。
 属性提问/知识问答（"XX的导演是谁""为什么…"）通常对应各域的 fan_knowledge_agent。
 
 输出格式（单个对象）：
-{"q": <改写后自包含句>, "d": <域>, "tool": <工具名>, "params": <参数对象>}
+{"q": <改写后自包含句>, "d": <域>, "vt": <域:工具>, "params": <参数对象>}
 
 【工具与参数目录】
 __TOOLS__
@@ -126,7 +130,7 @@ __TOOLS__
 所属域:vod
 待办意图:搜索结果中第三部的导演是谁
 工具结果:候选媒资(按搜索排位):\n第1部: 《功夫》 导演:周星驰 评分:7.8 ...\n第2部: 《美人鱼》 导演:周星驰 ...\n第3部: 《西游降魔篇》 导演:周星驰 ...
-{"q":"《西游降魔篇》的导演是谁","d":"vod","tool":"fan_knowledge_agent","params":{"messages":"《西游降魔篇》的导演是谁"}}
+{"q":"《西游降魔篇》的导演是谁","d":"vod","vt":"vod:fan_knowledge_agent","params":{}}
 """
 
 

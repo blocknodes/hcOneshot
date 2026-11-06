@@ -20,6 +20,9 @@ def _set_file_catalog() -> None:
     # 槽值检索默认指向线上服务：单测关掉，保持无网络（需要时由用例显式打桩）。
     import os
     os.environ["HC_SLOT_RETRIEVE_URL"] = ""
+    # 单测与 .env 隔离：精简目录 / few-shot 都按默认值（关）测
+    os.environ["HC_CATALOG_COMPACT"] = "0"
+    os.environ["HC_FEWSHOT_ENABLED"] = "0"
     from app import config
     config.get_settings.cache_clear()
 
@@ -27,6 +30,84 @@ def _set_file_catalog() -> None:
 def case(name: str, ok: bool, extra: str = "") -> bool:
     print(f"  [{'PASS' if ok else 'FAIL'}] {name}{(' — ' + extra) if extra else ''}")
     return ok
+
+
+def _compact_lossless() -> bool:
+    """精简版只合并逐字重复的说明：完整版的每个非空行（去缩进）至少在精简版出现一次；
+    引用目标须是更早出现的工具；且精简版确实更短。"""
+    import re as _re
+    full = render_oneshot_block(compact=False)
+    comp = render_oneshot_block(compact=True)
+    c_lines = {ln.strip() for ln in comp.splitlines()}
+    lost = [ln.strip() for ln in full.splitlines() if ln.strip() and ln.strip() not in c_lines]
+    if lost:
+        print(f"    精简版丢失: {lost[0][:80]!r} 等 {len(lost)} 行")
+        return False
+    first_pos: dict[str, int] = {}
+    cur = ""
+    for i, ln in enumerate(comp.splitlines()):
+        m = _re.match(r"- ([a-z_]+:[a-z_]+)：", ln)
+        if m:
+            cur = m.group(1)
+            first_pos.setdefault(cur, i)
+        for ref in _re.findall(r"同 ([a-z_]+:[a-z_]+)", ln):
+            if ref not in first_pos or first_pos[ref] >= first_pos[cur]:
+                print(f"    引用指向未出现/后文工具: {cur} → {ref}")
+                return False
+    return len(comp) < len(full)
+
+
+def _minimal_complete(level: int = 2) -> bool:
+    """极简版不截断工具/字段：每个工具 id、每个非代填参数名、每个检索 field 名都出现；且明显更短。"""
+    blk = render_oneshot_block(compact=level)
+    for t in _cat.tools():
+        if f"- {t['id']}：" not in blk and f"- {t['id']} |" not in blk:
+            print(f"    极简版缺工具: {t['id']}")
+            return False
+        props, defs = _cat._schema_parts(t.get("parameters") or {})
+        drop = _cat.system_filled(t.get("tool", ""))
+        for k in props:
+            if k in drop or k == "required":
+                continue
+            if k not in blk:
+                print(f"    极简版缺参数: {t['id']}.{k}")
+                return False
+        for c, node in defs.items():
+            if c.endswith("FieldCondition"):
+                for name, _d in _cat._field_options(node):
+                    if name not in blk:
+                        print(f"    极简版缺字段: {t['id']}.{name}")
+                        return False
+    return len(blk) < len(render_oneshot_block(compact=level - 1)) * 0.6
+
+
+def _all_docs_present() -> bool:
+    """不截断不变量：每个工具描述的最后一行、每个非代填参数说明的最后一行、每个检索字段名都出现在目录块。
+    （旧实现把描述截到 90 字，字段清单/时间格式/工具边界全丢；注入截断即 FAIL。）"""
+    blk = render_oneshot_block(compact=False)
+    for t in _cat.tools():
+        desc = _cat._desc_of(t)
+        if desc and desc[-1] not in blk:
+            print(f"    缺描述末句: {t['id']}")
+            return False
+        props, defs = _cat._schema_parts(t.get("parameters") or {})
+        drop = _cat.system_filled(t.get("tool", ""))
+        for k, v in props.items():
+            if k in drop or k == "required" or not isinstance(v, dict):
+                continue
+            if k == "query" and _cat._query_doc(defs):
+                for c, node in defs.items():
+                    if c.endswith("FieldCondition"):
+                        for name, _d in _cat._field_options(node):
+                            if f"- {name}" not in blk:
+                                print(f"    缺字段: {t['id']}.{name}")
+                                return False
+                continue
+            d = _cat._clean(_cat._unwrap(v, defs).get("description") or v.get("description") or "")
+            if d and d[-1] not in blk:
+                print(f"    缺参数说明: {t['id']}.{k}")
+                return False
+    return True
 
 
 def main() -> int:
@@ -48,8 +129,21 @@ def main() -> int:
     st = block_stats()
     results += [
         case("工具数=56(49+schema外7个fan)", st["tools"] == 56, str(st)),
-        case("目录块压缩到 <10%", st["block_chars"] < st["full_schema_chars"] * 0.10,
-             f"{st['block_chars']}/{st['full_schema_chars']}"),
+        case("目录块不截断：各工具描述末句、各参数说明都在块里",
+             _all_docs_present(), f"{st['block_chars']}/{st['full_schema_chars']}"),
+        case("默认（HC_CATALOG_COMPACT 未设）= 完整版",
+             render_oneshot_block() == render_oneshot_block(compact=False)),
+        case("精简版不丢信息：完整版每一行都在精简版里出现（重复处为「同 <工具id>」引用）",
+             _compact_lossless()),
+        case("极简版(2)：56 个工具、全部参数名与检索字段名都在，且比精简版短",
+             _minimal_complete()),
+        case("超简版(3)：56 个工具、全部参数名与检索字段名都在，且比极简版短",
+             _minimal_complete(3)),
+        case("索引版(4)：56 个工具、全部参数名与检索字段名都在，且比超简版短",
+             _minimal_complete(4)),
+        case("索引版(4)：catalog 每个工具都有人工用途短句（新增工具须补 _PURPOSE）",
+             all(t["id"] in _cat._PURPOSE for t in _cat.tools()) and len(_cat._PURPOSE) == len(_cat.tools()),
+             str(sorted({t["id"] for t in _cat.tools()} ^ set(_cat._PURPOSE)))),
         case("vod 工具集合非空", len(valid_tools_for("vod")) > 0,
              str(sorted(valid_tools_for("vod")))),
     ]
@@ -1041,6 +1135,70 @@ def main() -> int:
         _eng2.llm.chat, _eng2._sm = _orig_chat5, _orig_sm5
         with _MTL2:
             _MT_CONTEXT.clear()
+
+    # --- 当前时间注入：相对时间换算基准（user message，不进 system 前缀）---
+    print("now:")
+    from app.engine import _now_line  # noqa: E402
+    import time as _tm  # noqa: E402
+    _ms = int(_tm.time() * 1000)
+    results.append(case("毫秒 timestamp 与秒 timestamp 渲染一致",
+                        _now_line(_ms) == _now_line(_ms / 1000)))
+    results.append(case("timestamp 缺失/乱值/偏离 >2 天 → 用本机时间",
+                        _now_line(None) == _now_line("abc") == _now_line(0)
+                        == _now_line(_ms - 10 * 86400 * 1000)
+                        and _now_line().startswith("当前时间：")
+                        and "星期" in _now_line()))
+    _cap: list = []
+
+    async def _cap_chat(messages, metadata=None):
+        _cap.append(messages)
+        return {"content": "[]"}
+
+    _orig_chat6 = _eng2.llm.chat
+    _eng2.llm.chat = _cap_chat
+    try:
+        asyncio.get_event_loop().run_until_complete(_TSM2()._plan("明天皇马的比赛"))
+        results.append(case("首轮：当前时间在 user message、不在 system",
+                            _cap[0][1]["content"].startswith("当前时间：")
+                            and "当前时间：2" not in _cap[0][0]["content"]))
+    finally:
+        _eng2.llm.chat = _orig_chat6
+
+    # --- 输出格式 q/d/vt/params：vt=域:工具，params 不含 retext，retext 由引擎补=用户原句 ---
+    print("vt-format:")
+    _v, _ve = parse_oneshot('[{"q":"搜索2020年之后上映的电影","d":"vod","vt":"vod:vod_search_all",'
+                            '"params":{"action":"search","retext":"模型乱填","query":{"field":"title","value":"x"}}}]')
+    results.append(case("vt=域:工具 解析出 d/tool；模型填的 retext 被丢弃",
+                        len(_v) == 1 and _v[0].d == "vod" and _v[0].tool == "vod_search_all"
+                        and "retext" not in _v[0].params and "query" in _v[0].params))
+    _v2, _ = parse_oneshot('[{"q":"a","d":"music","tool":"music_song_search","params":{"song":["x"]}}]')
+    results.append(case("旧 tool 字段仍兼容", len(_v2) == 1 and _v2[0].tool == "music_song_search"))
+    _vb = [Intent(query="搜索2020年之后上映的电影", domain="vod", tool="vod_search_all",
+                  params={"action": "search"}, index=1, src="2020年之后拍的电影"),
+           Intent(query="音量调到30", domain="device", tool="numeric_adjust",
+                  params={"object": "音量"}, index=2, src="2020年之后拍的电影"),
+           Intent(query="来点轻松的歌", domain="music", tool="music_song_recommend",
+                  params={}, index=3, src="2020年之后拍的电影")]
+    _vs, _ = _steps_from_batch(_vb)
+    results.append(case("引擎补 retext=用户原句（含 retext 的工具），无 retext 的工具不补",
+                        _vs[0]["parameters"]["retext"] == "2020年之后拍的电影"
+                        and "retext" not in _vs[1]["parameters"]
+                        and _vs[2]["parameters"] == {"retext": "2020年之后拍的电影"}))
+    _blk2 = render_oneshot_block()
+    _ap, _ = parse_oneshot('[{"q":"我想听郭德纲的相声","d":"audio","vt":"audio:audio_search",'
+                           '"params":{"action":"play","query":"郭德纲相声"}}]')
+    _as, _ = _steps_from_batch([Intent(query="我想听郭德纲的相声", domain="audio", tool="audio_search",
+                                       params=_ap[0].params, index=1, src="我想听郭德纲的相声")])
+    results.append(case("audio_search.query 整句透传：模型给的丢弃，引擎补用户原句",
+                        _ap[0].params == {"action": "play"}
+                        and _as[0]["parameters"] == {"action": "play", "query": "我想听郭德纲的相声"}))
+    _fp2, _ = parse_oneshot('[{"q":"天龙八部的导演是谁","d":"vod","vt":"vod:fan_knowledge_agent",'
+                            '"params":{"messages":"x"}}]')
+    results.append(case("fan messages 不进目录、模型给的丢弃",
+                        _fp2[0].params == {} and "messages" not in _blk2))
+    results.append(case("目录块与 prompt 锚例均不含 retext",
+                        "retext" not in _blk2
+                        and '"retext"' not in __import__("app.prompts", fromlist=["x"])._ANCHORS))
 
     ok = all(results)
     print(f"\n{'ALL PASS' if ok else 'SOME FAILED'} ({sum(results)}/{len(results)})")
