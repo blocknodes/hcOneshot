@@ -46,6 +46,37 @@ class Settings(BaseSettings):
     fewshot_min_score: float = 4.0
     # 检索时排除与本轮 query 完全相同的库条目（评测时防止直接命中本题金标）
     fewshot_exclude_self: bool = True
+    # 多意图 few-shot（需 fewshot_enabled）：query 按连接词切出 ≥2 个子句时，改为注入
+    #   多意图拆单提示 + 多意图库整句 top-k 示例 + 每个子句从单意图库检 top-k 示例。置空关闭。
+    fewshot_multi_lib: str = ""        # 如 experiments/retrieval/lib/multi_bench10k.csv（列 query,exec_mode,plan）
+    fewshot_multi_topk: int = 5
+    fewshot_clause_topk: int = 3
+    # 多意图示例的触发方式：rule = 只在连接词/标点切出 ≥2 子句时注入（原逻辑）；
+    #   score = 规则没切出时，再看「多意图库最高分 / 单意图库最高分」≥ fewshot_multi_ratio 也注入（拆不拆仍由模型决定）
+    # 规则库（CSV，见 experiments/retrieval/lib/rules.csv）：按正则/实体类型检索口径提示注入首轮 system；置空用内置少儿规则
+    fewshot_rules_lib: str = ""
+    fewshot_rules_max: int = 3
+    fewshot_multi_trigger: str = "rule"
+    fewshot_multi_ratio: float = 0.32
+    # 实体链接（需 fewshot_enabled）：按词典最长匹配 query 里的名字（歌曲/歌手/影视/少儿/人名）。
+    #   · 检索：原句 + 名字换成类型占位符的句子各检一次，合并去重（库句同样离线换占位符）；
+    #   · fewshot_entity_hint：首轮 system 末尾追加「实体参考」块（名字 → 类型）。
+    # 词典 CSV 列 name,types（| 分隔，首个为主类型）；置空关闭。纯字符串匹配，不调模型。
+    fewshot_entity_dict: str = ""     # 如 experiments/retrieval/lib/entity_dict.csv
+    fewshot_entity_hint: bool = True
+
+    # ---- 实体库（app/entity.py）：默认关 ----
+    # 开启后按 query 词典最长匹配名字（片名/歌名/歌手/球队…），在首轮 system 最末尾追加「实体库参考」块，
+    # 说明名字在库里属于哪个域的哪类槽位。纯字符串匹配，不增加 LLM 调用。库由 tools/build_entity_lib.py 生成。
+    entity_enabled: bool = False
+    entity_lib: str = "experiments/retrieval/lib/entity_lib.csv"   # 相对路径按项目根解析
+    entity_max_hits: int = 5
+
+    # ---- 设备域虚拟 schema（app/device_schema.py）：默认关 ----
+    # 开启后 LLM 只看到虚拟参数（action/target/value/time：关机、暂停、全屏…），目录块、锚例、
+    # few-shot 示例都用虚拟写法；引擎在组装 step 前（后处理）查表还原成真实 operation/object。
+    # 关闭时行为与此前完全一致。改动此项需重启（few-shot 库在启动期预建）。
+    device_virtual: bool = False
 
     # 空目录重试 TTL（秒）：文件暂缺（如编译中）时不至于永久空目录。
     catalog_empty_ttl: float = 60.0

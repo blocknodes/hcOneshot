@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from typing import Any
 
 from . import catalog
@@ -18,7 +19,7 @@ logger = logging.getLogger("hcOneshot.parser")
 # （避免把 q/d/tool 这类元信息误当参数）。别名一并列出。
 _RESERVED_TOP = frozenset({
     "q", "query", "d", "domain", "tool", "toolName", "vt",
-    "params", "parameters", "dep", "depends_on_previous",
+    "params", "parameters", "dep", "depends_on_previous", "after",
 })
 
 
@@ -58,12 +59,18 @@ def _repair(t: str) -> str:
     return "".join(out)
 
 
+def _fix_leaf(t: str) -> str:
+    """修复模型常见的检索树叶子漏写 value：{"field":"category":"电影"} → {"field":"category","value":"电影"}。
+    只在整段 JSON 解析失败时调用，对合法输出不生效。"""
+    return re.sub(r'(\{\s*"field"\s*:\s*"[A-Za-z_]+")\s*:\s*("(?:[^"\\]|\\.)*")', r'\1,"value":\2', t)
+
+
 def parse_json_loose(text: str) -> Any:
     """宽松解析：直接 → 修复 → 抠 ```json 块 → raw_decode 扫描容器。"""
     if not isinstance(text, str) or not text.strip():
         return None
     t = text.strip()
-    for cand in (t, _repair(t)):
+    for cand in (t, _repair(t), _repair(_fix_leaf(t))):
         try:
             return json.loads(cand)
         except Exception:  # noqa: BLE001
@@ -179,7 +186,7 @@ def parse_oneshot(text: str) -> tuple[list[OneIntent], str]:
         # 但实测模型会提到顶层；只认 params 会静默丢参。此处把「属于本工具参数名」
         # 的顶层键折回 params（内层已有同名者以 params 内为准，不覆盖）。
         if tool:
-            known = catalog.param_names_for(dom, tool)
+            known = catalog.llm_param_names_for(dom, tool)
             for k in list(item):
                 if k in known and k not in params and k not in _RESERVED_TOP:
                     params[k] = item[k]
@@ -199,10 +206,16 @@ def parse_oneshot(text: str) -> tuple[list[OneIntent], str]:
             dep_raw = params.pop("dep")
             logger.info("dep 写在 params 内，提到顶层: tool=%s dep=%r", tool, dep_raw)
         dep_on = _coerce_dep(dep_raw, i)
+        # after：仅执行顺序依赖（如"跳到第15分钟"要等起播），本条自带 vt/params、不用前序结果。
+        # 与 dep 同时出现时以 dep 为准（结果依赖更强，after 被它蕴含）。
+        after_raw = item.get("after")
+        if after_raw is None and "after" in params:
+            after_raw = params.pop("after")
+        after_on = 0 if dep_on else _coerce_dep(after_raw, i)
         out.append(OneIntent(
             q=q.strip(), d=dom, tool=tool,
             vt=f"{dom}:{tool}" if dom and tool else "",
-            params=params, dep=dep_on,
+            params=params, dep=dep_on, after=after_on,
         ))
         model_idx.append(i)        # 记下本条在模型原始输出里的序号
     # dep 后校验：dep 按【模型原始输出序号】给，而上面 continue 可能丢条（如 q 空），
@@ -210,13 +223,15 @@ def parse_oneshot(text: str) -> tuple[list[OneIntent], str]:
     # 越界/自指/前指/指向已丢条目者一律清零（退化为并行），避免下游按 dep 串链路时错配。
     orig_to_out = {orig: k for k, orig in enumerate(model_idx, start=1)}   # 模型序号→out序号
     for k, it in enumerate(out, start=1):
-        if not it.dep:
-            continue
-        mapped = orig_to_out.get(it.dep, 0)          # 被丢弃的依赖条 → 0
-        if not (1 <= mapped < k):
-            logger.info("dep 无效，清零: out_idx=%d orig_dep=%d", k, it.dep)
-            mapped = 0
-        it.dep = mapped
+        for field in ("dep", "after"):
+            raw = getattr(it, field)
+            if not raw:
+                continue
+            mapped = orig_to_out.get(raw, 0)          # 被丢弃的依赖条 → 0
+            if not (1 <= mapped < k):
+                logger.info("%s 无效，清零: out_idx=%d orig=%d", field, k, raw)
+                mapped = 0
+            setattr(it, field, mapped)
     if not out:
         # 区分「模型本就给了空计划」与「给了条目但全被降级丢弃」：
         # 前者是合法结果（纯闲聊 → []，见 prompt 规则 3），error 应为空，

@@ -25,7 +25,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from . import config
+from . import config, device_schema
 
 logger = logging.getLogger("hcOneshot.catalog")
 
@@ -105,6 +105,14 @@ def param_names_for(domain: str, tool: str) -> set[str]:
                 return set(props)
             return set(t.get("required") or [])
     return set()
+
+
+def llm_param_names_for(domain: str, tool: str) -> set[str]:
+    """LLM 看到的参数名：开启虚拟 schema 时设备工具为 action/target/value/time，否则同 param_names_for。"""
+    if (domain == "device" and config.get_settings().device_virtual
+            and device_schema.is_virtual_tool(tool) and tool not in device_schema.PASSTHROUGH):
+        return set(device_schema.VIRTUAL_PARAM_NAMES)
+    return param_names_for(domain, tool)
 
 
 def domain_of_tool(tool: str) -> str:
@@ -716,8 +724,15 @@ def render_oneshot_block(compact: bool | int | None = None) -> str:
     render = {2: render_tool_block_min, 3: render_tool_block_l3,
               4: render_tool_block_l4}.get(min(level, 4), render_tool_block)
     lines: list[str] = [_INDEX_HEAD] if level >= 4 else ([_TIME_FORMATS] if level == 3 else [])
+    virtual = config.get_settings().device_virtual
     for dom in sorted(by_domain):
         lines.append(f"【{dom}】")
+        if dom == "device" and virtual:
+            # 虚拟 schema：设备工具展示 action/target/value/time；透传类（问题处理、知识问答）照旧
+            have = [t["tool"] for t in by_domain[dom]]
+            lines.append(device_schema.render_block(have))
+            lines.extend(render(t, seen) for t in by_domain[dom] if t["tool"] in device_schema.PASSTHROUGH)
+            continue
         for t in by_domain[dom]:
             lines.append(render(t, seen))
     return "\n".join(lines)

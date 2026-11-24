@@ -1,0 +1,17 @@
+[base/on] lib=16977 t+p=97.2% tool=98.9% shots=3.95 rule=0.10 ent=0.00 (9s)
+  llm 500/2900
+  llm 1000/2900
+  llm 1500/2900
+  llm 2000/2900
+  llm 2500/2900
+[hier_L2s3_all/on] lib=3150 t+p=91.2% tool=94.4% shots=3.96 rule=0.30 ent=0.21 (224s)
+  llm 500/2149
+  llm 1000/2149
+  llm 1500/2149
+  llm 2000/2149
+[base_hier_all/on] lib=16977 t+p=96.9% tool=98.5% shots=3.98 rule=0.30 ent=0.21 (218s)
+
+arm           fs       lib topk  shots    tool     t+p     vod   educ    edu  music  audio sports tv_con
+base          on     16977    4   3.95   98.9%   97.2%    98.3   97.7   98.8   98.7   99.2   96.9   95.2
+hier_L2s3_all on      3150    4   3.96   94.4%   91.2%    86.2   91.6   84.5   94.1   89.9   92.7   94.1
+base_hier_all on     16977    4   3.98   98.5%   96.9%    96.9   97.7   97.1   99.0   99.2   96.5   95.3

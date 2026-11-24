@@ -63,7 +63,8 @@ class OneIntent(BaseModel):
     tool: str = ""                           # 域内工具名
     vt: str = ""                             # domain:tool（由 d+tool 派生，便于兼容）
     params: dict[str, Any] = Field(default_factory=dict)
-    dep: int = 0                             # 依赖的前序条序号（1-start；0=无）
+    dep: int = 0                             # 旧输出兼容字段（已不要求模型写；后一条默认依赖前一条）
+    after: int = 0                           # 仅执行顺序依赖的前序条序号（不用其结果；同批发出）
 
 
 class OneResponse(BaseModel):

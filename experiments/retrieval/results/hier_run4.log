@@ -1,0 +1,16 @@
+  llm 500/1414
+  llm 1000/1414
+[hier_L2s3_all/lso] lib=3150 t+p=76.0% tool=90.5% shots=3.94 rule=0.30 ent=0.21 (148s)
+  llm 500/1060
+  llm 1000/1060
+[hier_S2s2/lso] lib=2722 t+p=75.2% tool=89.9% shots=3.93 rule=0.30 ent=0.21 (107s)
+[hier_S2s3/lso] lib=3093 t+p=75.9% tool=90.4% shots=3.94 rule=0.30 ent=0.21 (42s)
+  llm 500/1386
+  llm 1000/1386
+[base_hier_all/lso] lib=16977 t+p=79.0% tool=92.2% shots=3.97 rule=0.30 ent=0.21 (159s)
+
+arm           fs       lib topk  shots    tool     t+p     vod   educ    edu  music  audio sports tv_con
+hier_L2s3_all lso     3150    4   3.94   90.5%   76.0%    68.2   62.1   74.0   74.6   84.7   71.4   83.8
+hier_S2s2     lso     2722    4   3.93   89.9%   75.2%    68.9   59.7   71.7   73.0   84.4   71.4   83.2
+hier_S2s3     lso     3093    4   3.94   90.4%   75.9%    68.9   61.0   72.5   74.4   85.0   71.8   83.8
+base_hier_all lso    16977    4   3.97   92.2%   79.0%    71.6   66.0   82.4   78.2   85.0   74.9   84.7

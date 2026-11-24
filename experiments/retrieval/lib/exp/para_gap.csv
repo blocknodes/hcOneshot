@@ -1,0 +1,1479 @@
+﻿domain,query,tool,tool_param,seed_query
+vod,热门度的喜剧电影,vod_search_all,"{""action"": ""search"", ""query"": {""and"": [{""field"": ""tag"", ""value"": ""喜剧""}, {""field"": ""category"", ""value"": ""电影""}]}, ""sort"": {""hot"": {""order"": ""desc""}}}",热度的喜剧电影
+vod,周星驰有哪些经典的台词片段,vod_fuzzy_search,{},周星驰有哪些经典台词片段
+vod,周星驰有哪些经典台词的片段,vod_fuzzy_search,{},周星驰有哪些经典台词片段
+educ,给我放太伶美,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""太伶美""}}",播放太伶美
+educ,打开太伶美,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""太伶美""}}",播放太伶美
+educ,播放淘气兄妹麦克斯与凯蒂,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""淘气兄妹麦克斯与凯蒂""}}",播送淘气兄妹麦克斯与凯蒂
+educ,我想看淘气兄妹麦克斯与凯蒂,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""淘气兄妹麦克斯与凯蒂""}}",播送淘气兄妹麦克斯与凯蒂
+educ,给我放一下淘气兄妹麦克斯与凯蒂,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""淘气兄妹麦克斯与凯蒂""}}",播送淘气兄妹麦克斯与凯蒂
+educ,我想看适合九岁看的绘本大卫不可以,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""age_range"", ""from"": ""9"", ""to"": ""9""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",适合九岁看的绘本大卫不可以
+educ,请播放适合九岁看的绘本大卫不可以,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""age_range"", ""from"": ""9"", ""to"": ""9""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",适合九岁看的绘本大卫不可以
+educ,帮我找适合九岁看的绘本大卫不可以,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""age_range"", ""from"": ""9"", ""to"": ""9""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",适合九岁看的绘本大卫不可以
+educ,给我放免费的小苹果儿歌,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小苹果""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",播放免费的小苹果儿歌
+educ,搜一下免费的小苹果儿歌,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小苹果""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",播放免费的小苹果儿歌
+educ,我想看免费的小苹果儿歌,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小苹果""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",播放免费的小苹果儿歌
+educ,给我放免费的儿歌数鸭子,educ_search_all,"{""query"": {""and"": [{""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}, {""field"": ""title"", ""value"": ""数鸭子""}]}}",播放免费的儿歌数鸭子
+educ,来，播放免费的儿歌数鸭子,educ_search_all,"{""query"": {""and"": [{""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}, {""field"": ""title"", ""value"": ""数鸭子""}]}}",播放免费的儿歌数鸭子
+educ,播放免费的狐狸和兔子,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""狐狸和兔子""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费狐狸和兔子
+educ,给我放免费的狐狸和兔子,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""狐狸和兔子""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费狐狸和兔子
+educ,播放一下免费的狐狸和兔子,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""狐狸和兔子""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费狐狸和兔子
+educ,9岁少儿免费国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""age_range"", ""from"": ""9"", ""to"": ""9""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""language"", ""value"": ""国语版""}]}}",免费9岁少儿国语版
+educ,少儿9岁免费国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""age_range"", ""from"": ""9"", ""to"": ""9""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""language"", ""value"": ""国语版""}]}}",免费9岁少儿国语版
+educ,儿童绘本 免费,educ_search_all,"{""query"": {""and"": [{""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",免费的儿童绘本
+educ,找免费的儿童绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",免费的儿童绘本
+educ,我想看vip少儿工程车益智,educ_search_all,"{""query"": {""and"": [{""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""title"", ""value"": ""工程车益智""}]}}",播放vip少儿工程车益智
+educ,帮我播放vip少儿工程车益智,educ_search_all,"{""query"": {""and"": [{""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""title"", ""value"": ""工程车益智""}]}}",播放vip少儿工程车益智
+educ,打开vip少儿工程车益智,educ_search_all,"{""query"": {""and"": [{""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""title"", ""value"": ""工程车益智""}]}}",播放vip少儿工程车益智
+educ,播放沃福的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""沃福""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",放沃福的故事
+educ,我想看沃福的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""沃福""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",放沃福的故事
+educ,给我放沃福的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""沃福""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",放沃福的故事
+educ,给我放免费的少儿英语,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的少儿英语
+educ,搜一下免费的少儿英语,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的少儿英语
+educ,我想看免费的少儿英语,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的少儿英语
+educ,我想看免费版的英文版花园宝宝,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""花园宝宝""}, {""field"": ""language"", ""value"": ""英文版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费英文版的花园宝宝
+educ,帮我找一下免费版的英文版花园宝宝,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""花园宝宝""}, {""field"": ""language"", ""value"": ""英文版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费英文版的花园宝宝
+educ,播放花园宝宝，要免费版的，而且是英文版的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""花园宝宝""}, {""field"": ""language"", ""value"": ""英文版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费英文版的花园宝宝
+educ,我想看儿童乐园视频,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""儿童乐园""}}",我要看儿童乐园视频
+educ,帮我播放儿童乐园视频,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""儿童乐园""}}",我要看儿童乐园视频
+educ,打开儿童乐园视频,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""儿童乐园""}}",我要看儿童乐园视频
+educ,我想看兔子姐姐神奇的拼音,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""兔子姐姐神奇的拼音""}}",播放兔子姐姐神奇的拼音
+educ,帮我放一下兔子姐姐神奇的拼音,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""兔子姐姐神奇的拼音""}}",播放兔子姐姐神奇的拼音
+educ,打开兔子姐姐神奇的拼音,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""兔子姐姐神奇的拼音""}}",播放兔子姐姐神奇的拼音
+educ,我想看免费的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要听我要看免费的故事
+educ,给我放免费的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要听我要看免费的故事
+educ,我要看免费的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要听我要看免费的故事
+educ,我想看免费的小公主魔法日记安静书,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小公主魔法日记安静书""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的小公主魔法日记安静书
+educ,帮我找一下免费的小公主魔法日记安静书,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小公主魔法日记安静书""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的小公主魔法日记安静书
+educ,请播放免费的小公主魔法日记安静书,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小公主魔法日记安静书""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的小公主魔法日记安静书
+educ,我想看贝乐虎儿歌大家唱,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""贝乐虎儿歌大家唱""}}",播放贝乐虎儿歌大家唱
+educ,帮我放一下贝乐虎儿歌大家唱,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""贝乐虎儿歌大家唱""}}",播放贝乐虎儿歌大家唱
+educ,打开贝乐虎儿歌大家唱,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""贝乐虎儿歌大家唱""}}",播放贝乐虎儿歌大家唱
+educ,找一下免费的艾莎公主绘本,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""艾莎公主""}, {""field"": ""title"", ""value"": ""艾莎公主""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的艾莎公主绘本
+educ,我想看免费的艾莎公主绘本,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""艾莎公主""}, {""field"": ""title"", ""value"": ""艾莎公主""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的艾莎公主绘本
+educ,播放免费的艾莎公主绘本,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""艾莎公主""}, {""field"": ""title"", ""value"": ""艾莎公主""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的艾莎公主绘本
+educ,给我放英文版的成语故事,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""英文版""}, {""field"": ""children_third_genre"", ""value"": ""成语故事""}]}}",我说的是英文版的成语故事
+educ,我想看英文版的成语故事,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""英文版""}, {""field"": ""children_third_genre"", ""value"": ""成语故事""}]}}",我说的是英文版的成语故事
+educ,播放英文版的成语故事,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""英文版""}, {""field"": ""children_third_genre"", ""value"": ""成语故事""}]}}",我说的是英文版的成语故事
+educ,你好，我想看汽车世界之小小工程车,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""汽车世界之小小工程车""}}",你好我要看汽车世界之小小工程车
+educ,你好，请播放汽车世界之小小工程车,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""汽车世界之小小工程车""}}",你好我要看汽车世界之小小工程车
+educ,我想看桂圆子的绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""桂圆子""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",我要看桂圆子的绘本
+educ,帮我播放桂圆子的绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""桂圆子""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",我要看桂圆子的绘本
+educ,打开桂圆子的绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""桂圆子""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",我要看桂圆子的绘本
+educ,打开免费的宝宝上厕所,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝宝上厕所""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",打开宝宝上厕所免费的
+educ,宝宝上厕所，打开免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝宝上厕所""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",打开宝宝上厕所免费的
+educ,把宝宝上厕所的免费版打开,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝宝上厕所""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",打开宝宝上厕所免费的
+educ,嗯咏鹅的英文儿童古诗，播放一下,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""咏鹅""}, {""field"": ""children_third_genre"", ""value"": ""古诗""}, {""field"": ""language"", ""value"": ""英文""}]}}",播放嗯咏鹅的英文儿童古诗
+educ,我想看嗯咏鹅的英文儿童古诗,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""咏鹅""}, {""field"": ""children_third_genre"", ""value"": ""古诗""}, {""field"": ""language"", ""value"": ""英文""}]}}",播放嗯咏鹅的英文儿童古诗
+educ,少儿数学免费,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""数学""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费少儿数学
+educ,我想看父与子,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""父与子""}}",我想要看父与子
+educ,给我放一下父与子,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""父与子""}}",我想要看父与子
+educ,帮我找一下父与子,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""父与子""}}",我想要看父与子
+educ,我想看汪汪队立大功的绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",汪汪队立大功的绘本
+educ,播放汪汪队立大功的绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",汪汪队立大功的绘本
+educ,打开汪汪队立大功的绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",汪汪队立大功的绘本
+educ,给我放九色鹿的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""九色鹿""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",播放九色鹿的故事
+educ,我想看九色鹿的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""九色鹿""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",播放九色鹿的故事
+educ,来一个九色鹿的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""九色鹿""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",播放九色鹿的故事
+educ,给我放免费的少儿,educ_search_all,"{""query"": {""field"": ""is_fee"", ""value"": ""0""}}",播放免费的少儿
+educ,我想看免费的少儿,educ_search_all,"{""query"": {""field"": ""is_fee"", ""value"": ""0""}}",播放免费的少儿
+educ,打开免费的少儿频道,educ_search_all,"{""query"": {""field"": ""is_fee"", ""value"": ""0""}}",播放免费的少儿
+educ,我想看海底小英雄猪猪侠,educ_search_all,"{""query"": {""or"": [{""or"": [{""field"": ""role"", ""value"": ""猪猪侠""}, {""field"": ""title"", ""value"": ""猪猪侠""}]}, {""field"": ""title"", ""value"": ""海底小英雄""}]}}",海底小英雄猪猪侠
+educ,请播放海底小英雄猪猪侠,educ_search_all,"{""query"": {""or"": [{""or"": [{""field"": ""role"", ""value"": ""猪猪侠""}, {""field"": ""title"", ""value"": ""猪猪侠""}]}, {""field"": ""title"", ""value"": ""海底小英雄""}]}}",海底小英雄猪猪侠
+educ,帮我找一下海底小英雄猪猪侠,educ_search_all,"{""query"": {""or"": [{""or"": [{""field"": ""role"", ""value"": ""猪猪侠""}, {""field"": ""title"", ""value"": ""猪猪侠""}]}, {""field"": ""title"", ""value"": ""海底小英雄""}]}}",海底小英雄猪猪侠
+educ,我想看恐龙盟卡车神,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""盟卡车神""}, {""field"": ""children_third_genre"", ""value"": ""恐龙""}]}}",播放恐龙盟卡车神
+educ,帮我放一下恐龙盟卡车神,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""盟卡车神""}, {""field"": ""children_third_genre"", ""value"": ""恐龙""}]}}",播放恐龙盟卡车神
+educ,打开恐龙盟卡车神,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""盟卡车神""}, {""field"": ""children_third_genre"", ""value"": ""恐龙""}]}}",播放恐龙盟卡车神
+educ,给我放绘本好饿的小蛇,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""好饿的小蛇""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",播放绘本好饿的小蛇
+educ,我想看绘本好饿的小蛇,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""好饿的小蛇""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",播放绘本好饿的小蛇
+educ,打开绘本好饿的小蛇,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""好饿的小蛇""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",播放绘本好饿的小蛇
+educ,给我放个绘本听听,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""绘本""}}",放个绘本听听
+educ,帮我放个绘本,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""绘本""}}",放个绘本听听
+educ,我想听个绘本,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""绘本""}}",放个绘本听听
+educ,帮我放一下免费的玩具屋,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""玩具屋""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的玩具屋
+educ,我想看免费的玩具屋,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""玩具屋""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的玩具屋
+educ,给我放免费的《颜色》,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""颜色""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的颜色
+educ,搜一下免费的《颜色》,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""颜色""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的颜色
+educ,我想看免费的《颜色》,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""颜色""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的颜色
+educ,我想看儿童学英语,educ_search_all,"{""query"": {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}}",儿童学习英语
+educ,帮我找儿童学英语,educ_search_all,"{""query"": {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}}",儿童学习英语
+educ,播放儿童学英语,educ_search_all,"{""query"": {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}}",儿童学习英语
+educ,我想看幼儿园学习数学,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""数学""}}",幼儿园学习数学
+educ,帮我找一下幼儿园学习数学,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""数学""}}",幼儿园学习数学
+educ,播放幼儿园学习数学,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""数学""}}",幼儿园学习数学
+educ,给我放玩具恐龙,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""恐龙""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",播放玩具恐龙
+educ,我想看玩具恐龙,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""恐龙""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",播放玩具恐龙
+educ,打开玩具恐龙,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""恐龙""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",播放玩具恐龙
+educ,给我找适合2到3岁儿童看的免费的绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""age_range"", ""from"": ""2"", ""to"": ""3""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",适合2到3岁儿童看的免费的绘本故事
+educ,我想看适合2到3岁儿童看的免费的绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""age_range"", ""from"": ""2"", ""to"": ""3""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",适合2到3岁儿童看的免费的绘本故事
+educ,播放适合2到3岁儿童看的免费的绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""age_range"", ""from"": ""2"", ""to"": ""3""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",适合2到3岁儿童看的免费的绘本故事
+educ,给我放赛车猪猪侠,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""猪猪侠""}, {""field"": ""title"", ""value"": ""猪猪侠""}]}, {""field"": ""title"", ""value"": ""赛车""}]}}",我想看赛车猪猪侠
+educ,我要看赛车猪猪侠,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""猪猪侠""}, {""field"": ""title"", ""value"": ""猪猪侠""}]}, {""field"": ""title"", ""value"": ""赛车""}]}}",我想看赛车猪猪侠
+educ,播放赛车猪猪侠,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""猪猪侠""}, {""field"": ""title"", ""value"": ""猪猪侠""}]}, {""field"": ""title"", ""value"": ""赛车""}]}}",我想看赛车猪猪侠
+educ,给我放免费的植物大战僵尸绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""植物大战僵尸""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的植物大战僵尸绘本
+educ,我想看免费的植物大战僵尸绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""植物大战僵尸""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的植物大战僵尸绘本
+educ,播放一下免费的植物大战僵尸绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""植物大战僵尸""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的植物大战僵尸绘本
+educ,山海经的玩具,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""山海经""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",山海经玩具
+educ,帮我找一个五岁宝宝看的免费英语绘本,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""age_range"", ""from"": ""5"", ""to"": ""5""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",放一个英语绘本五岁宝宝的免费的
+educ,有没有适合五岁宝宝的免费英语绘本，放一个,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""age_range"", ""from"": ""5"", ""to"": ""5""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",放一个英语绘本五岁宝宝的免费的
+educ,我想看五岁宝宝免费的英语绘本，随便放一个,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""age_range"", ""from"": ""5"", ""to"": ""5""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",放一个英语绘本五岁宝宝的免费的
+educ,我想看公主换装贴纸,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""贴纸"", ""公主换装""], ""operator"": ""and""}}",播放公主换装贴纸
+educ,帮我放一下公主换装贴纸,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""贴纸"", ""公主换装""], ""operator"": ""and""}}",播放公主换装贴纸
+educ,打开公主换装贴纸,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""贴纸"", ""公主换装""], ""operator"": ""and""}}",播放公主换装贴纸
+educ,我想看免费的早教国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费早教国语版
+educ,播放免费早教国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费早教国语版
+educ,找一下免费早教国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费早教国语版
+educ,播放儿童儿歌,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""儿歌""}}",打开儿童儿歌
+educ,给我放儿童儿歌,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""儿歌""}}",打开儿童儿歌
+educ,我想看儿童儿歌,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""儿歌""}}",打开儿童儿歌
+educ,播放正常版免费的少儿英语卡通,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""卡通""}, {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放少儿英语卡通是正常版免费
+educ,找一下正常版且免费的少儿英语卡通来播放,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""卡通""}, {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放少儿英语卡通是正常版免费
+educ,我要看正常版免费的少儿英语卡通,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""卡通""}, {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放少儿英语卡通是正常版免费
+educ,4岁小女生的小故事有吗,educ_search_all,"{""query"": {""and"": [{""field"": ""gender"", ""value"": ""女""}, {""field"": ""age_range"", ""from"": ""4"", ""to"": ""4""}]}}",有没有4岁小女生的小故事
+educ,找一下4岁小女生的小故事,educ_search_all,"{""query"": {""and"": [{""field"": ""gender"", ""value"": ""女""}, {""field"": ""age_range"", ""from"": ""4"", ""to"": ""4""}]}}",有没有4岁小女生的小故事
+educ,有没有适合4岁小女生的小故事,educ_search_all,"{""query"": {""and"": [{""field"": ""gender"", ""value"": ""女""}, {""field"": ""age_range"", ""from"": ""4"", ""to"": ""4""}]}}",有没有4岁小女生的小故事
+educ,帮我搜一下睡美人的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""睡美人""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",搜睡美人的故事
+educ,我想看睡美人的故事，搜一下,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""睡美人""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",搜睡美人的故事
+educ,请搜索睡美人的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""睡美人""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",搜睡美人的故事
+educ,我想看疯狂动物城一英文绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""疯狂动物城1""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""language"", ""value"": ""英文""}]}}",疯狂动物城一英文绘本
+educ,请播放疯狂动物城一英文绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""疯狂动物城1""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""language"", ""value"": ""英文""}]}}",疯狂动物城一英文绘本
+educ,帮我找一下疯狂动物城一英文绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""疯狂动物城1""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""language"", ""value"": ""英文""}]}}",疯狂动物城一英文绘本
+educ,帮我找一下土豆逗免费,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""土豆逗""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我想看土豆逗免费
+educ,播放土豆逗免费,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""土豆逗""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我想看土豆逗免费
+educ,给我放适合3岁女娃娃看的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""gender"", ""value"": ""女""}, {""field"": ""age_range"", ""from"": ""3"", ""to"": ""3""}]}}",播放适合3岁女娃娃看的故事
+educ,找一些适合3岁女娃娃看的故事来播放,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""gender"", ""value"": ""女""}, {""field"": ""age_range"", ""from"": ""3"", ""to"": ""3""}]}}",播放适合3岁女娃娃看的故事
+educ,播放一些适合3岁女娃娃看的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""gender"", ""value"": ""女""}, {""field"": ""age_range"", ""from"": ""3"", ""to"": ""3""}]}}",播放适合3岁女娃娃看的故事
+educ,给我讲大卫绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""title"", ""value"": ""大卫""}]}}",大卫绘本故事
+educ,播放大卫绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""title"", ""value"": ""大卫""}]}}",大卫绘本故事
+educ,我想听大卫绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""title"", ""value"": ""大卫""}]}}",大卫绘本故事
+educ,播放免费的英语绘本,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放英语绘本免费
+educ,英语绘本免费播放,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放英语绘本免费
+educ,免费播放英语绘本,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放英语绘本免费
+educ,帮我放免费的小猪佩奇英语绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",请放免费的小猪佩奇英语绘本
+educ,我想看免费的小猪佩奇英语绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",请放免费的小猪佩奇英语绘本
+educ,播放免费的小猪佩奇英语绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",请放免费的小猪佩奇英语绘本
+educ,播放挖掘机绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""挖掘机""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",请播放挖掘机绘本
+educ,我想看挖掘机绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""挖掘机""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",请播放挖掘机绘本
+educ,帮我放一下挖掘机绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""挖掘机""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",请播放挖掘机绘本
+educ,播放幼儿绘本故事,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""values"": [""绘本"", ""故事""], ""operator"": ""and""}}",幼儿绘本故事
+educ,我想看幼儿绘本故事,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""values"": [""绘本"", ""故事""], ""operator"": ""and""}}",幼儿绘本故事
+educ,给我放幼儿绘本故事,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""values"": [""绘本"", ""故事""], ""operator"": ""and""}}",幼儿绘本故事
+educ,我想看abcd英文早教,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""英文""}]}}",abcd英文早教
+educ,请播放abcd英文早教,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""英文""}]}}",abcd英文早教
+educ,帮我找一下abcd英文早教,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""英文""}]}}",abcd英文早教
+educ,我想看汽车宝贝说绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""汽车宝贝""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",汽车宝贝说绘本
+educ,请播放汽车宝贝说绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""汽车宝贝""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",汽车宝贝说绘本
+educ,帮我找一下汽车宝贝说绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""汽车宝贝""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",汽车宝贝说绘本
+educ,帮我找一个免费的儿童英文视频免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""英文""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放一个免费的儿童英文视频免费的
+educ,我想看一个免费的儿童英文视频免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""英文""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放一个免费的儿童英文视频免费的
+educ,小兔子乖乖绘本免费,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小兔子乖乖""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",小兔子乖乖绘本免费的
+educ,小兔子乖乖绘本免费看,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小兔子乖乖""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",小兔子乖乖绘本免费的
+educ,我想看免费的绘本米小圈,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""米小圈""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的绘本米小圈
+educ,帮我找一下免费的绘本米小圈,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""米小圈""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的绘本米小圈
+educ,播放动画儿歌,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""儿歌""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开动画儿歌
+educ,我想看动画儿歌,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""儿歌""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开动画儿歌
+educ,给我放动画儿歌,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""儿歌""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开动画儿歌
+educ,给我放一个免费的儿童英文小视频,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""英文""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放一个免费的儿童英文小视频
+educ,找一个免费的儿童英文小视频播放,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""英文""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放一个免费的儿童英文小视频
+educ,我想看一个免费的儿童英文小视频,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""英文""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放一个免费的儿童英文小视频
+educ,播放免费的儿歌两只老虎,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""两只老虎""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",播放免费儿歌两只老虎
+educ,给我放两只老虎儿歌，要免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""两只老虎""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",播放免费儿歌两只老虎
+educ,我想看免费的儿歌两只老虎,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""两只老虎""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",播放免费儿歌两只老虎
+educ,给我放格林童话故事之小红帽,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""小红帽"", ""格林童话故事""], ""operator"": ""or""}}",播放格林童话故事之小红帽
+educ,我想看格林童话故事之小红帽,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""小红帽"", ""格林童话故事""], ""operator"": ""or""}}",播放格林童话故事之小红帽
+educ,打开格林童话故事之小红帽,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""小红帽"", ""格林童话故事""], ""operator"": ""or""}}",播放格林童话故事之小红帽
+educ,给我放幼儿英语,educ_search_all,"{""query"": {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}}",播放幼儿英语
+educ,我想看幼儿英语,educ_search_all,"{""query"": {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}}",播放幼儿英语
+educ,打开幼儿英语,educ_search_all,"{""query"": {""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}}",播放幼儿英语
+educ,帮我把大头儿子的故事讲一下,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""大头儿子""}, {""field"": ""title"", ""value"": ""大头儿子""}]}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",给我讲一个大头儿子的故事
+educ,我想听大头儿子的故事,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""大头儿子""}, {""field"": ""title"", ""value"": ""大头儿子""}]}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",给我讲一个大头儿子的故事
+educ,请讲一个关于大头儿子的故事,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""大头儿子""}, {""field"": ""title"", ""value"": ""大头儿子""}]}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",给我讲一个大头儿子的故事
+educ,我想看没钱的恐龙探险,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""恐龙探险""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放没钱的恐龙探险
+educ,帮我放一下没钱的恐龙探险,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""恐龙探险""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放没钱的恐龙探险
+educ,打开没钱的恐龙探险,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""恐龙探险""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放没钱的恐龙探险
+educ,我想看少儿舞哎呀呀的完整版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哎呀呀""}, {""field"": ""children_third_genre"", ""value"": ""舞""}]}}",播放少儿舞哎呀呀的完整版
+educ,请播放少儿舞哎呀呀的完整版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哎呀呀""}, {""field"": ""children_third_genre"", ""value"": ""舞""}]}}",播放少儿舞哎呀呀的完整版
+educ,少儿舞哎呀呀的完整版，播放一下,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哎呀呀""}, {""field"": ""children_third_genre"", ""value"": ""舞""}]}}",播放少儿舞哎呀呀的完整版
+educ,播放免费的交通工具,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""交通工具""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放交通工具免费
+educ,给我放交通工具免费,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""交通工具""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放交通工具免费
+educ,播放免费交通工具,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""交通工具""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放交通工具免费
+educ,变形金刚玩具 免费,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""变形金刚""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",免费的变形金刚玩具
+educ,免费 变形金刚玩具,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""变形金刚""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",免费的变形金刚玩具
+educ,帮我搜一下怪小逗,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""怪小逗""}}",搜索怪小逗
+educ,我想看怪小逗,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""怪小逗""}}",搜索怪小逗
+educ,查找怪小逗,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""怪小逗""}}",搜索怪小逗
+educ,播放三只小猪绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""values"": [""绘本"", ""故事""], ""operator"": ""and""}, {""field"": ""title"", ""value"": ""三只小猪""}]}}",三只小猪绘本故事
+educ,我想看三只小猪绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""values"": [""绘本"", ""故事""], ""operator"": ""and""}, {""field"": ""title"", ""value"": ""三只小猪""}]}}",三只小猪绘本故事
+educ,给我放一下三只小猪绘本故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""values"": [""绘本"", ""故事""], ""operator"": ""and""}, {""field"": ""title"", ""value"": ""三只小猪""}]}}",三只小猪绘本故事
+educ,我想看宝宝巴士学数学,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝宝巴士""}, {""field"": ""children_second_genre"", ""value"": ""数学""}]}}",宝宝巴士学数学
+educ,帮我播放宝宝巴士学数学,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝宝巴士""}, {""field"": ""children_second_genre"", ""value"": ""数学""}]}}",宝宝巴士学数学
+educ,打开宝宝巴士学数学,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝宝巴士""}, {""field"": ""children_second_genre"", ""value"": ""数学""}]}}",宝宝巴士学数学
+educ,帮我放一下搞笑古诗,educ_search_all,"{""query"": {""field"": ""children_third_genre"", ""values"": [""搞笑"", ""古诗词""], ""operator"": ""and""}}",请播放搞笑古诗
+educ,我想看搞笑古诗,educ_search_all,"{""query"": {""field"": ""children_third_genre"", ""values"": [""搞笑"", ""古诗词""], ""operator"": ""and""}}",请播放搞笑古诗
+educ,来点搞笑古诗,educ_search_all,"{""query"": {""field"": ""children_third_genre"", ""values"": [""搞笑"", ""古诗词""], ""operator"": ""and""}}",请播放搞笑古诗
+educ,播放迷你特工队恐龙,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""迷你特工队""}, {""field"": ""children_third_genre"", ""value"": ""恐龙""}]}}",放迷你特工队恐龙
+educ,我想看迷你特工队恐龙,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""迷你特工队""}, {""field"": ""children_third_genre"", ""value"": ""恐龙""}]}}",放迷你特工队恐龙
+educ,帮我放一下迷你特工队恐龙,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""迷你特工队""}, {""field"": ""children_third_genre"", ""value"": ""恐龙""}]}}",放迷你特工队恐龙
+educ,给我讲个喜羊羊的小故事,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""喜羊羊""}, {""field"": ""title"", ""value"": ""喜羊羊""}]}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",喜羊羊的小故事呗
+educ,来一个喜羊羊的小故事,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""喜羊羊""}, {""field"": ""title"", ""value"": ""喜羊羊""}]}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",喜羊羊的小故事呗
+educ,我想听喜羊羊的小故事,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""喜羊羊""}, {""field"": ""title"", ""value"": ""喜羊羊""}]}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",喜羊羊的小故事呗
+educ,找一个三岁小孩的绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""age_range"", ""from"": ""3"", ""to"": ""3""}]}}",找一个绘本找一个绘本三岁小孩的绘本三岁小孩的绘本
+educ,三岁小孩的绘本找一个,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""field"": ""age_range"", ""from"": ""3"", ""to"": ""3""}]}}",找一个绘本找一个绘本三岁小孩的绘本三岁小孩的绘本
+educ,我想看免费的少儿视频,educ_search_all,"{""query"": {""field"": ""is_fee"", ""value"": ""0""}}",播放免费的少儿视频
+educ,帮我找免费的少儿视频播放,educ_search_all,"{""query"": {""field"": ""is_fee"", ""value"": ""0""}}",播放免费的少儿视频
+educ,打开免费的少儿视频,educ_search_all,"{""query"": {""field"": ""is_fee"", ""value"": ""0""}}",播放免费的少儿视频
+educ,来点热门儿歌,educ_search_all,"{""sort"": {""hot"": {""order"": ""desc""}}, ""query"": {""field"": ""children_second_genre"", ""value"": ""儿歌""}}",播放热门儿歌
+educ,我想听热门儿歌,educ_search_all,"{""sort"": {""hot"": {""order"": ""desc""}}, ""query"": {""field"": ""children_second_genre"", ""value"": ""儿歌""}}",播放热门儿歌
+educ,放热门儿歌,educ_search_all,"{""sort"": {""hot"": {""order"": ""desc""}}, ""query"": {""field"": ""children_second_genre"", ""value"": ""儿歌""}}",播放热门儿歌
+educ,我想看爆笑兄弟阿德和阿彪,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""爆笑兄弟阿德和阿彪""}}",我要看爆笑兄弟阿德和阿彪
+educ,帮我播放爆笑兄弟阿德和阿彪,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""爆笑兄弟阿德和阿彪""}}",我要看爆笑兄弟阿德和阿彪
+educ,两岁男宝宝适合看的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""gender"", ""value"": ""男宝宝""}, {""field"": ""age_range"", ""from"": ""2"", ""to"": ""2""}]}}",嗯适合两岁男宝宝看的故事
+educ,适合两岁男宝宝看的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""gender"", ""value"": ""男宝宝""}, {""field"": ""age_range"", ""from"": ""2"", ""to"": ""2""}]}}",嗯适合两岁男宝宝看的故事
+educ,两岁男宝宝看的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""故事""}, {""field"": ""gender"", ""value"": ""男宝宝""}, {""field"": ""age_range"", ""from"": ""2"", ""to"": ""2""}]}}",嗯适合两岁男宝宝看的故事
+educ,播放免费的闯堂兔儿童歌曲,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""闯堂兔""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",免费的闯堂兔儿童歌曲
+educ,我想看免费的闯堂兔儿童歌曲,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""闯堂兔""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",免费的闯堂兔儿童歌曲
+educ,给我放免费的闯堂兔儿童歌曲,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""闯堂兔""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""children_second_genre"", ""value"": ""儿歌""}]}}",免费的闯堂兔儿童歌曲
+educ,新大头儿子和小头爸爸都有哪些系列,educ_fuzzy_search,{},新大头儿子和小头爸爸有哪些系列
+educ,米奇平常爱吃什么,educ_fuzzy_search,{},米奇平时都喜欢吃什么
+educ,米奇平时都喜欢吃啥,educ_fuzzy_search,{},米奇平时都喜欢吃什么
+educ,米奇平时喜欢吃的东西是啥,educ_fuzzy_search,{},米奇平时都喜欢吃什么
+educ,安全警长啦咘啦哆讲校园安全的是哪几集,educ_fuzzy_search,{},安全警长啦咘啦哆介绍校园安全的是哪几集
+educ,哪几集是安全警长啦咘啦哆介绍校园安全的,educ_fuzzy_search,{},安全警长啦咘啦哆介绍校园安全的是哪几集
+educ,安全警长啦咘啦哆里介绍校园安全的是哪几集,educ_fuzzy_search,{},安全警长啦咘啦哆介绍校园安全的是哪几集
+educ,斗罗大陆2绝世唐门的主要配音演员有哪些,educ_fuzzy_search,{},斗罗大陆2绝世唐门担任主要配音的演员是谁
+educ,谁给斗罗大陆2绝世唐门配的主要音,educ_fuzzy_search,{},斗罗大陆2绝世唐门担任主要配音的演员是谁
+educ,斗罗大陆2绝世唐门里担任主要配音的是谁,educ_fuzzy_search,{},斗罗大陆2绝世唐门担任主要配音的演员是谁
+educ,《飞天小女警》里哪个反派角色最难对付,educ_fuzzy_search,{},飞天小女警里的反派角色谁最难对付
+educ,《飞天小女警》中谁是最难对付的反派角色,educ_fuzzy_search,{},飞天小女警里的反派角色谁最难对付
+educ,《飞天小女警》里的反派，哪一个最难对付,educ_fuzzy_search,{},飞天小女警里的反派角色谁最难对付
+educ,有什么动漫适合7岁的小学生看,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""动漫""}, {""field"": ""age_range"", ""from"": ""7"", ""to"": ""7""}]}}",有什么好看的动漫适合7岁小学生看的
+educ,7岁小学生适合看什么动漫,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""动漫""}, {""field"": ""age_range"", ""from"": ""7"", ""to"": ""7""}]}}",有什么好看的动漫适合7岁小学生看的
+educ,有没有适合7岁小学生的动漫,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""动漫""}, {""field"": ""age_range"", ""from"": ""7"", ""to"": ""7""}]}}",有什么好看的动漫适合7岁小学生看的
+educ,肥志百科适合多大孩子看,educ_fuzzy_search,{},肥志百科适合几岁孩子看
+educ,几岁的孩子适合看肥志百科,educ_fuzzy_search,{},肥志百科适合几岁孩子看
+educ,肥志百科适合多大年龄的孩子看,educ_fuzzy_search,{},肥志百科适合几岁孩子看
+educ,宝宝巴士汽车家族动画里有哪些汽车角色,educ_fuzzy_search,{},宝宝巴士汽车家族动画中的汽车角色有哪些
+educ,宝宝巴士汽车家族动画中的汽车角色都有谁,educ_fuzzy_search,{},宝宝巴士汽车家族动画中的汽车角色有哪些
+educ,宝宝巴士汽车家族动画里汽车角色有哪些,educ_fuzzy_search,{},宝宝巴士汽车家族动画中的汽车角色有哪些
+educ,自信是最美的光芒出自哪部动画,educ_fuzzy_search,{},自信是最美的光芒出在哪部动画里
+educ,哪部动画里有自信是最美的光芒这句台词,educ_fuzzy_search,{},自信是最美的光芒出在哪部动画里
+educ,自信是最美的光芒这句话出自哪部动画片,educ_fuzzy_search,{},自信是最美的光芒出在哪部动画里
+educ,上学真是太有趣啦出自哪部动画,educ_fuzzy_search,{},上学真是太有趣啦是哪部动画的台词
+educ,哪部动画里有上学真是太有趣啦这句台词,educ_fuzzy_search,{},上学真是太有趣啦是哪部动画的台词
+educ,上学真是太有趣啦是哪部动画里的台词,educ_fuzzy_search,{},上学真是太有趣啦是哪部动画的台词
+educ,宇宙护卫队的机甲装备有什么特点,educ_fuzzy_search,{},宇宙护卫队的机甲装备有哪些特点
+educ,宇宙护卫队的机甲装备的特点是什么,educ_fuzzy_search,{},宇宙护卫队的机甲装备有哪些特点
+educ,巴啦啦能量沙罗沙罗巴啦啦小魔仙全身变是哪部动画,educ_fuzzy_search,{},巴啦啦能量沙罗沙罗巴啦啦小魔仙全身变是哪个动画
+educ,巴啦啦能量沙罗沙罗巴啦啦小魔仙全身变是什么动画,educ_fuzzy_search,{},巴啦啦能量沙罗沙罗巴啦啦小魔仙全身变是哪个动画
+educ,巴啦啦能量沙罗沙罗巴啦啦小魔仙全身变出自哪个动画,educ_fuzzy_search,{},巴啦啦能量沙罗沙罗巴啦啦小魔仙全身变是哪个动画
+educ,我想看早教学数字123国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""数字""}, {""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""国语版""}]}}",早教学数字123国语版
+educ,播放早教学数字123国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""数字""}, {""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""国语版""}]}}",早教学数字123国语版
+educ,打开早教学数字123国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""数字""}, {""field"": ""children_second_genre"", ""value"": ""早教""}, {""field"": ""language"", ""value"": ""国语版""}]}}",早教学数字123国语版
+educ,给我放儿童识字,educ_search_all,"{""query"": {""field"": ""training_objectives"", ""value"": ""识字""}}",播放儿童识字
+educ,打开儿童识字,educ_search_all,"{""query"": {""field"": ""training_objectives"", ""value"": ""识字""}}",播放儿童识字
+educ,我想看儿童识字,educ_search_all,"{""query"": {""field"": ""training_objectives"", ""value"": ""识字""}}",播放儿童识字
+educ,请再推荐一个跟变形警车珀利相似的安全教育动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""变形警车珀利""}, {""field"": ""content_type"", ""value"": ""动画片""}, {""or"": [{""field"": ""training_objectives"", ""value"": ""安全教育""}, {""field"": ""children_third_genre"", ""value"": ""安全教育""}]}]}}",再推荐一个跟变形警车珀利相似的安全教育动画
+educ,再给我推荐一个跟变形警车珀利相似的安全教育动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""变形警车珀利""}, {""field"": ""content_type"", ""value"": ""动画片""}, {""or"": [{""field"": ""training_objectives"", ""value"": ""安全教育""}, {""field"": ""children_third_genre"", ""value"": ""安全教育""}]}]}}",再推荐一个跟变形警车珀利相似的安全教育动画
+educ,帮我找几部跟熊出没一样搞笑的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""熊出没""}, {""field"": ""children_third_genre"", ""value"": ""搞笑""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我推荐几部像熊出没一样搞笑的动画
+educ,找跟同沃福类似的动漫,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""沃福""}, {""field"": ""children_second_genre"", ""value"": ""动漫""}]}}",同沃福相似的动漫
+educ,有没有跟同沃福差不多的动漫,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""沃福""}, {""field"": ""children_second_genre"", ""value"": ""动漫""}]}}",同沃福相似的动漫
+educ,推荐几部跟同沃福风格相近的动漫,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""沃福""}, {""field"": ""children_second_genre"", ""value"": ""动漫""}]}}",同沃福相似的动漫
+educ,还有没有跟闯堂兔题材差不多的视频,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""闯堂兔""}}",还有哪些类似闯堂兔题材的视频
+educ,有没有其他类似闯堂兔这种题材的片子,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""闯堂兔""}}",还有哪些类似闯堂兔题材的视频
+educ,除了闯堂兔，还有啥同题材的视频推荐,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""闯堂兔""}}",还有哪些类似闯堂兔题材的视频
+educ,请推荐一些和《哭泣宝宝魔法学院》风格类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""哭泣宝宝魔法学院""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与哭泣宝宝魔法学院风格相似的动画推荐
+educ,有没有跟《哭泣宝宝魔法学院》画风相近的动画可以推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""哭泣宝宝魔法学院""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与哭泣宝宝魔法学院风格相似的动画推荐
+educ,我想看跟《哭泣宝宝魔法学院》风格差不多的动画，请推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""哭泣宝宝魔法学院""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与哭泣宝宝魔法学院风格相似的动画推荐
+educ,我想找跟百变布鲁可差不多的早教视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""百变布鲁可""}, {""field"": ""children_second_genre"", ""value"": ""早教""}]}}",我要看类似百变布鲁可的早教类视频
+educ,给我推荐一些像百变布鲁可那样的早教类视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""百变布鲁可""}, {""field"": ""children_second_genre"", ""value"": ""早教""}]}}",我要看类似百变布鲁可的早教类视频
+educ,我想看类似百变布鲁可的早教视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""百变布鲁可""}, {""field"": ""children_second_genre"", ""value"": ""早教""}]}}",我要看类似百变布鲁可的早教类视频
+educ,还有没有跟大卫不可以绘本差不多的书,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",有没有更多类似大卫不可以绘本
+educ,我想找更多像大卫不可以绘本这样的作品,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",有没有更多类似大卫不可以绘本
+educ,除了大卫不可以绘本，还有类似的吗,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",有没有更多类似大卫不可以绘本
+educ,哪部动画跟米奇妙妙屋最像,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""米奇妙妙屋""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",哪部动画跟米奇妙妙屋最相似
+educ,哪部动画跟米奇妙妙屋差不多,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""米奇妙妙屋""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",哪部动画跟米奇妙妙屋最相似
+educ,哪部动画跟米奇妙妙屋类似,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""米奇妙妙屋""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",哪部动画跟米奇妙妙屋最相似
+educ,播放少儿超级宝贝jojo的历史记录,educ_history,{},播放历史记录少儿超级宝贝jojo
+educ,少儿超级宝贝jojo的播放历史,educ_history,{},播放历史记录少儿超级宝贝jojo
+educ,查看少儿超级宝贝jojo的播放历史,educ_history,{},播放历史记录少儿超级宝贝jojo
+educ,播放适合1到2岁宝宝学习的英语,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""age_range"", ""from"": ""1"", ""to"": ""2""}]}}",播放1到2岁的孩子可以学习的英语
+educ,我想看1到2岁孩子能学的英语,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""age_range"", ""from"": ""1"", ""to"": ""2""}]}}",播放1到2岁的孩子可以学习的英语
+educ,放一下1到2岁幼儿学习的英语,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""children_second_genre"", ""value"": ""英语""}, {""field"": ""language"", ""value"": ""英语""}]}, {""field"": ""age_range"", ""from"": ""1"", ""to"": ""2""}]}}",播放1到2岁的孩子可以学习的英语
+educ,把上星期三看过的免费儿歌放一下,educ_history,"{ ""time"": ""2026-08-19 00:00:00 TO 2026-08-19 23:59:59""}",播放我们上星期三看过的免费儿歌
+educ,我想看上星期三看过的免费儿歌,educ_history,"{ ""time"": ""2026-08-19 00:00:00 TO 2026-08-19 23:59:59""}",播放我们上星期三看过的免费儿歌
+educ,把刚才看的动画儿歌放出来,educ_history,{},返回刚刚看的动画儿歌
+educ,继续播放刚刚的动画儿歌,educ_history,{},返回刚刚看的动画儿歌
+educ,我想看刚才那个动画儿歌,educ_history,{},返回刚刚看的动画儿歌
+educ,我想看最近看的经典儿歌,educ_history,{},我要看最近看的经典儿歌
+educ,帮我播放最近看的经典儿歌,educ_history,{},我要看最近看的经典儿歌
+educ,播放我之前的睡前故事,educ_history,{},放我之前看过的睡前故事
+educ,我想看之前看过的睡前故事,educ_history,{},放我之前看过的睡前故事
+educ,把之前看过的睡前故事放一下,educ_history,{},放我之前看过的睡前故事
+educ,帮我播放前天看过的百变工程车超级救援队,educ_history,"{ ""time"": ""2026-08-22 00:00:00 TO 2026-08-22 23:59:59""}",放我前天看的百变工程车超级救援队
+educ,我想看前天看过的百变工程车超级救援队,educ_history,"{ ""time"": ""2026-08-22 00:00:00 TO 2026-08-22 23:59:59""}",放我前天看的百变工程车超级救援队
+educ,打开前天看过的百变工程车超级救援队,educ_history,"{ ""time"": ""2026-08-22 00:00:00 TO 2026-08-22 23:59:59""}",放我前天看的百变工程车超级救援队
+educ,帮我播放上次看的玛莎和熊,educ_history,{},我要上一次播放的玛莎和熊
+educ,继续看上一集玛莎和熊,educ_history,{},我要上一次播放的玛莎和熊
+educ,我想看刚才放的玛莎和熊,educ_history,{},我要上一次播放的玛莎和熊
+educ,我想看上星期天晚上看的海底小纵队学英语亲子课,educ_history,"{ ""time"": ""2026-08-23 19:00:00 TO 2026-08-23 22:59:59""}",我想看我上星期天晚上看的海底小纵队学英语亲子课
+educ,上星期天晚上看的海底小纵队学英语亲子课我想看,educ_history,"{ ""time"": ""2026-08-23 19:00:00 TO 2026-08-23 22:59:59""}",我想看我上星期天晚上看的海底小纵队学英语亲子课
+educ,帮我找一下上星期天晚上看的海底小纵队学英语亲子课,educ_history,"{ ""time"": ""2026-08-23 19:00:00 TO 2026-08-23 22:59:59""}",我想看我上星期天晚上看的海底小纵队学英语亲子课
+educ,帮我播放一下以前看过的《父与子》,educ_history,{},播放以前看过的父与子
+educ,我想看之前看过的《父与子》,educ_history,{},播放以前看过的父与子
+educ,打开我历史里看过的《父与子》,educ_history,{},播放以前看过的父与子
+educ,帮我播放一下历史记录里的爆笑虫子,educ_history,{},播放历史记录的爆笑虫子
+educ,在历史记录中找爆笑虫子来播放,educ_history,{},播放历史记录的爆笑虫子
+educ,把历史记录里的爆笑虫子放一下,educ_history,{},播放历史记录的爆笑虫子
+educ,把刚才看的汪汪队再放一遍,educ_history,{},返回刚才看的那个汪汪队
+educ,继续播放刚才那个汪汪队,educ_history,{},返回刚才看的那个汪汪队
+educ,我想看刚才那个汪汪队,educ_history,{},返回刚才看的那个汪汪队
+educ,继续播放安全警长啦咘啦哆,educ_history,{},播放上次看的安全警长啦咘啦哆
+educ,接着看安全警长啦咘啦哆,educ_history,{},播放上次看的安全警长啦咘啦哆
+educ,回放安全警长啦咘啦哆,educ_history,{},播放上次看的安全警长啦咘啦哆
+educ,帮我放一下我最近几天看的樱桃小丸子动画,educ_history,{},播放我最近几天看的樱桃小丸子动画
+educ,我想看最近几天看的樱桃小丸子动画,educ_history,{},播放我最近几天看的樱桃小丸子动画
+educ,打开我最近几天看的樱桃小丸子动画,educ_history,{},播放我最近几天看的樱桃小丸子动画
+educ,我想看历史少儿免费的宝宝巴士,educ_history,{},播放历史少儿免费的宝宝巴士
+educ,帮我找一下历史少儿免费的宝宝巴士,educ_history,{},播放历史少儿免费的宝宝巴士
+educ,请播放历史少儿免费的宝宝巴士,educ_history,{},播放历史少儿免费的宝宝巴士
+educ,我想看那个免费的超级飞侠，就是刚才播过的那集,educ_history,{},播放我刚刚看的那个超级飞侠免费的
+educ,把刚才看的免费版超级飞侠接着放,educ_history,{},播放我刚刚看的那个超级飞侠免费的
+educ,继续播放我刚才看的那个免费的超级飞侠,educ_history,{},播放我刚刚看的那个超级飞侠免费的
+educ,接着放刚才的超级宝贝,educ_history,{},继续播放刚刚的超级宝贝
+educ,把刚刚的超级宝贝继续播下去,educ_history,{},继续播放刚刚的超级宝贝
+educ,继续看刚才那个超级宝贝,educ_history,{},继续播放刚刚的超级宝贝
+educ,有什么适合宝宝看的动画吗,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",有什么好看的动画适合宝宝看的
+educ,宝宝看什么动画比较好,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",有什么好看的动画适合宝宝看的
+educ,有没有适合宝宝看的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",有什么好看的动画适合宝宝看的
+educ,给我推荐一些符合我家小孩偏好的少儿儿歌,educ_fuzzy_search,{},找符合我家小孩偏好的少儿儿歌推荐给我
+educ,帮我找一些适合我家小孩口味的少儿儿歌,educ_fuzzy_search,{},找符合我家小孩偏好的少儿儿歌推荐给我
+educ,我想看符合我家小孩偏好的少儿儿歌推荐,educ_fuzzy_search,{},找符合我家小孩偏好的少儿儿歌推荐给我
+educ,给我找一些符合我偏好的儿童歌曲,educ_fuzzy_search,{},帮我找符合我偏好的儿童歌曲
+educ,我想看符合我偏好的儿童歌曲,educ_fuzzy_search,{},帮我找符合我偏好的儿童歌曲
+educ,请帮我搜索符合我偏好的儿童歌曲,educ_fuzzy_search,{},帮我找符合我偏好的儿童歌曲
+educ,根据我的喜好推荐一些我喜欢的儿歌,educ_fuzzy_search,{},请按我的喜好推荐我喜欢的儿歌
+educ,按我的喜好给我推荐我喜欢的儿歌,educ_fuzzy_search,{},请按我的喜好推荐我喜欢的儿歌
+educ,请按照我的喜好推荐我喜欢的儿歌,educ_fuzzy_search,{},请按我的喜好推荐我喜欢的儿歌
+educ,给我推荐一些适合3岁宝宝看的启蒙动画,educ_search_all,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""启蒙""}, {""field"": ""age_range"", ""from"": ""3"", ""to"": ""3""}]}}",找符合3岁孩子爱好的少儿启蒙内容推荐给我
+educ,有没有针对3岁幼儿的启蒙节目可以推荐,educ_search_all,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""启蒙""}, {""field"": ""age_range"", ""from"": ""3"", ""to"": ""3""}]}}",找符合3岁孩子爱好的少儿启蒙内容推荐给我
+educ,给7岁孩子推荐那种动漫,educ_search_all,"{""query"":{""and"": [{""field"": ""children_second_genre"", ""value"": ""动漫""}, {""field"": ""age_range"", ""from"": ""7"", ""to"": ""7""}]}}",推荐7岁孩子喜欢的那种动漫
+educ,7岁孩子喜欢的那种动漫推荐一下,educ_search_all,"{""query"":{""and"": [{""field"": ""children_second_genre"", ""value"": ""动漫""}, {""field"": ""age_range"", ""from"": ""7"", ""to"": ""7""}]}}",推荐7岁孩子喜欢的那种动漫
+educ,给我找几部合我口味的儿歌,educ_fuzzy_search,{},推荐几部对我味口的儿歌吧
+educ,帮我推荐几部对我胃口的儿歌,educ_fuzzy_search,{},推荐几部对我味口的儿歌吧
+educ,请推荐几部符合我口味的儿歌,educ_fuzzy_search,{},推荐几部对我味口的儿歌吧
+educ,有哪些动画跟睡衣小英雄相似,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""睡衣小英雄""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",跟睡衣小英雄相似的动画有哪些
+educ,睡衣小英雄类似的动画有哪些,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""睡衣小英雄""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",跟睡衣小英雄相似的动画有哪些
+educ,请给我推荐几部跟舒克贝塔类似的励志动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""舒克贝塔""}, {""field"": ""children_third_genre"", ""value"": ""励志""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐几部和舒克贝塔相似的励志动画
+educ,有没有几部像舒克贝塔那样励志的动画推荐一下,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""舒克贝塔""}, {""field"": ""children_third_genre"", ""value"": ""励志""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐几部和舒克贝塔相似的励志动画
+educ,我想看几部和舒克贝塔差不多类型的励志动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""舒克贝塔""}, {""field"": ""children_third_genre"", ""value"": ""励志""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐几部和舒克贝塔相似的励志动画
+educ,有没有跟瑞恩的世界差不多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""瑞恩的世界""},{""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似瑞恩的世界的动画
+educ,有没有类似瑞恩的世界的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""瑞恩的世界""},{""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似瑞恩的世界的动画
+educ,有没有跟瑞恩的世界类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""瑞恩的世界""},{""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似瑞恩的世界的动画
+educ,给我找3部跟趣趣知知鸟差不多、适合3岁以下宝宝的启蒙动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""values"": [""趣趣知知鸟"",""启蒙""],""operator"":""or""}, {""field"": ""age_range"", ""from"": ""*"", ""to"":""3""}, {""field"": ""content_type"", ""value"": ""动画""}]}}
+
+
+",推荐和趣趣知知鸟相似的3岁以下启蒙动画
+educ,有没有类似趣趣知知鸟的3岁以下启蒙动画，推荐3个,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""values"": [""趣趣知知鸟"",""启蒙""],""operator"":""or""}, {""field"": ""age_range"", ""from"": ""*"", ""to"":""3""}, {""field"": ""content_type"", ""value"": ""动画""}]}}
+
+
+",推荐和趣趣知知鸟相似的3岁以下启蒙动画
+educ,请推荐3部3岁以下启蒙动画，要求跟趣趣知知鸟风格相似,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""values"": [""趣趣知知鸟"",""启蒙""],""operator"":""or""}, {""field"": ""age_range"", ""from"": ""*"", ""to"":""3""}, {""field"": ""content_type"", ""value"": ""动画""}]}}
+
+
+",推荐和趣趣知知鸟相似的3岁以下启蒙动画
+educ,有没有跟咪好一家一样好看的动画作品,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""咪好一家""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有像咪好一家一样好看的动画作品
+educ,有没有类似于咪好一家一样好看的动画作品,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""咪好一家""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有像咪好一家一样好看的动画作品
+educ,有没有和咪好一家一样好看的动画作品,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""咪好一家""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有像咪好一家一样好看的动画作品
+educ,我想找跟小猪佩奇差不多的学前电视动画,educ_relate_search,"{""query"":{""and"": [{""or"": [{""field"": ""role"", ""value"": ""佩奇""}, {""field"": ""title"", ""value"": ""佩奇""}]}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似小猪佩奇的学前电视动画
+educ,有没有像小猪佩奇那样的学前电视动画,educ_relate_search,"{""query"":{""and"": [{""or"": [{""field"": ""role"", ""value"": ""佩奇""}, {""field"": ""title"", ""value"": ""佩奇""}]}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似小猪佩奇的学前电视动画
+educ,推荐一些类似小猪佩奇的学前电视动画,educ_relate_search,"{""query"":{""and"": [{""or"": [{""field"": ""role"", ""value"": ""佩奇""}, {""field"": ""title"", ""value"": ""佩奇""}]}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似小猪佩奇的学前电视动画
+educ,推荐一部跟海尔兄弟类似的科普动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""海尔兄弟""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""科普""}]}}",求推荐像海尔兄弟一样的科普动画
+educ,有没有像海尔兄弟那样的科普动画推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""海尔兄弟""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""科普""}]}}",求推荐像海尔兄弟一样的科普动画
+educ,给我找一部类似海尔兄弟的科普动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""海尔兄弟""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""科普""}]}}",求推荐像海尔兄弟一样的科普动画
+educ,我想找像《怪物课堂单词家族》那样做英语启蒙的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""怪物课堂单词家族""}, {""field"": ""training_objectives"", ""value"": ""英语启蒙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",和怪物课堂单词家族一样英语启蒙的动画
+educ,有没有跟《怪物课堂单词家族》类似的英语启蒙动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""怪物课堂单词家族""}, {""field"": ""training_objectives"", ""value"": ""英语启蒙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",和怪物课堂单词家族一样英语启蒙的动画
+educ,推荐一部跟《怪物课堂单词家族》一样的英语启蒙动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""怪物课堂单词家族""}, {""field"": ""training_objectives"", ""value"": ""英语启蒙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",和怪物课堂单词家族一样英语启蒙的动画
+educ,有没有跟工程车超威行动队类似的卡通,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""工程车超威行动队""}, {""field"": ""content_type"", ""value"": ""卡通""}]}}",有没有像工程车超威行动队那样的卡通
+educ,有没有类似于工程车超威行动队的卡通,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""工程车超威行动队""}, {""field"": ""content_type"", ""value"": ""卡通""}]}}",有没有像工程车超威行动队那样的卡通
+educ,有没有像工程车超威行动队一样的卡通,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""工程车超威行动队""}, {""field"": ""content_type"", ""value"": ""卡通""}]}}",有没有像工程车超威行动队那样的卡通
+educ,给我推荐一些跟《搞怪兄弟弗拉德与尼基》同类型的视频,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""搞怪兄弟弗拉德与尼基""}}",搞怪兄弟弗拉德与尼基同类型视频推荐
+educ,我想看《搞怪兄弟弗拉德与尼基》同类型的视频推荐,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""搞怪兄弟弗拉德与尼基""}}",搞怪兄弟弗拉德与尼基同类型视频推荐
+educ,请推荐《搞怪兄弟弗拉德与尼基》同类型的视频,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""搞怪兄弟弗拉德与尼基""}}",搞怪兄弟弗拉德与尼基同类型视频推荐
+educ,给我找跟独角兽骑士队类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""独角兽骑士队""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",求类似独角兽骑士队的动画
+educ,有没有跟独角兽骑士队差不多的动画推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""独角兽骑士队""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",求类似独角兽骑士队的动画
+educ,我想看类似独角兽骑士队的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""独角兽骑士队""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",求类似独角兽骑士队的动画
+educ,给我找跟汪汪队立大功同类型的国产动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",和汪汪队立大功同类型的国产动画
+educ,有没有和汪汪队立大功同类型的国产动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",和汪汪队立大功同类型的国产动画
+educ,推荐一些和汪汪队立大功同类型的国产动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",和汪汪队立大功同类型的国产动画
+educ,给我找几部跟宠物小秘密类型一样的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""宠物小秘密""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",找几个类型跟宠物小秘密一样的动画给我
+educ,帮我找几个跟宠物小秘密同类型的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""宠物小秘密""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",找几个类型跟宠物小秘密一样的动画给我
+educ,找几部跟宠物小秘密类型相同的动画给我,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""宠物小秘密""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",找几个类型跟宠物小秘密一样的动画给我
+educ,给我推荐跟超级益智宝贝类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""超级益智宝贝""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与超级益智宝贝相关的动画推荐
+educ,有没有跟超级益智宝贝差不多的动画推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""超级益智宝贝""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与超级益智宝贝相关的动画推荐
+educ,我想看跟超级益智宝贝同类型的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""超级益智宝贝""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与超级益智宝贝相关的动画推荐
+educ,给我找几部跟超级飞侠类型一样的国产动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""超级飞侠""},{""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐几个跟超级飞侠类型一样的国产动画
+educ,有没有跟超级飞侠类型一样的国产动画，推荐几个,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""超级飞侠""},{""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐几个跟超级飞侠类型一样的国产动画
+educ,我想看跟超级飞侠类型一样的国产动画，推荐几个,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""超级飞侠""},{""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐几个跟超级飞侠类型一样的国产动画
+educ,找跟冰雪女王动画同类题材的冒险动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""冰雪女王""}, {""field"": ""children_third_genre"", ""value"": ""冒险""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索跟冰雪女王动画同类题材的冒险动画
+educ,我想看跟冰雪女王动画同类题材的冒险动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""冰雪女王""}, {""field"": ""children_third_genre"", ""value"": ""冒险""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索跟冰雪女王动画同类题材的冒险动画
+educ,帮我搜跟冰雪女王动画同类题材的冒险动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""冰雪女王""}, {""field"": ""children_third_genre"", ""value"": ""冒险""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索跟冰雪女王动画同类题材的冒险动画
+educ,我想看像巴布工程师那样的益智动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""巴布工程师""}, {""field"": ""children_third_genre"", ""value"": ""益智""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我播放巴布工程师相似的益智动画
+educ,请播放跟巴布工程师类似的益智类动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""巴布工程师""}, {""field"": ""children_third_genre"", ""value"": ""益智""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我播放巴布工程师相似的益智动画
+educ,帮我找巴布工程师同类型的益智动画来播放,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""巴布工程师""}, {""field"": ""children_third_genre"", ""value"": ""益智""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我播放巴布工程师相似的益智动画
+educ,我想给小朋友看像艾米咕噜那样的儿童动画,educ_relate_search,"{""query"": { ""and"": [ {""field"": ""title"", ""value"": ""艾米咕噜""}, {""field"": ""content_type"", ""value"": ""动画""} ] }}",给小朋友看艾米咕噜类似的儿童动画
+educ,请给小朋友播放类似艾米咕噜的儿童动画片,educ_relate_search,"{""query"": { ""and"": [ {""field"": ""title"", ""value"": ""艾米咕噜""}, {""field"": ""content_type"", ""value"": ""动画""} ] }}",给小朋友看艾米咕噜类似的儿童动画
+educ,帮小朋友找一些跟艾米咕噜类似的儿童动画,educ_relate_search,"{""query"": { ""and"": [ {""field"": ""title"", ""value"": ""艾米咕噜""}, {""field"": ""content_type"", ""value"": ""动画""} ] }}",给小朋友看艾米咕噜类似的儿童动画
+educ,帮孩子找跟jojo英语启蒙类似的电视节目,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""jojo英语启蒙""}}",给孩子搜jojo英语启蒙相类似的电视
+educ,给孩子推荐一些跟jojo英语启蒙差不多的电视,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""jojo英语启蒙""}}",给孩子搜jojo英语启蒙相类似的电视
+educ,搜一下跟jojo英语启蒙类似的适合孩子的电视,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""jojo英语启蒙""}}",给孩子搜jojo英语启蒙相类似的电视
+educ,给我找点像数学大爆炸那样的启蒙视频,educ_relate_search,"{""query"":{ ""field"": ""title"", ""values"": [""数学大爆炸"",""启蒙""],""operator"":""or""}}",推荐数学大爆炸类似的启蒙视频
+educ,有没有跟数学大爆炸风格差不多的启蒙视频推荐,educ_relate_search,"{""query"":{ ""field"": ""title"", ""values"": [""数学大爆炸"",""启蒙""],""operator"":""or""}}",推荐数学大爆炸类似的启蒙视频
+educ,我想看类似数学大爆炸的启蒙类视频,educ_relate_search,"{""query"":{ ""field"": ""title"", ""values"": [""数学大爆炸"",""启蒙""],""operator"":""or""}}",推荐数学大爆炸类似的启蒙视频
+educ,给我找一个跟小伴龙数学启蒙差不多的动漫,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小伴龙数学启蒙""}, {""field"": ""children_second_genre"", ""value"": ""动漫""}]}}",推荐一个类似小伴龙数学启蒙的动漫
+educ,有没有类似小伴龙数学启蒙的动漫推荐一下,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小伴龙数学启蒙""}, {""field"": ""children_second_genre"", ""value"": ""动漫""}]}}",推荐一个类似小伴龙数学启蒙的动漫
+educ,我想看像小伴龙数学启蒙那样的动漫,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小伴龙数学启蒙""}, {""field"": ""children_second_genre"", ""value"": ""动漫""}]}}",推荐一个类似小伴龙数学启蒙的动漫
+educ,我想看像数字积木那样的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""数字积木""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",我要看数字积木类似的动画
+educ,给我找跟数字积木同类型的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""数字积木""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",我要看数字积木类似的动画
+educ,有没有类似数字积木的动画给我看看,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""数字积木""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",我要看数字积木类似的动画
+educ,还有跟编程王国差不多的作品吗,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""编程王国""}}",还有哪些类似编程王国的作品
+educ,有没有其他像编程王国这样的作品,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""编程王国""}}",还有哪些类似编程王国的作品
+educ,除了编程王国，还有啥类似的片子,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""编程王国""}}",还有哪些类似编程王国的作品
+educ,我想找类似怪物数学小分队的少儿启蒙视频,educ_relate_search,"
+{""query"":{ ""field"": ""title"", ""values"":[""怪物数学小分队"",""启蒙""],""operator"":""or""}}",类似怪物数学小分队的少儿启蒙视频
+educ,有没有跟怪物数学小分队差不多的少儿启蒙视频,educ_relate_search,"
+{""query"":{ ""field"": ""title"", ""values"":[""怪物数学小分队"",""启蒙""],""operator"":""or""}}",类似怪物数学小分队的少儿启蒙视频
+educ,给我推荐一些像怪物数学小分队的少儿启蒙视频,educ_relate_search,"
+{""query"":{ ""field"": ""title"", ""values"":[""怪物数学小分队"",""启蒙""],""operator"":""or""}}",类似怪物数学小分队的少儿启蒙视频
+educ,有没有跟咕力咕力逻辑思维启蒙差不多的动画推荐,educ_relate_search,"{""query"":{""and"": [{ ""field"": ""title"", ""values"": [""咕力咕力"",""逻辑思维启蒙""],""operator"":""or""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",能再推荐几个类似咕力咕力逻辑思维启蒙的动画吗
+educ,请推荐几部跟咕力咕力逻辑思维启蒙类似的动画片,educ_relate_search,"{""query"":{""and"": [{ ""field"": ""title"", ""values"": [""咕力咕力"",""逻辑思维启蒙""],""operator"":""or""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",能再推荐几个类似咕力咕力逻辑思维启蒙的动画吗
+educ,我想看类似咕力咕力逻辑思维启蒙的动画，再推荐几个呗,educ_relate_search,"{""query"":{""and"": [{ ""field"": ""title"", ""values"": [""咕力咕力"",""逻辑思维启蒙""],""operator"":""or""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",能再推荐几个类似咕力咕力逻辑思维启蒙的动画吗
+educ,有哪些动画跟小马宝莉差不多,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小马宝莉""},{""field"": ""content_type"", ""value"": ""动画""}]}}",和小马宝莉相似的动画有哪些
+educ,给我推荐几部类似小马宝莉的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小马宝莉""},{""field"": ""content_type"", ""value"": ""动画""}]}}",和小马宝莉相似的动画有哪些
+educ,有没有跟小马宝莉风格相近的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小马宝莉""},{""field"": ""content_type"", ""value"": ""动画""}]}}",和小马宝莉相似的动画有哪些
+educ,给我找跟小恐龙阿贡题材一样的儿童动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小恐龙阿贡""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐和小恐龙阿贡题材相同的儿童动画
+educ,有没有和小恐龙阿贡题材相同的儿童动画推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小恐龙阿贡""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐和小恐龙阿贡题材相同的儿童动画
+educ,请推荐题材和小恐龙阿贡相同的儿童动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小恐龙阿贡""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐和小恐龙阿贡题材相同的儿童动画
+educ,还有啥跟小鸡jaki在哪儿一样的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小鸡jaki在哪儿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",还有哪些类似小鸡jaki在哪儿的动画
+educ,有没有其他像小鸡jaki在哪儿那样的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小鸡jaki在哪儿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",还有哪些类似小鸡jaki在哪儿的动画
+educ,除了小鸡jaki在哪儿，还有类似的动画吗,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小鸡jaki在哪儿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",还有哪些类似小鸡jaki在哪儿的动画
+educ,请推荐一些跟小火车联盟相似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小火车联盟""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",跟小火车联盟相似的动画推荐
+educ,有没有跟小火车联盟类似的动画可以推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小火车联盟""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",跟小火车联盟相似的动画推荐
+educ,我想看跟小火车联盟风格相似的动画，请推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小火车联盟""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",跟小火车联盟相似的动画推荐
+educ,有没有跟小花仙差不多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小花仙""},{""field"": ""content_type"", ""value"": ""动画""}]}}",有哪些类似小花仙的动画
+educ,推荐几部和小花仙类似的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小花仙""},{""field"": ""content_type"", ""value"": ""动画""}]}}",有哪些类似小花仙的动画
+educ,找一些和小花仙风格相近的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小花仙""},{""field"": ""content_type"", ""value"": ""动画""}]}}",有哪些类似小花仙的动画
+educ,请推荐一些和无敌鹿战队类型一样的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""无敌鹿战队""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",跟无敌鹿战队类型相同的动画推荐
+educ,有没有跟无敌鹿战队同类型的动画片推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""无敌鹿战队""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",跟无敌鹿战队类型相同的动画推荐
+educ,我想看跟无敌鹿战队类型相同的动画，请推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""无敌鹿战队""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",跟无敌鹿战队类型相同的动画推荐
+educ,给我推荐一些像阿布小课堂那样的启蒙视频,educ_relate_search,"
+{""query"":{ ""field"": ""title"", ""values"":[""阿布小课堂"",""启蒙""],""operator"":""or""}}
+",类似阿布小课堂的启蒙视频推荐
+educ,有没有跟阿布小课堂类似的启蒙视频推荐,educ_relate_search,"
+{""query"":{ ""field"": ""title"", ""values"":[""阿布小课堂"",""启蒙""],""operator"":""or""}}
+",类似阿布小课堂的启蒙视频推荐
+educ,我想看类似阿布小课堂的启蒙视频，请推荐,educ_relate_search,"
+{""query"":{ ""field"": ""title"", ""values"":[""阿布小课堂"",""启蒙""],""operator"":""or""}}
+",类似阿布小课堂的启蒙视频推荐
+educ,还有跟飞狗moco题材一样的动画吗,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""飞狗MOCO""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有更多与飞狗moco同题材的动画
+educ,除了飞狗moco，还有没有其他同类型的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""飞狗MOCO""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有更多与飞狗moco同题材的动画
+educ,我想找跟飞狗moco题材相同的动画，有吗,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""飞狗MOCO""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有更多与飞狗moco同题材的动画
+educ,找跟小公主苏菲亚雷同的动漫,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小公主苏菲亚""}, {""field"": ""content_type"", ""value"": ""动漫""}]}}",同小公主苏菲亚雷同的动漫
+educ,有没有和小公主苏菲亚雷同的动漫,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小公主苏菲亚""}, {""field"": ""content_type"", ""value"": ""动漫""}]}}",同小公主苏菲亚雷同的动漫
+educ,推荐小公主苏菲亚雷同的动漫,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小公主苏菲亚""}, {""field"": ""content_type"", ""value"": ""动漫""}]}}",同小公主苏菲亚雷同的动漫
+educ,有哪些动画跟小飞象差不多,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小飞象""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与小飞象相似的动画有哪些
+educ,给我推荐几部类似小飞象的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小飞象""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与小飞象相似的动画有哪些
+educ,还有没有别的动画跟炫卡斗士差不多,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""炫卡斗士""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有其他动画类似炫卡斗士
+educ,除了炫卡斗士，还有啥动画是类似的,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""炫卡斗士""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有其他动画类似炫卡斗士
+educ,有没有其他动画跟炫卡斗士差不多,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""炫卡斗士""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有其他动画类似炫卡斗士
+educ,还有没有像疯狂动物城那样的故事,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""疯狂动物城""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",有没有更多类似疯狂动物城的故事
+educ,给我找点跟疯狂动物城类似的故事,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""疯狂动物城""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",有没有更多类似疯狂动物城的故事
+educ,有没有其他跟疯狂动物城差不多的故事,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""疯狂动物城""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",有没有更多类似疯狂动物城的故事
+educ,帮我找跟赛车总动员类似的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""赛车总动员""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索与赛车总动员相似的动画吧
+educ,我想看和赛车总动员风格相近的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""赛车总动员""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索与赛车总动员相似的动画吧
+educ,推荐几部跟赛车总动员差不多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""赛车总动员""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索与赛车总动员相似的动画吧
+educ,碰碰狐故事同类型的故事视频有吗,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""碰碰狐故事""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",有没有同碰碰狐故事同类型的故事视频
+educ,我想看碰碰狐故事同类型的故事视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""碰碰狐故事""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",有没有同碰碰狐故事同类型的故事视频
+educ,碰碰狐故事同类型的故事视频有没有,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""碰碰狐故事""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",有没有同碰碰狐故事同类型的故事视频
+educ,找一部跟摩登大自然差不多的动漫,educ_relate_search,"{ ""query"": { ""and"": [ {""field"": ""title"", ""value"": ""摩登大自然""}, {""field"": ""content_type"", ""value"": ""动画""} ] }}",和摩登大自然类似的动漫
+educ,有没有类似摩登大自然这种的动漫,educ_relate_search,"{ ""query"": { ""and"": [ {""field"": ""title"", ""value"": ""摩登大自然""}, {""field"": ""content_type"", ""value"": ""动画""} ] }}",和摩登大自然类似的动漫
+educ,推荐一部和摩登大自然风格相近的动漫,educ_relate_search,"{ ""query"": { ""and"": [ {""field"": ""title"", ""value"": ""摩登大自然""}, {""field"": ""content_type"", ""value"": ""动画""} ] }}",和摩登大自然类似的动漫
+educ,帮我找跟米小圈动画成语同类型的成语动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""米小圈""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我找类型和米小圈动画成语相同的成语动画
+educ,我想看和米小圈动画成语类型一样的成语动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""米小圈""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我找类型和米小圈动画成语相同的成语动画
+educ,请推荐一部和米小圈动画成语同类型的成语动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""米小圈""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我找类型和米小圈动画成语相同的成语动画
+educ,帮我找跟昆塔奶泡泡学成语类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""昆塔奶泡泡学成语""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",找类似昆塔奶泡泡学成语的动画节目
+educ,有没有和昆塔奶泡泡学成语差不多的动画节目,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""昆塔奶泡泡学成语""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",找类似昆塔奶泡泡学成语的动画节目
+educ,我想看类似昆塔奶泡泡学成语的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""昆塔奶泡泡学成语""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",找类似昆塔奶泡泡学成语的动画节目
+educ,给我推荐一些跟九色鹿类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""九色鹿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",类似九色鹿的动画推荐
+educ,有没有像九色鹿那样的动画可以推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""九色鹿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",类似九色鹿的动画推荐
+educ,我想看类似九色鹿的动画，请推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""九色鹿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",类似九色鹿的动画推荐
+educ,还有没有跟机器人总动员差不多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""机器人总动员""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有更多类似机器人总动员的动画
+educ,除了机器人总动员，还有啥类似的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""机器人总动员""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有更多类似机器人总动员的动画
+educ,给我推荐几部跟机器人总动员风格相近的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""机器人总动员""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有更多类似机器人总动员的动画
+educ,请再推荐几部父与子的同类绘本,educ_relate_search,"{""query"":{ ""and"": [ {""field"": ""title"", ""value"": ""父与子""}, {""field"": ""children_second_genre"", ""value"": ""绘本""} ]}}",再给我推荐几部父与子的同类绘本
+educ,有没有跟爱探险的朵拉类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""朵拉""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似于爱探险的朵拉的动画
+educ,有没有像爱探险的朵拉那样的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""朵拉""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似于爱探险的朵拉的动画
+educ,有没有跟爱探险的朵拉差不多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""朵拉""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似于爱探险的朵拉的动画
+educ,动画视频里有没有跟冰雪奇缘差不多的,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""冰雪奇缘""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画视频里有类似冰雪奇缘的吗
+educ,找一部动画视频，风格像冰雪奇缘的,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""冰雪奇缘""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画视频里有类似冰雪奇缘的吗
+educ,动画视频里有没有类似冰雪奇缘的片子,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""冰雪奇缘""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画视频里有类似冰雪奇缘的吗
+educ,爆笑虫子看完了，有没有类似的动画推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""爆笑虫子""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",看完爆笑虫子之后还有相似的动画吗
+educ,除了爆笑虫子，还有没有其他相似的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""爆笑虫子""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",看完爆笑虫子之后还有相似的动画吗
+educ,爆笑虫子看过了，求推荐同类型的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""爆笑虫子""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",看完爆笑虫子之后还有相似的动画吗
+educ,我想找跟宝宝巴士绘本故事一样好看的绘本,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""宝宝巴士绘本故事""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",类型和宝宝巴士绘本故事一样好看的绘本
+educ,有没有像宝宝巴士绘本故事那样好看的绘本,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""宝宝巴士绘本故事""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",类型和宝宝巴士绘本故事一样好看的绘本
+educ,求推荐类似宝宝巴士绘本故事那样好看的绘本,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""宝宝巴士绘本故事""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",类型和宝宝巴士绘本故事一样好看的绘本
+educ,找跟巴巴爸爸风格差不多的少儿节目,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""巴巴爸爸""}}",跟巴巴爸爸有着类似风格的少儿内容
+educ,有没有巴巴爸爸那种调调的儿童动画,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""巴巴爸爸""}}",跟巴巴爸爸有着类似风格的少儿内容
+educ,推荐点巴巴爸爸类似风格的少儿片,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""巴巴爸爸""}}",跟巴巴爸爸有着类似风格的少儿内容
+educ,找跟爱丽去哪儿动画像的儿童视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""爱丽去哪儿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与爱丽去哪儿动画相似的儿童视频
+educ,有没有跟爱丽去哪儿动画类似的儿童视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""爱丽去哪儿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与爱丽去哪儿动画相似的儿童视频
+educ,推荐跟爱丽去哪儿动画相似的儿童视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""爱丽去哪儿""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",与爱丽去哪儿动画相似的儿童视频
+educ,题材跟爱丽的童话世界雷同的故事,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""爱丽的童话世界""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",跟爱丽的童话世界题材雷同的故事
+educ,跟爱丽的童话世界题材一样的故事,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""爱丽的童话世界""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",跟爱丽的童话世界题材雷同的故事
+educ,给我找和阿凡提的故事类似的儿童故事,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""阿凡提的故事""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",和阿凡提的故事类似的儿童故事
+educ,有没有和阿凡提的故事类似的儿童故事,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""阿凡提的故事""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",和阿凡提的故事类似的儿童故事
+educ,我想看和阿凡提的故事类似的儿童故事,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""阿凡提的故事""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",和阿凡提的故事类似的儿童故事
+educ,找跟多宝一家人风格一样的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""多宝一家人""},{""field"": ""content_type"", ""value"": ""动画""}]}}",搜索与多宝一家人同类风格的动画
+educ,我想看多宝一家人那种类型的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""多宝一家人""},{""field"": ""content_type"", ""value"": ""动画""}]}}",搜索与多宝一家人同类风格的动画
+educ,有没有和多宝一家人类似风格的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""多宝一家人""},{""field"": ""content_type"", ""value"": ""动画""}]}}",搜索与多宝一家人同类风格的动画
+educ,找跟土豆逗大话语文同类型的启蒙动画,educ_relate_search,"{""query"":{""and"": [{ ""field"": ""title"", ""values"":[""土豆逗大话语文"",""启蒙""],""operator"":""or""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索跟土豆逗大话语文同一类型的启蒙动画
+educ,我想看土豆逗大话语文那种类型的启蒙动画,educ_relate_search,"{""query"":{""and"": [{ ""field"": ""title"", ""values"":[""土豆逗大话语文"",""启蒙""],""operator"":""or""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索跟土豆逗大话语文同一类型的启蒙动画
+educ,推荐土豆逗大话语文同类型的启蒙动画,educ_relate_search,"{""query"":{""and"": [{ ""field"": ""title"", ""values"":[""土豆逗大话语文"",""启蒙""],""operator"":""or""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索跟土豆逗大话语文同一类型的启蒙动画
+educ,帮我找一些跟兔小贝手工课堂差不多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""兔小贝手工课堂""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我推荐一些和兔小贝手工课堂类似的动画
+educ,有没有类似兔小贝手工课堂的动画片推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""兔小贝手工课堂""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我推荐一些和兔小贝手工课堂类似的动画
+educ,我想看跟兔小贝手工课堂风格相近的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""兔小贝手工课堂""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我推荐一些和兔小贝手工课堂类似的动画
+educ,给我找点像趣味小厨房那样的动画视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""趣味小厨房""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐一些类似趣味小厨房的动画视频
+educ,有没有跟趣味小厨房风格类似的动画视频推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""趣味小厨房""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐一些类似趣味小厨房的动画视频
+educ,我想看趣味小厨房同类型的动画视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""趣味小厨房""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",推荐一些类似趣味小厨房的动画视频
+educ,帮我找点咕力咕力类似的视频,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""咕力咕力""}}",找到咕力咕力类似视频
+educ,有没有跟咕力咕力差不多的视频推荐一下,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""咕力咕力""}}",找到咕力咕力类似视频
+educ,我想看咕力咕力同类型的视频,educ_relate_search,"{""query"":{""field"": ""title"", ""value"": ""咕力咕力""}}",找到咕力咕力类似视频
+educ,有没有跟方块熊百变黏土差不多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""方块熊百变黏土""},{""field"": ""content_type"", ""value"": ""动画""}]}}",和方块熊百变黏土类似的动画
+educ,推荐几部跟方块熊百变黏土风格相近的动画片,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""方块熊百变黏土""},{""field"": ""content_type"", ""value"": ""动画""}]}}",和方块熊百变黏土类似的动画
+educ,请推荐跟儿歌多多主题和风格类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""title"", ""value"": ""儿歌多多""}]}}",与儿歌多多在主题和风格上相似的动画
+educ,有没有主题和风格跟儿歌多多差不多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""title"", ""value"": ""儿歌多多""}]}}",与儿歌多多在主题和风格上相似的动画
+educ,找一些主题和风格类似儿歌多多的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""title"", ""value"": ""儿歌多多""}]}}",与儿歌多多在主题和风格上相似的动画
+educ,帮我搜一下创意奶油胶diy玩具类似的手工视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""children_third_genre"", ""value"": ""手工""}, {""field"": ""title"", ""value"": ""创意奶油胶diy玩具""}]}}",找几部跟创意奶油胶diy玩具相似的手工视频
+educ,有没有跟创意奶油胶diy玩具差不多类型的手工视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""children_third_genre"", ""value"": ""手工""}, {""field"": ""title"", ""value"": ""创意奶油胶diy玩具""}]}}",找几部跟创意奶油胶diy玩具相似的手工视频
+educ,我想看创意奶油胶diy玩具同类型的手工视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""children_third_genre"", ""value"": ""手工""}, {""field"": ""title"", ""value"": ""创意奶油胶diy玩具""}]}}",找几部跟创意奶油胶diy玩具相似的手工视频
+educ,有没有跟抱抱熊手工屋类似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""抱抱熊手工屋""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似抱抱熊手工屋的动画
+educ,有没有和抱抱熊手工屋相似的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""抱抱熊手工屋""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似抱抱熊手工屋的动画
+educ,有没有跟抱抱熊手工屋同类型的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""抱抱熊手工屋""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",有没有类似抱抱熊手工屋的动画
+educ,请推荐几部跟jojo英语启蒙一样精彩的动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""jojo英语启蒙""},{""field"": ""content_type"", ""value"": ""动画""}]}}",给我推荐几部像jojo英语启蒙一样好看的动画
+educ,有没有几部动画能像jojo英语启蒙那样好看，给我推荐一下,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""jojo英语启蒙""},{""field"": ""content_type"", ""value"": ""动画""}]}}",给我推荐几部像jojo英语启蒙一样好看的动画
+educ,我想看几部动画，要求像jojo英语启蒙一样好看，请推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""jojo英语启蒙""},{""field"": ""content_type"", ""value"": ""动画""}]}}",给我推荐几部像jojo英语启蒙一样好看的动画
+educ,给我找点像小叮当快乐益智那样的早教益智动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小叮当快乐益智""}, {""field"": ""content_type"", ""value"": ""动画""},{""field"": ""children_third_genre"", ""value"": ""益智""}]}}",推荐一些与小叮当快乐益智类似的早教益智动画
+educ,有没有跟小叮当快乐益智风格相近的早教益智动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小叮当快乐益智""}, {""field"": ""content_type"", ""value"": ""动画""},{""field"": ""children_third_genre"", ""value"": ""益智""}]}}",推荐一些与小叮当快乐益智类似的早教益智动画
+educ,我想看类似小叮当快乐益智的早教益智动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""小叮当快乐益智""}, {""field"": ""content_type"", ""value"": ""动画""},{""field"": ""children_third_genre"", ""value"": ""益智""}]}}",推荐一些与小叮当快乐益智类似的早教益智动画
+educ,给我找一些跟我的磁力拼搭世界类似的玩具视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""我的磁力拼搭世界""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",有哪些类似我的磁力拼搭世界的玩具视频
+educ,有没有类似我的磁力拼搭世界的玩具视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""我的磁力拼搭世界""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",有哪些类似我的磁力拼搭世界的玩具视频
+educ,我想看类似我的磁力拼搭世界的玩具视频,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""我的磁力拼搭世界""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",有哪些类似我的磁力拼搭世界的玩具视频
+educ,有没有像同汪汪队立大功一样能培养团队协作的少儿节目,educ_relate_search,"
+{""query"":{""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""training_objectives"", ""value"": ""团队协作""}]}}",同汪汪队立大功一样能培养团队协作的少儿节目
+educ,求推荐同汪汪队立大功一样能培养团队协作的少儿节目,educ_relate_search,"
+{""query"":{""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""training_objectives"", ""value"": ""团队协作""}]}}",同汪汪队立大功一样能培养团队协作的少儿节目
+educ,我想看同汪汪队立大功一样能培养团队协作的少儿节目,educ_relate_search,"
+{""query"":{""and"": [{""field"": ""title"", ""value"": ""汪汪队立大功""}, {""field"": ""training_objectives"", ""value"": ""团队协作""}]}}",同汪汪队立大功一样能培养团队协作的少儿节目
+educ,我想看像喜羊羊与灰太狼那样搞笑的国产动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""喜羊羊与灰太狼""}, {""field"": ""children_third_genre"", ""value"": ""搞笑""},{""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",想看和喜羊羊与灰太狼一样搞笑的国产动画
+educ,给我找一部跟喜羊羊与灰太狼一样搞笑的国产动画,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""喜羊羊与灰太狼""}, {""field"": ""children_third_genre"", ""value"": ""搞笑""},{""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",想看和喜羊羊与灰太狼一样搞笑的国产动画
+educ,有没有和喜羊羊与灰太狼一样搞笑的国产动画推荐,educ_relate_search,"{""query"":{""and"": [{""field"": ""title"", ""value"": ""喜羊羊与灰太狼""}, {""field"": ""children_third_genre"", ""value"": ""搞笑""},{""field"": ""country"", ""value"": ""国产""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",想看和喜羊羊与灰太狼一样搞笑的国产动画
+educ,找跟小猪佩奇画风类似的学前动画,educ_relate_search,"{""query"":{""and"": [ {""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",同小猪佩奇风格相近的学前动画
+educ,推荐几部和小猪佩奇风格差不多的学前动画,educ_relate_search,"{""query"":{""and"": [ {""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",同小猪佩奇风格相近的学前动画
+educ,有没有类似小猪佩奇风格的学前动画,educ_relate_search,"{""query"":{""and"": [ {""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",同小猪佩奇风格相近的学前动画
+educ,有哪些是托马斯和他的朋友们系列动画的衍生作品,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""托马斯和他的朋友们""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",托马斯和他的朋友们系列动画的衍生作品有哪些
+educ,托马斯和他的朋友们系列动画的衍生作品都有啥,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""托马斯和他的朋友们""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",托马斯和他的朋友们系列动画的衍生作品有哪些
+educ,土豆逗严肃科普都有哪些系列,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""土豆逗严肃科普""}}",土豆逗严肃科普有哪些系列
+educ,土豆逗严肃科普的系列有哪些,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""土豆逗严肃科普""}}",土豆逗严肃科普有哪些系列
+educ,9岁小女孩爱看的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""gender"", ""value"": ""女""}, {""field"": ""age_range"", ""from"": ""9"", ""to"": ""9""}]}}",9岁小女孩喜欢看的动画
+educ,9岁小女孩爱看的动画片,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""gender"", ""value"": ""女""}, {""field"": ""age_range"", ""from"": ""9"", ""to"": ""9""}]}}",9岁小女孩喜欢看的动画
+educ,免费的免费的奥特曼,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""奥特曼""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",奥特曼免费的免费的
+educ,给我找一部背古诗的动画片,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""古诗""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",帮我找一个动画儿背古诗的
+educ,我想看背古诗的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""古诗""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",帮我找一个动画儿背古诗的
+educ,帮我搜一下背古诗的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""古诗""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",帮我找一个动画儿背古诗的
+educ,给我找一下小猪佩奇,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小猪佩奇""}}",帮我找小猪佩奇
+educ,我想看小猪佩奇,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小猪佩奇""}}",帮我找小猪佩奇
+educ,搜索小猪佩奇,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小猪佩奇""}}",帮我找小猪佩奇
+educ,给我放宝宝动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放宝宝动画
+educ,我想看宝宝动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放宝宝动画
+educ,打开宝宝动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放宝宝动画
+educ,我想看超级宝贝jojo之认知启蒙,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""认知启蒙"", ""超级宝贝jojo""], ""operator"": ""or""}}",播放超级宝贝jojo之认知启蒙
+educ,帮我放一下超级宝贝jojo之认知启蒙,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""认知启蒙"", ""超级宝贝jojo""], ""operator"": ""or""}}",播放超级宝贝jojo之认知启蒙
+educ,打开超级宝贝jojo之认知启蒙,educ_search_all,"{""query"": {""field"": ""title"", ""values"": [""认知启蒙"", ""超级宝贝jojo""], ""operator"": ""or""}}",播放超级宝贝jojo之认知启蒙
+educ,我想看布鲁伊的国语版，要求是免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""布鲁伊""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放布鲁伊国语版不用会员
+educ,播放布鲁伊，必须是国语版，而且不用会员,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""布鲁伊""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放布鲁伊国语版不用会员
+educ,给我放免费的开心锤锤,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""开心锤锤""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的开心锤锤
+educ,搜一下免费的开心锤锤,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""开心锤锤""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的开心锤锤
+educ,我想看免费的开心锤锤,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""开心锤锤""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的开心锤锤
+educ,我想看成人动画开心锤锤，要免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""开心锤锤""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放成人动画开心锤锤免费
+educ,帮我找一下免费的成人动画开心锤锤,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""开心锤锤""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放成人动画开心锤锤免费
+educ,播放免费的成人动画开心锤锤,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""开心锤锤""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放成人动画开心锤锤免费
+educ,给我放超级宝贝jojo,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超级宝贝jojo""}}",播放超级宝贝jojo
+educ,我想看超级宝贝jojo,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超级宝贝jojo""}}",播放超级宝贝jojo
+educ,打开超级宝贝jojo,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超级宝贝jojo""}}",播放超级宝贝jojo
+educ,给我放鬼灭之刃国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""鬼灭之刃""}, {""field"": ""language"", ""value"": ""国语版""}]}}",播放鬼灭之刃国语版
+educ,我想看鬼灭之刃国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""鬼灭之刃""}, {""field"": ""language"", ""value"": ""国语版""}]}}",播放鬼灭之刃国语版
+educ,打开鬼灭之刃国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""鬼灭之刃""}, {""field"": ""language"", ""value"": ""国语版""}]}}",播放鬼灭之刃国语版
+educ,给我放好看的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放好看的动画
+educ,我想看好看的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放好看的动画
+educ,我想看免费的小公主戴安娜,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小公主戴安娜""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的小公主戴安娜
+educ,帮我找一下免费的小公主戴安娜,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小公主戴安娜""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费的小公主戴安娜
+educ,播放免费的动画消防车,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""消防车""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费动画消防车
+educ,给我放免费动画消防车,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""消防车""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费动画消防车
+educ,播放免费版的动画消防车,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""消防车""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",播放免费动画消防车
+educ,给我放奶龙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""奶龙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放奶龙动画儿
+educ,我想看奶龙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""奶龙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放奶龙动画儿
+educ,打开奶龙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""奶龙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放奶龙动画儿
+educ,我想看哪吒之魔童闹海动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哪吒之魔童闹海""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放哪吒之魔童闹海动画
+educ,帮我放一下哪吒之魔童闹海动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哪吒之魔童闹海""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放哪吒之魔童闹海动画
+educ,打开哪吒之魔童闹海动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哪吒之魔童闹海""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放哪吒之魔童闹海动画
+educ,给我放个玩具动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",播放玩具动画
+educ,我想看玩具动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",播放玩具动画
+educ,来点玩具动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""玩具""}]}}",播放玩具动画
+educ,我想看挖土机系列动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""挖土机""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放挖土机系列动画
+educ,给我放挖土机系列动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""挖土机""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放挖土机系列动画
+educ,打开挖土机系列动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""挖土机""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放挖土机系列动画
+educ,我想看沃福一家英文版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""沃福一家""}, {""field"": ""language"", ""value"": ""英文版""}]}}",播放沃福一家英文版
+educ,沃福一家英文版，播放一下,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""沃福一家""}, {""field"": ""language"", ""value"": ""英文版""}]}}",播放沃福一家英文版
+educ,帮我放沃福一家英文版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""沃福一家""}, {""field"": ""language"", ""value"": ""英文版""}]}}",播放沃福一家英文版
+educ,帮我放一下我没看过的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放我没看过的动画
+educ,我想看我没看过的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放我没看过的动画
+educ,给我放一下消防车动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""消防车""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放消防车动画
+educ,我想看消防车动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""消防车""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放消防车动画
+educ,打开消防车动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""消防车""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",播放消防车动画
+educ,我想看小猪佩奇第七季第一集国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""series"", ""value"": ""7""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放小猪佩奇第七季第一集国语版
+educ,帮我放一下小猪佩奇第七季第一集国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""series"", ""value"": ""7""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放小猪佩奇第七季第一集国语版
+educ,小猪佩奇第七季第一集国语版，播放,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""series"", ""value"": ""7""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放小猪佩奇第七季第一集国语版
+educ,把jojo换成英文版播放,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""jojo""}, {""field"": ""title"", ""value"": ""jojo""}]}, {""field"": ""language"", ""value"": ""英文版""}]}}",播放英文版jojo
+educ,我想看英文版的jojo,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""jojo""}, {""field"": ""title"", ""value"": ""jojo""}]}, {""field"": ""language"", ""value"": ""英文版""}]}}",播放英文版jojo
+educ,播放依娜和恰恰第一集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""依娜和恰恰""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放依娜和恰恰第一集播放
+educ,依娜和恰恰第一集播放,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""依娜和恰恰""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放依娜和恰恰第一集播放
+educ,播放依娜和恰恰的第一集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""依娜和恰恰""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放依娜和恰恰第一集播放
+educ,把小砾与工程家族里的英语去掉,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小砾与工程家族""}, {""not"": {""field"": ""language"", ""value"": ""英语""}}]}}",不带英语的小砾与工程家族
+educ,小砾与工程家族不要英语,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小砾与工程家族""}, {""not"": {""field"": ""language"", ""value"": ""英语""}}]}}",不带英语的小砾与工程家族
+educ,小砾与工程家族不带英语,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小砾与工程家族""}, {""not"": {""field"": ""language"", ""value"": ""英语""}}]}}",不带英语的小砾与工程家族
+educ,动物神探队 免费,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""动物神探队""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的动物神探队
+educ,我要看免费的动物神探队,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""动物神探队""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的动物神探队
+educ,细菌动画 免费,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""细菌""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的细菌动画
+educ,找免费的细菌动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""细菌""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的细菌动画
+educ,我想看秀儿欢乐玩游戏第一季,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""秀儿欢乐玩游戏""}, {""field"": ""series"", ""value"": ""1""}]}}",播放秀儿欢乐玩游戏第一季
+educ,帮我放秀儿欢乐玩游戏第一季,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""秀儿欢乐玩游戏""}, {""field"": ""series"", ""value"": ""1""}]}}",播放秀儿欢乐玩游戏第一季
+educ,打开秀儿欢乐玩游戏第一季,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""秀儿欢乐玩游戏""}, {""field"": ""series"", ""value"": ""1""}]}}",播放秀儿欢乐玩游戏第一季
+educ,帮我搜一下我的磁力拼搭世界,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""我的磁力拼搭世界""}}",搜索我的磁力拼搭世界
+educ,我想看我的磁力拼搭世界,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""我的磁力拼搭世界""}}",搜索我的磁力拼搭世界
+educ,打开我的磁力拼搭世界,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""我的磁力拼搭世界""}}",搜索我的磁力拼搭世界
+educ,在cibn酷喵上播放小品一家人,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小品一家人""}}",从cibn酷喵上播放小品一家人
+educ,帮我从cibn酷喵播放小品一家人,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小品一家人""}}",从cibn酷喵上播放小品一家人
+educ,我想看cibn酷喵的小品一家人,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小品一家人""}}",从cibn酷喵上播放小品一家人
+educ,帮我打开动画史努比,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""史努比""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开动画史努比
+educ,我想看动画史努比,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""史努比""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开动画史努比
+educ,播放动画史努比,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""史努比""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开动画史努比
+educ,帮我打开少儿频道里的超级宝贝jojo,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超级宝贝jojo""}}",打开少儿频道超级宝贝jojo
+educ,请切换到少儿频道播放超级宝贝jojo,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超级宝贝jojo""}}",打开少儿频道超级宝贝jojo
+educ,我想看少儿频道的超级宝贝jojo,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超级宝贝jojo""}}",打开少儿频道超级宝贝jojo
+educ,播放所有植物大战僵尸的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""植物大战僵尸""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开所有植物大战僵尸的动画
+educ,把所有植物大战僵尸的动画打开,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""植物大战僵尸""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开所有植物大战僵尸的动画
+educ,我想看所有植物大战僵尸的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""植物大战僵尸""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",打开所有植物大战僵尸的动画
+educ,播放大中华寻宝记动画2,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大中华寻宝记""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""series"", ""value"": ""2""}]}}",大中华寻宝记动画2
+educ,我想看大中华寻宝记动画2,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大中华寻宝记""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""series"", ""value"": ""2""}]}}",大中华寻宝记动画2
+educ,把大中华寻宝记动画2放出来,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大中华寻宝记""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""series"", ""value"": ""2""}]}}",大中华寻宝记动画2
+educ,播放动画美人鱼,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""美人鱼""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画播放美人鱼
+educ,我想看动画美人鱼,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""美人鱼""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画播放美人鱼
+educ,把动画美人鱼放一下,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""美人鱼""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画播放美人鱼
+educ,播放动画小鸭子,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小鸭子""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画小鸭子
+educ,我想看动画小鸭子,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小鸭子""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画小鸭子
+educ,给我放动画小鸭子,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小鸭子""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画小鸭子
+educ,播放动画的国语版本,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""国语版""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画国语版
+educ,来一部动画的国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""language"", ""value"": ""国语版""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",动画国语版
+educ,动漫作品豆瓣评分8点0以上,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""动漫""}}",豆瓣评分8点0以上的动漫作品
+educ,豆瓣评分8点0以上的动漫,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""动漫""}}",豆瓣评分8点0以上的动漫作品
+educ,帮我放一集帮帮龙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""帮帮龙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我放一集帮帮龙动画
+educ,我想看一集帮帮龙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""帮帮龙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我放一集帮帮龙动画
+educ,播放一集帮帮龙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""帮帮龙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",给我放一集帮帮龙动画
+educ,按我的喜好给我推荐一些动画,educ_fuzzy_search,{},根据我的喜好推荐动画
+educ,给我推荐一些符合我喜好的动画,educ_fuzzy_search,{},根据我的喜好推荐动画
+educ,给我推荐跟闪闪小超人相似的动画,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""闪闪小超人""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",跟闪闪小超人相似动画推荐给我
+educ,有没有跟闪闪小超人类似的动画推荐,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""闪闪小超人""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",跟闪闪小超人相似动画推荐给我
+educ,请推荐一些跟闪闪小超人相似的动画,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""闪闪小超人""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",跟闪闪小超人相似动画推荐给我
+educ,我想看海底小纵队vip,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""海底小纵队""}, {""field"": ""is_fee"", ""value"": ""1""}]}}",海底小纵队vip
+educ,播放海底小纵队vip,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""海底小纵队""}, {""field"": ""is_fee"", ""value"": ""1""}]}}",海底小纵队vip
+educ,帮我找一下海底小纵队vip,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""海底小纵队""}, {""field"": ""is_fee"", ""value"": ""1""}]}}",海底小纵队vip
+educ,给我放动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放动画
+educ,我想看动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放动画
+educ,打开动画频道,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",播放动画
+educ,给我放免费的宝贝赳赳,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝贝赳赳""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要看免费的宝贝赳赳
+educ,我想看免费的宝贝赳赳,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝贝赳赳""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要看免费的宝贝赳赳
+educ,帮我找免费的宝贝赳赳,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""宝贝赳赳""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要看免费的宝贝赳赳
+educ,给我找和消防员山姆同一类型的动画,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""消防员山姆""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",和消防员山姆同一类型的动画
+educ,有没有和消防员山姆同一类型的动画,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""消防员山姆""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",和消防员山姆同一类型的动画
+educ,我想看和消防员山姆同一类型的动画,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""消防员山姆""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",和消防员山姆同一类型的动画
+educ,我想看讲述戴安娜和哥哥各类趣事的动画,educ_fuzzy_search,{},讲述戴安娜和哥哥各类趣事的动画
+educ,播放讲述戴安娜和哥哥各类趣事的动画,educ_fuzzy_search,{},讲述戴安娜和哥哥各类趣事的动画
+educ,给我找讲述戴安娜和哥哥各类趣事的动画,educ_fuzzy_search,{},讲述戴安娜和哥哥各类趣事的动画
+educ,我想看记录小学生小品与家人同学间的搞笑日常的动画,educ_fuzzy_search,{},记录小学生小品与家人同学间的搞笑日常的动画
+educ,请播放记录小学生小品与家人同学间的搞笑日常的动画,educ_fuzzy_search,{},记录小学生小品与家人同学间的搞笑日常的动画
+educ,帮我找一下记录小学生小品与家人同学间的搞笑日常的动画,educ_fuzzy_search,{},记录小学生小品与家人同学间的搞笑日常的动画
+educ,我想看依娜和恰恰成长传递生活知识的动画,educ_fuzzy_search,{},记录依娜和恰恰成长传递生活知识的动画
+educ,帮我找一下依娜和恰恰成长传递生活知识的动画,educ_fuzzy_search,{},记录依娜和恰恰成长传递生活知识的动画
+educ,请播放依娜和恰恰成长传递生活知识的动画,educ_fuzzy_search,{},记录依娜和恰恰成长传递生活知识的动画
+educ,接着放聪明的一休,educ_history,{},继续播放聪明的一休
+educ,继续看聪明的一休,educ_history,{},继续播放聪明的一休
+educ,把聪明的一休接着播,educ_history,{},继续播放聪明的一休
+educ,把萌鸡小队第1集放一下,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""萌鸡小队""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放第1集萌鸡小队
+educ,我想看萌鸡小队第1集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""萌鸡小队""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放第1集萌鸡小队
+educ,打开萌鸡小队第1集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""萌鸡小队""}, {""field"": ""video_index"", ""value"": ""1""}]}}",播放第1集萌鸡小队
+educ,播放cctv14的快乐星猫,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""快乐星猫""}}",看cctv14的快乐星猫
+educ,我想看cctv14的快乐星猫,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""快乐星猫""}}",看cctv14的快乐星猫
+educ,帮我打开cctv14的快乐星猫,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""快乐星猫""}}",看cctv14的快乐星猫
+educ,我想看库洛米的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""库洛米""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",看库洛米的动画
+educ,帮我播放库洛米的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""库洛米""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",看库洛米的动画
+educ,打开库洛米的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""库洛米""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",看库洛米的动画
+educ,我想看浙江卫视播放的动画《喜羊羊与灰太狼》,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""喜羊羊与灰太狼""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",看浙江卫视的动画喜羊羊与灰太狼
+educ,打开浙江卫视，我要看动画片《喜羊羊与灰太狼》,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""喜羊羊与灰太狼""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",看浙江卫视的动画喜羊羊与灰太狼
+educ,我想看科普动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""科普""}]}}",科普动画儿
+educ,播放科普动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""科普""}]}}",科普动画儿
+educ,给我找科普动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""children_second_genre"", ""value"": ""科普""}]}}",科普动画儿
+educ,能按我的喜好给我推动漫视频吗,educ_fuzzy_search,{},可以根据我喜好推荐的动漫视频吗
+educ,麻烦根据我的喜好推荐一些动漫视频,educ_fuzzy_search,{},可以根据我喜好推荐的动漫视频吗
+educ,我想看动漫视频，能不能按我的喜好来推荐,educ_fuzzy_search,{},可以根据我喜好推荐的动漫视频吗
+educ,找类似大卫不可以的绘本,educ_relate_search,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",类似大卫不可以绘本
+educ,有没有跟大卫不可以差不多的绘本,educ_relate_search,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",类似大卫不可以绘本
+educ,推荐一些和大卫不可以类似的绘本,educ_relate_search,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",类似大卫不可以绘本
+educ,我想看像小猪佩奇那样的动画,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""小猪佩奇""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",类似小猪佩奇的动画
+educ,有没有跟小猪佩奇类似的动画片,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""小猪佩奇""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",类似小猪佩奇的动画
+educ,找一部类似小猪佩奇的动画,educ_relate_search,"{
+""query"": {
+""and"": [
+{
+""field"": ""title"",
+""value"": ""小猪佩奇""
+},
+{
+""field"": ""content_type"",
+""value"": ""动画""
+}
+]
+}
+}",类似小猪佩奇的动画
+educ,给我推荐一些像土豆逗大话语文那样的启蒙视频,educ_relate_search,"{
+""query"": {
+
+""field"": ""title"",
+""values"": [""土豆逗大话语文"", ""启蒙""],
+""operator"": ""or""
+}
+}
+
+
+",类似土豆逗大话语文的启蒙视频推荐
+educ,有没有跟土豆逗大话语文类似的启蒙视频推荐,educ_relate_search,"{
+""query"": {
+
+""field"": ""title"",
+""values"": [""土豆逗大话语文"", ""启蒙""],
+""operator"": ""or""
+}
+}
+
+
+",类似土豆逗大话语文的启蒙视频推荐
+educ,我想找类似土豆逗大话语文的启蒙视频,educ_relate_search,"{
+""query"": {
+
+""field"": ""title"",
+""values"": [""土豆逗大话语文"", ""启蒙""],
+""operator"": ""or""
+}
+}
+
+
+",类似土豆逗大话语文的启蒙视频推荐
+educ,我想看猫咪演绎中国历史事件寓教于乐的动画,educ_fuzzy_search,{},猫咪演绎中国历史事件寓教于乐的动画
+educ,请播放猫咪演绎中国历史事件寓教于乐的动画,educ_fuzzy_search,{},猫咪演绎中国历史事件寓教于乐的动画
+educ,帮我找一下猫咪演绎中国历史事件寓教于乐的动画,educ_fuzzy_search,{},猫咪演绎中国历史事件寓教于乐的动画
+educ,我要看免费的jojo全集,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""jojo""}, {""field"": ""title"", ""value"": ""jojo""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的jojo大全
+educ,把免费的jojo大全部放出来,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""jojo""}, {""field"": ""title"", ""value"": ""jojo""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的jojo大全
+educ,播放免费的jojo全部剧集,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""jojo""}, {""field"": ""title"", ""value"": ""jojo""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",免费的jojo大全
+educ,播放米奇动画少儿版,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""米奇""}, {""field"": ""title"", ""value"": ""米奇""}]}, {""field"": ""content_type"", ""value"": ""动画""}]}}",米奇动画少儿版
+educ,我想看米奇动画少儿版,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""米奇""}, {""field"": ""title"", ""value"": ""米奇""}]}, {""field"": ""content_type"", ""value"": ""动画""}]}}",米奇动画少儿版
+educ,打开米奇动画少儿版,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""米奇""}, {""field"": ""title"", ""value"": ""米奇""}]}, {""field"": ""content_type"", ""value"": ""动画""}]}}",米奇动画少儿版
+educ,我想看奶龙与小七守护村庄与暴暴龙展开对决的动画,educ_fuzzy_search,{},奶龙与小七守护村庄与暴暴龙展开对决的动画
+educ,播放奶龙与小七守护村庄与暴暴龙展开对决的动画,educ_fuzzy_search,{},奶龙与小七守护村庄与暴暴龙展开对决的动画
+educ,给我找一下奶龙与小七守护村庄与暴暴龙展开对决的动画,educ_fuzzy_search,{},奶龙与小七守护村庄与暴暴龙展开对决的动画
+educ,嗯，搜索神奇宝物,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""神奇宝物""}}",嗯神奇宝物搜索吧
+educ,帮我搜一下神奇宝物,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""神奇宝物""}}",嗯神奇宝物搜索吧
+educ,嗯，把神奇宝物搜出来,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""神奇宝物""}}",嗯神奇宝物搜索吧
+educ,帮我找评分在8点5到9分之间的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",评分在8点5到9分之间的动画
+educ,我想看评分在8点5到9分之间的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",评分在8点5到9分之间的动画
+educ,播放评分在8点5到9分之间的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",评分在8点5到9分之间的动画
+educ,播放趣趣知知鸟,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""趣趣知知鸟""}}",趣趣知知鸟播放放
+educ,趣趣知知鸟放一下,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""趣趣知知鸟""}}",趣趣知知鸟播放放
+educ,我想看趣趣知知鸟,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""趣趣知知鸟""}}",趣趣知知鸟播放放
+educ,播放热播动画,educ_search_all,"{""sort"": {""hot"": {""order"": ""desc""}}, ""query"": {""field"": ""content_type"", ""value"": ""动画""}}",热播动画
+educ,我想看热播动画,educ_search_all,"{""sort"": {""hot"": {""order"": ""desc""}}, ""query"": {""field"": ""content_type"", ""value"": ""动画""}}",热播动画
+educ,打开热播动画,educ_search_all,"{""sort"": {""hot"": {""order"": ""desc""}}, ""query"": {""field"": ""content_type"", ""value"": ""动画""}}",热播动画
+educ,少儿动画上周看的,educ_history,"{ ""time"": ""2026-08-18 00:00:00 TO 2026-08-24 23:59:59""}",上周看的少儿动画
+educ,播放少儿中文jojo,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""jojo""}, {""field"": ""title"", ""value"": ""jojo""}]}, {""field"": ""language"", ""value"": ""中文""}]}}",少儿中文jojo
+educ,我想看少儿中文jojo,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""jojo""}, {""field"": ""title"", ""value"": ""jojo""}]}, {""field"": ""language"", ""value"": ""中文""}]}}",少儿中文jojo
+educ,少儿中文jojo怎么放,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""jojo""}, {""field"": ""title"", ""value"": ""jojo""}]}, {""field"": ""language"", ""value"": ""中文""}]}}",少儿中文jojo
+educ,狮子王中文版的也免费,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""狮子王""}, {""field"": ""language"", ""value"": ""中文""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",狮子王中文的也免费
+educ,狮子王中文的也是免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""狮子王""}, {""field"": ""language"", ""value"": ""中文""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",狮子王中文的也免费
+educ,帮我找一下免费的吞噬星空,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""吞噬星空""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",搜索免费的吞噬星空
+educ,我想看免费的吞噬星空,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""吞噬星空""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",搜索免费的吞噬星空
+educ,有没有免费的吞噬星空,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""吞噬星空""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",搜索免费的吞噬星空
+educ,帮我找一下儿童数学思维相关的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""数学""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索儿童数学思维相关的动画
+educ,我想看儿童数学思维相关的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""数学""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索儿童数学思维相关的动画
+educ,请搜索儿童数学思维相关的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""数学""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜索儿童数学思维相关的动画
+educ,帮我搜一下小砾与工程家族,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小砾与工程家族""}}",搜索小砾与工程家族
+educ,我想看小砾与工程家族,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小砾与工程家族""}}",搜索小砾与工程家族
+educ,请查找小砾与工程家族,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""小砾与工程家族""}}",搜索小砾与工程家族
+educ,帮我搜一下优酷里的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""company"", ""value"": ""优酷""}]}}",搜索优酷里面的动画
+educ,在优酷上找一下动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""company"", ""value"": ""优酷""}]}}",搜索优酷里面的动画
+educ,打开优酷搜索动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""company"", ""value"": ""优酷""}]}}",搜索优酷里面的动画
+educ,帮我找一下益智类的动画片,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""益智""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜益智的动画
+educ,我想看益智的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""益智""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜益智的动画
+educ,搜索益智动画,educ_search_all,"{""query"": {""and"": [{""field"": ""children_third_genre"", ""value"": ""益智""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",搜益智的动画
+educ,帮我找一下正在连载的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",搜正在连载中的动画
+educ,我想看正在连载中的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",搜正在连载中的动画
+educ,搜索正在连载的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",搜正在连载中的动画
+educ,请帮我在newtv极光上搜一下免费的奥特曼,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""奥特曼""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",newtv极光请搜索免费的奥特曼
+educ,我想在newtv极光找免费的奥特曼,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""奥特曼""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",newtv极光请搜索免费的奥特曼
+educ,麻烦在newtv极光搜索免费的奥特曼,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""奥特曼""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",newtv极光请搜索免费的奥特曼
+educ,帮我找一个免费的托马斯小火车,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""托马斯小火车""}, {""field"": ""title"", ""value"": ""托马斯小火车""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",调一个免费的托马斯小火车
+educ,播放免费的托马斯小火车,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""托马斯小火车""}, {""field"": ""title"", ""value"": ""托马斯小火车""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",调一个免费的托马斯小火车
+educ,我想看免费的托马斯小火车,educ_search_all,"{""query"": {""and"": [{""or"": [{""field"": ""role"", ""value"": ""托马斯小火车""}, {""field"": ""title"", ""value"": ""托马斯小火车""}]}, {""field"": ""is_fee"", ""value"": ""0""}]}}",调一个免费的托马斯小火车
+educ,我想看汪汪队小砾与工程家族免费国语版的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""values"": [""汪汪队"", ""小砾与工程家族""], ""operator"": ""or""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",汪汪队小砾与工程家族免费国语版的
+educ,汪汪队小砾与工程家族免费国语版的在哪里,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""values"": [""汪汪队"", ""小砾与工程家族""], ""operator"": ""or""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",汪汪队小砾与工程家族免费国语版的
+educ,播放汪汪队小砾与工程家族免费国语版的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""values"": [""汪汪队"", ""小砾与工程家族""], ""operator"": ""or""}, {""field"": ""language"", ""value"": ""国语版""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",汪汪队小砾与工程家族免费国语版的
+educ,帮我找符合我偏好的动漫,educ_fuzzy_search,{},为我找符合我偏好的动漫
+educ,给我推荐符合我偏好的动漫,educ_fuzzy_search,{},为我找符合我偏好的动漫
+educ,找一下符合我偏好的动漫,educ_fuzzy_search,{},为我找符合我偏好的动漫
+educ,你猜猜我今年4岁喜欢看啥,educ_fuzzy_search,{},我今年4岁了你猜我喜欢看什么
+educ,我今年4岁，你猜我喜欢看什么,educ_fuzzy_search,{},我今年4岁了你猜我喜欢看什么
+educ,今年我4岁，你猜我喜欢看啥,educ_fuzzy_search,{},我今年4岁了你猜我喜欢看什么
+educ,我想看巴啦啦小魔仙,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""巴啦啦小魔仙""}}",我们要看巴啦啦小魔仙
+educ,帮我播放巴啦啦小魔仙,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""巴啦啦小魔仙""}}",我们要看巴啦啦小魔仙
+educ,打开巴啦啦小魔仙,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""巴啦啦小魔仙""}}",我们要看巴啦啦小魔仙
+educ,给我讲一下大卫不可以的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",我想看大卫不可以故事
+educ,我想听大卫不可以的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",我想看大卫不可以故事
+educ,播放大卫不可以的故事,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""故事""}]}}",我想看大卫不可以故事
+educ,今年新出的动画我想看,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""release_time"", ""from"": ""20260101"", ""to"": ""20261231""}]}}",我想看今年新出的动画
+educ,今年新出的动画给我放一下,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""release_time"", ""from"": ""20260101"", ""to"": ""20261231""}]}}",我想看今年新出的动画
+educ,给我放免费的汪汪队第2集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""汪汪队""}, {""field"": ""video_index"", ""value"": ""2""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我想看免费的汪汪队第2集
+educ,播放免费的汪汪队第2集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""汪汪队""}, {""field"": ""video_index"", ""value"": ""2""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我想看免费的汪汪队第2集
+educ,给我找vip的小猪佩奇,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""is_fee"", ""value"": ""1""}]}}",我要vip的小猪佩奇
+educ,我想看vip的小猪佩奇,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""is_fee"", ""value"": ""1""}]}}",我要vip的小猪佩奇
+educ,播放vip的小猪佩奇,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""小猪佩奇""}, {""field"": ""is_fee"", ""value"": ""1""}]}}",我要vip的小猪佩奇
+educ,我想看大神侦探诸葛九九,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""大神探诸葛九九""}}",我要看大神侦探诸葛九九
+educ,给我播放大神侦探诸葛九九,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""大神探诸葛九九""}}",我要看大神侦探诸葛九九
+educ,帮我找一下大神侦探诸葛九九,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""大神探诸葛九九""}}",我要看大神侦探诸葛九九
+educ,我想看哆啦a梦日语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哆啦a梦""}, {""field"": ""language"", ""value"": ""日语版""}]}}",我要看哆啦a梦日语版
+educ,请播放哆啦a梦日语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哆啦a梦""}, {""field"": ""language"", ""value"": ""日语版""}]}}",我要看哆啦a梦日语版
+educ,帮我找哆啦a梦日语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""哆啦a梦""}, {""field"": ""language"", ""value"": ""日语版""}]}}",我要看哆啦a梦日语版
+educ,我想看关于医生的动画,educ_fuzzy_search,{},我要看和医生有关的动画
+educ,给我找一部医生题材的动画片,educ_fuzzy_search,{},我要看和医生有关的动画
+educ,我想看医生主题的动画,educ_fuzzy_search,{},我要看和医生有关的动画
+educ,给我放免费的爆笑虫子动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""爆笑虫子""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要看免费的爆笑虫子动画
+educ,我想看免费的爆笑虫子动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""爆笑虫子""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要看免费的爆笑虫子动画
+educ,帮我找免费的爆笑虫子动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""爆笑虫子""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",我要看免费的爆笑虫子动画
+educ,我想看少儿免费的动画大货车,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""title"", ""value"": ""大货车""}]}}",我要看少儿免费的动画大货车
+educ,请播放少儿免费的动画大货车,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""title"", ""value"": ""大货车""}]}}",我要看少儿免费的动画大货车
+educ,帮我找一下少儿免费的动画大货车,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}, {""field"": ""title"", ""value"": ""大货车""}]}}",我要看少儿免费的动画大货车
+educ,我想看哆啦a梦的动画，就是来自未来的，用口袋里的神奇道具帮大雄解决麻烦的,educ_fuzzy_search,{},想看来自未来的哆啦a梦用口袋里的神奇道具帮大雄解决麻烦的动画
+educ,帮我找一下哆啦a梦，来自未来的，用口袋里的神奇道具帮大雄解决麻烦的动画,educ_fuzzy_search,{},想看来自未来的哆啦a梦用口袋里的神奇道具帮大雄解决麻烦的动画
+educ,我想看来自未来的哆啦a梦，用口袋里的神奇道具帮大雄解决麻烦的动画,educ_fuzzy_search,{},想看来自未来的哆啦a梦用口袋里的神奇道具帮大雄解决麻烦的动画
+educ,帮我打开免费的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",打开免费的动画
+educ,播放免费的动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",打开免费的动画
+educ,打开免费动画,educ_search_all,"{""query"": {""and"": [{""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",打开免费的动画
+educ,播放亚刻奥特曼,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""亚刻奥特曼""}}",放一个亚刻奥特曼
+educ,我想看亚刻奥特曼,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""亚刻奥特曼""}}",放一个亚刻奥特曼
+educ,来一集亚刻奥特曼,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""亚刻奥特曼""}}",放一个亚刻奥特曼
+educ,我想看萌鸡小队第6集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""萌鸡小队""}, {""field"": ""video_index"", ""value"": ""6""}]}}",我要看萌鸡小队第6集
+educ,帮我播放萌鸡小队第6集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""萌鸡小队""}, {""field"": ""video_index"", ""value"": ""6""}]}}",我要看萌鸡小队第6集
+educ,打开萌鸡小队第6集,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""萌鸡小队""}, {""field"": ""video_index"", ""value"": ""6""}]}}",我要看萌鸡小队第6集
+educ,小时候看过的那个宝葫芦动画叫什么名字,educ_fuzzy_search,{},小时候看过的有一个宝葫芦的动画叫什么
+educ,我小时候看过的宝葫芦动画，名字是啥,educ_fuzzy_search,{},小时候看过的有一个宝葫芦的动画叫什么
+educ,求问小时候看过的宝葫芦动画叫什么,educ_fuzzy_search,{},小时候看过的有一个宝葫芦的动画叫什么
+educ,我想看辛普森一家国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""辛普森一家""}, {""field"": ""language"", ""value"": ""国语版""}]}}",辛普森一家国语版
+educ,播放辛普森一家国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""辛普森一家""}, {""field"": ""language"", ""value"": ""国语版""}]}}",辛普森一家国语版
+educ,给我找辛普森一家国语版,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""辛普森一家""}, {""field"": ""language"", ""value"": ""国语版""}]}}",辛普森一家国语版
+educ,我想看英语启蒙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""training_objectives"", ""value"": ""英语启蒙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",英语启蒙动画
+educ,帮我找一下英语启蒙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""training_objectives"", ""value"": ""英语启蒙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",英语启蒙动画
+educ,播放英语启蒙动画,educ_search_all,"{""query"": {""and"": [{""field"": ""training_objectives"", ""value"": ""英语启蒙""}, {""field"": ""content_type"", ""value"": ""动画""}]}}",英语启蒙动画
+educ,请问有几只小猪踩泥坑是哪个动画,educ_fuzzy_search,{},有几只小猪踩泥坑这是哪个动画
+educ,有几只小猪踩泥坑，这是哪部动画片,educ_fuzzy_search,{},有几只小猪踩泥坑这是哪个动画
+educ,有几只小猪踩泥坑，这个动画叫什么名字,educ_fuzzy_search,{},有几只小猪踩泥坑这是哪个动画
+educ,超能一家人花絮有吗,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超能一家人""}}",有没有超能一家人花絮
+educ,我想看超能一家人花絮,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超能一家人""}}",有没有超能一家人花絮
+educ,超能一家人花絮在哪里,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""超能一家人""}}",有没有超能一家人花絮
+educ,我想找一部动画，讲的是两只熊和一个伐木工在森林里天天搞笑打闹的,educ_fuzzy_search,{},有没有两只熊和一个伐木工天天在森林里搞笑打闹的动画
+educ,有没有那种两只熊和一个伐木工在森林里天天搞笑打闹的动画,educ_fuzzy_search,{},有没有两只熊和一个伐木工天天在森林里搞笑打闹的动画
+educ,求一部动画，内容是两只熊和一个伐木工天天在森林里搞笑打闹的,educ_fuzzy_search,{},有没有两只熊和一个伐木工天天在森林里搞笑打闹的动画
+educ,我想看美国的3d动画电影,educ_search_all,"{""query"": {""and"": [{""field"": ""country"", ""value"": ""美国""}, {""field"": ""children_second_genre"", ""value"": ""动画电影""}]}}",有没有美国的3d动画电影
+educ,帮我找一下美国的3d动画电影,educ_search_all,"{""query"": {""and"": [{""field"": ""country"", ""value"": ""美国""}, {""field"": ""children_second_genre"", ""value"": ""动画电影""}]}}",有没有美国的3d动画电影
+educ,有没有美国的3d动画电影可以推荐,educ_search_all,"{""query"": {""and"": [{""field"": ""country"", ""value"": ""美国""}, {""field"": ""children_second_genre"", ""value"": ""动画电影""}]}}",有没有美国的3d动画电影
+educ,情绪管理类的绘本有哪些,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""or"": [{""field"": ""children_third_genre"", ""value"": ""情绪管理""}, {""field"": ""training_objectives"", ""value"": ""情绪管理""}]}]}}",有哪些绘本适合情绪管理
+educ,适合做情绪管理的绘本推荐,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""or"": [{""field"": ""children_third_genre"", ""value"": ""情绪管理""}, {""field"": ""training_objectives"", ""value"": ""情绪管理""}]}]}}",有哪些绘本适合情绪管理
+educ,有哪些关于情绪管理的绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""children_second_genre"", ""value"": ""绘本""}, {""or"": [{""field"": ""children_third_genre"", ""value"": ""情绪管理""}, {""field"": ""training_objectives"", ""value"": ""情绪管理""}]}]}}",有哪些绘本适合情绪管理
+educ,帮我打开云视听小电视，播放开心锤锤,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""开心锤锤""}}",在云视听小电视里面看开心锤锤
+educ,我想在云视听小电视里看开心锤锤,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""开心锤锤""}}",在云视听小电视里面看开心锤锤
+educ,去云视听小电视找开心锤锤来看,educ_search_all,"{""query"": {""field"": ""title"", ""value"": ""开心锤锤""}}",在云视听小电视里面看开心锤锤
+educ,我想看早教,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""早教""}}",早教
+educ,帮我打开早教,educ_search_all,"{""query"": {""field"": ""children_second_genre"", ""value"": ""早教""}}",早教
+educ,帮我找一下免费版的阿奇幼幼园动画,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""阿奇幼幼园""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",找到免费阿奇幼幼园动画免费的
+educ,我想看阿奇幼幼园动画，要免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""阿奇幼幼园""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",找到免费阿奇幼幼园动画免费的
+educ,搜索阿奇幼幼园动画，必须是免费的,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""阿奇幼幼园""}, {""field"": ""content_type"", ""value"": ""动画""}, {""field"": ""is_fee"", ""value"": ""0""}]}}",找到免费阿奇幼幼园动画免费的
+educ,我想看那个兔子警官和狐狸一起在动物城市里查案打破大家偏见的动画,educ_fuzzy_search,{},找兔子警官和狐狸一起在动物城市里查案打破大家偏见的动画
+educ,帮我找一部动画，讲的是兔子警官和狐狸一起在动物城市里查案打破大家偏见,educ_fuzzy_search,{},找兔子警官和狐狸一起在动物城市里查案打破大家偏见的动画
+educ,请搜索兔子警官和狐狸一起在动物城市里查案打破大家偏见的动画,educ_fuzzy_search,{},找兔子警官和狐狸一起在动物城市里查案打破大家偏见的动画
+educ,在学校里总能遇到新鲜事这句台词出自哪部动画,educ_fuzzy_search,{},这句台词在学校里总能遇到新鲜事是哪个动画的
+educ,哪部动画里有在学校里总能遇到新鲜事这句台词,educ_fuzzy_search,{},这句台词在学校里总能遇到新鲜事是哪个动画的
+educ,中央14台播放的动画,educ_search_all,"{""query"": {""field"": ""content_type"", ""value"": ""动画""}}",中央14台的动画
+educ,我想看变身小小科学家的动画,educ_fuzzy_search,{},变身小小科学家的动画
+educ,播放变身小小科学家的动画,educ_fuzzy_search,{},变身小小科学家的动画
+educ,帮我找一下变身小小科学家的动画,educ_fuzzy_search,{},变身小小科学家的动画
+educ,大卫你太淘气了出自哪本绘本,educ_fuzzy_search,{},大卫你太淘气了是哪个绘本的台词
+educ,大卫你太淘气了是哪本绘本里的台词,educ_fuzzy_search,{},大卫你太淘气了是哪个绘本的台词
+educ,大卫你太淘气了这句话来自哪个绘本,educ_fuzzy_search,{},大卫你太淘气了是哪个绘本的台词
+educ,海底报告是哪部动画,educ_fuzzy_search,{},海底报告海底报告是哪部动画
+educ,请问海底报告是哪部动画,educ_fuzzy_search,{},海底报告海底报告是哪部动画
+educ,海底报告属于哪部动画,educ_fuzzy_search,{},海底报告海底报告是哪部动画
+educ,请问《你的愿望就是我的命令》的绘本是哪一本？,educ_fuzzy_search,{},你的愿望就是我的命令的绘本是哪个
+educ,我想找《你的愿望就是我的命令》的绘本，是哪个？,educ_fuzzy_search,{},你的愿望就是我的命令的绘本是哪个
+educ,《你的愿望就是我的命令》的绘本具体是哪一个？,educ_fuzzy_search,{},你的愿望就是我的命令的绘本是哪个
+educ,哪部动画是乐迪每时每刻准时送达的,educ_fuzzy_search,{},我是乐迪每时每刻准时送达的动画是哪个
+educ,乐迪每时每刻准时送达的动画是哪一部,educ_fuzzy_search,{},我是乐迪每时每刻准时送达的动画是哪个
+educ,我想找乐迪每时每刻准时送达的动画,educ_fuzzy_search,{},我是乐迪每时每刻准时送达的动画是哪个
+educ,请问小猪佩奇和弟弟乔治出自哪部动画片,educ_fuzzy_search,{},我是小猪佩奇这是我的弟弟乔治来自哪部动画
+educ,我想查一下小猪佩奇和乔治是哪部动画里的角色,educ_fuzzy_search,{},我是小猪佩奇这是我的弟弟乔治来自哪部动画
+educ,小猪佩奇和弟弟乔治是哪部动画片的角色,educ_fuzzy_search,{},我是小猪佩奇这是我的弟弟乔治来自哪部动画
+educ,哪部动漫里有句经典台词叫真相只有一个,educ_fuzzy_search,{},真相只有一个是哪部动漫的经典台词
+educ,真相只有一个这句经典台词出自哪部动漫,educ_fuzzy_search,{},真相只有一个是哪部动漫的经典台词
+educ,哪部动漫的经典台词是真相只有一个,educ_fuzzy_search,{},真相只有一个是哪部动漫的经典台词
+educ,知识就是力量出自哪本绘本,educ_fuzzy_search,{},知识就是力量是哪个绘本里的
+educ,哪本绘本里有知识就是力量,educ_fuzzy_search,{},知识就是力量是哪个绘本里的
+educ,知识就是力量是出自哪个绘本,educ_fuzzy_search,{},知识就是力量是哪个绘本里的
+educ,给我看大卫不可以绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",大卫不可以绘本
+educ,播放大卫不可以绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",大卫不可以绘本
+educ,我想看大卫不可以绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""大卫不可以""}, {""field"": ""children_second_genre"", ""value"": ""绘本""}]}}",大卫不可以绘本
+educ,帮我找一下科普海洋知识的儿童绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""海洋知识""}, {""field"": ""children_second_genre"", ""values"": [""科普"", ""绘本""], ""operator"": ""and""}]}}",搜索科普海洋知识的儿童绘本
+educ,我想看科普海洋知识的儿童绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""海洋知识""}, {""field"": ""children_second_genre"", ""values"": [""科普"", ""绘本""], ""operator"": ""and""}]}}",搜索科普海洋知识的儿童绘本
+educ,请搜索科普海洋知识的儿童绘本,educ_search_all,"{""query"": {""and"": [{""field"": ""title"", ""value"": ""海洋知识""}, {""field"": ""children_second_genre"", ""values"": [""科普"", ""绘本""], ""operator"": ""and""}]}}",搜索科普海洋知识的儿童绘本
+music,播放一首歌,music_song_recommend,{},放首歌吧
+music,给我放首歌,music_song_recommend,{},放一首歌
+music,帮我找首歌听,music_song_recommend,{},来首歌听听
+music,来一首吧,music_song_recommend,{},随便来一首
+music,随机播放一首,music_song_recommend,{},随便来一首
+music,给我推荐一首歌,music_song_recommend,{},推荐首歌听听
+music,来首好听的歌,music_song_recommend,{},推荐首歌听听
+music,帮我找一首能提神的歌,music_song_semantic_search,{},今天要加班到深夜，给我来首提神的歌
+music,来首提神醒脑的歌吧,music_song_semantic_search,{},今天要加班到深夜，给我来首提神的歌
+music,我想听一首提神的歌,music_song_semantic_search,{},今天要加班到深夜，给我来首提神的歌
+music,周末在家打扫卫生，放点动感音乐帮我提提神,music_song_semantic_search,{},"周末在家打扫卫生,放点动感音乐帮我提提神"
+music,帮我放点节奏感强的运动音乐,music_song_semantic_search,{},"我在跑步机上锻炼,给我来点节奏感强的运动音乐"
+music,来点节奏感强的运动音乐,music_song_semantic_search,{},"我在跑步机上锻炼,给我来点节奏感强的运动音乐"
+music,给我找节奏感强的运动音乐,music_song_semantic_search,{},"我在跑步机上锻炼,给我来点节奏感强的运动音乐"
+music,今天是我生日，家里来了好多朋友，来点热闹的歌,music_song_semantic_search,{},"今天是我生日,家里来了好多朋友,放点热闹的歌"
+music,今天是我生日，家里来了好多朋友，放点热闹的歌,music_song_semantic_search,{},"今天是我生日,家里来了好多朋友,放点热闹的歌"
+music,今天是我生日，家里来了好多朋友，播放一些热闹的歌,music_song_semantic_search,{},"今天是我生日,家里来了好多朋友,放点热闹的歌"
+music,明天要开车回老家，路上想听些轻松愉快的音乐,music_song_semantic_search,{},"明天要开车回老家,路上想听些轻松愉快的音乐"
+music,明天开车回老家，路上想听轻松愉快的音乐,music_song_semantic_search,{},"明天要开车回老家,路上想听些轻松愉快的音乐"
+music,明天要开车回老家，路上想听轻松愉快的音乐,music_song_semantic_search,{},"明天要开车回老家,路上想听些轻松愉快的音乐"
+music,今天心情特别好，想听点让人开心的歌,music_song_semantic_search,{},"今天心情特别好,想听点让人开心的歌"
+music,晚上独自在家搞创作，需要点背景音乐,music_song_semantic_search,{},"晚上一个人在家写东西,想有点背景音乐"
+music,夜里一个人独处码字，想放点背景音乐,music_song_semantic_search,{},"晚上一个人在家写东西,想有点背景音乐"
+music,晚上自己在家写东西，想要点背景音乐,music_song_semantic_search,{},"晚上一个人在家写东西,想有点背景音乐"
+music,"春节快到了,播放一些喜庆的传统节日音乐",music_song_semantic_search,{},"春节快到了,放点喜庆的传统节日音乐"
+music,"春节快到了,来点喜庆的传统节日音乐",music_song_semantic_search,{},"春节快到了,放点喜庆的传统节日音乐"
+music,明天得早起，睡觉前给我放点让人放松的音乐,music_song_semantic_search,{},"明天要早起,睡前帮我播放一些能让人放松的音乐"
+music,因为明天要早起，睡前帮我播放一些能让人放松的音乐,music_song_semantic_search,{},"明天要早起,睡前帮我播放一些能让人放松的音乐"
+music,明天早上要早起，睡前帮我放一些能让人放松的音乐,music_song_semantic_search,{},"明天要早起,睡前帮我播放一些能让人放松的音乐"
+music,我正在做瑜伽，来点舒缓的轻音乐配合一下,music_song_semantic_search,{},"我正在做瑜伽,来点舒缓的轻音乐配合一下"
+music,我在做瑜伽，放点舒缓的轻音乐配合一下,music_song_semantic_search,{},"我正在做瑜伽,来点舒缓的轻音乐配合一下"
+music,帮我找点欢快的背景音乐，我要剪旅行视频,music_song_semantic_search,{},"我正在剪辑旅行视频,需要一些欢快的背景音乐"
+music,我剪旅行视频呢，缺欢快的背景音乐，给推荐一下,music_song_semantic_search,{},"我正在剪辑旅行视频,需要一些欢快的背景音乐"
+music,正在剪旅行视频，需要欢快的背景音乐,music_song_semantic_search,{},"我正在剪辑旅行视频,需要一些欢快的背景音乐"
+music,"我要开长途车回老家了,帮我放些提神不犯困的歌",music_song_semantic_search,{},"准备开长途车回老家,路上放点提神不犯困的歌"
+music,"准备开长途车回老家,来点提神不犯困的歌放路上听",music_song_semantic_search,{},"准备开长途车回老家,路上放点提神不犯困的歌"
+music,我想找点欢快、有节奏感的背景音乐，用来剪辑旅行vlog,music_song_semantic_search,{},"我正在剪辑一个旅行vlog,需要一些欢快、有节奏感的背景音乐"
+music,帮我推荐一些欢快、有节奏感的背景音乐，我要剪辑旅行vlog,music_song_semantic_search,{},"我正在剪辑一个旅行vlog,需要一些欢快、有节奏感的背景音乐"
+music,我正在剪辑旅行vlog，需要欢快、有节奏感的背景音乐,music_song_semantic_search,{},"我正在剪辑一个旅行vlog,需要一些欢快、有节奏感的背景音乐"
+music,晚上朋友来家里聚会，放点适合大家一起嗨的音乐,music_song_semantic_search,{},"晚上朋友来家里聚会,放点适合大家一起嗨的音乐"
+music,今晚朋友来家里聚会，帮我放点适合大家一起嗨的音乐,music_song_semantic_search,{},"晚上朋友来家里聚会,放点适合大家一起嗨的音乐"
+music,朋友晚上来家里聚会，放点适合大家一起嗨的音乐,music_song_semantic_search,{},"晚上朋友来家里聚会,放点适合大家一起嗨的音乐"
+music,"今天阳光很好,心情也不错,来点歌听听",music_song_semantic_search,{},"今天阳光很好,心情也不错,放点歌听听"
+music,"今天阳光很好,心情也不错,放首歌听听",music_song_semantic_search,{},"今天阳光很好,心情也不错,放点歌听听"
+music,"今天阳光很好,心情也不错,我想听点歌",music_song_semantic_search,{},"今天阳光很好,心情也不错,放点歌听听"
+music,今天是我生日，家里办派对，帮我放点热闹喜庆的歌曲吧,music_song_semantic_search,{},"今天是我生日,家里办派对,帮我放点热闹喜庆的歌曲吧。"
+music,家里办派对，今天是我生日，帮我放点热闹喜庆的歌曲吧,music_song_semantic_search,{},"今天是我生日,家里办派对,帮我放点热闹喜庆的歌曲吧。"
+music,帮我放点热闹喜庆的歌曲吧，今天是我生日，家里办派对,music_song_semantic_search,{},"今天是我生日,家里办派对,帮我放点热闹喜庆的歌曲吧。"
+music,给我放一首适合睡前听的歌,music_song_semantic_search,{},来一首适合睡前听的歌
+music,放一首适合睡前听的歌,music_song_semantic_search,{},来一首适合睡前听的歌
+music,找周杰伦和方文山合作的歌曲,music_song_semantic_search,{},周杰伦和方文山合作的歌曲
+music,播放周杰伦和方文山合作的歌曲,music_song_semantic_search,{},周杰伦和方文山合作的歌曲
+music,周杰伦跟黄俊郎合作的歌曲,music_song_semantic_search,{},周杰伦和黄俊郎合作的歌曲
+music,周杰伦和黄俊郎一起合作的歌曲,music_song_semantic_search,{},周杰伦和黄俊郎合作的歌曲
+music,王菲在春晚双手合十唱的那首歌叫什么,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""王菲在春晚双手合十唱的那首歌""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",王菲在春晚双手合十唱的那首歌
+music,帮我找一下王菲在春晚双手合十唱的那首歌,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""王菲在春晚双手合十唱的那首歌""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",王菲在春晚双手合十唱的那首歌
+music,王菲在春晚双手合十唱的那首歌是哪一首,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""王菲在春晚双手合十唱的那首歌""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",王菲在春晚双手合十唱的那首歌
+music,邓紫棋穿婚纱弹钢琴唱的那首歌叫什么,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""邓紫棋穿婚纱弹钢琴唱的那首""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",邓紫棋穿婚纱弹钢琴唱的那首
+music,邓紫棋穿婚纱弹钢琴唱的那首是啥,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""邓紫棋穿婚纱弹钢琴唱的那首""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",邓紫棋穿婚纱弹钢琴唱的那首
+music,邓紫棋穿婚纱弹钢琴唱的那首是哪首,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""邓紫棋穿婚纱弹钢琴唱的那首""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",邓紫棋穿婚纱弹钢琴唱的那首
+music,找毛不易抱着吉他低头唱的原创歌曲,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""毛不易抱着吉他低头唱的原创歌曲""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",毛不易抱着吉他低头唱的原创歌曲
+music,播放毛不易抱着吉他低头唱的原创歌曲,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""毛不易抱着吉他低头唱的原创歌曲""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",毛不易抱着吉他低头唱的原创歌曲
+music,请告诉我歌曲泡沫的相关信息,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""歌曲泡沫的相关信息""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",歌曲泡沫的相关信息
+music,我想了解歌曲泡沫的相关信息,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""歌曲泡沫的相关信息""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",歌曲泡沫的相关信息
+music,帮我查一下歌曲泡沫的相关信息,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""歌曲泡沫的相关信息""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",歌曲泡沫的相关信息
+music,能告诉我梁祝是什么曲子吗,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""梁祝是什么曲子""}], ""sceneTypeIntentList"": [{""sceneType"": ""agent_music"", ""intent"": ""music_info_qa""}], ""stream"": false}",梁祝是什么曲子
+audio,帮我接着放昨晚听的儿童睡前故事,audio_history,"{""action"": ""play"", ""time"": ""2026-08-23 00:00:00 TO 2026-08-23 23:59:59""}",继续播放我昨天晚上听的儿童睡前故事
+audio,把昨天晚上听的儿童睡前故事接着放,audio_history,"{""action"": ""play"", ""time"": ""2026-08-23 00:00:00 TO 2026-08-23 23:59:59""}",继续播放我昨天晚上听的儿童睡前故事
+audio,帮我找一下名为《夜访吸血鬼》的有声书,audio_search,"{""action"": ""search""}",搜索叫夜访吸血鬼的有声书
+audio,我想听《夜访吸血鬼》的有声书，请搜索,audio_search,"{""action"": ""search""}",搜索叫夜访吸血鬼的有声书
+audio,请问哪里有《夜访吸血鬼》的有声书？帮我搜一下,audio_search,"{""action"": ""search""}",搜索叫夜访吸血鬼的有声书
+audio,小兵张嘎儿童版有声剧在哪里,audio_search,"{""action"": ""search""}",小兵张嘎儿童版有声剧在哪
+audio,小兵张嘎儿童版有声剧在哪个平台,audio_search,"{""action"": ""search""}",小兵张嘎儿童版有声剧在哪
+audio,小兵张嘎儿童版有声剧怎么找,audio_search,"{""action"": ""search""}",小兵张嘎儿童版有声剧在哪
+audio,帮我播放fm守村人,audio_search,"{""action"": ""play""}",我要听fm守村人
+audio,我想听一下fm守村人,audio_search,"{""action"": ""play""}",我要听fm守村人
+audio,打开fm守村人,audio_search,"{""action"": ""play""}",我要听fm守村人
+audio,播放科教有声节目,audio_search,"{""action"": ""play""}",帮我播放科教有声节目
+audio,科教有声节目，播放一下,audio_search,"{""action"": ""play""}",帮我播放科教有声节目
+audio,我想听科教有声节目,audio_search,"{""action"": ""play""}",帮我播放科教有声节目
+audio,帮我找一下大秦帝国的有声书,audio_search,"{""action"": ""search""}",搜索大秦帝国的有声书
+audio,我想听大秦帝国的有声书,audio_search,"{""action"": ""search""}",搜索大秦帝国的有声书
+audio,请搜索大秦帝国的有声书,audio_search,"{""action"": ""search""}",搜索大秦帝国的有声书
+audio,帮我搜一下长安十二时辰的有声版,audio_search,"{""action"": ""search""}",搜索长安十二时辰有声版
+audio,我想听长安十二时辰有声版，搜索一下,audio_search,"{""action"": ""search""}",搜索长安十二时辰有声版
+audio,查找长安十二时辰有声版,audio_search,"{""action"": ""search""}",搜索长安十二时辰有声版
+audio,帮我放一下宋史通俗演义fm,audio_search,"{""action"": ""play""}",请帮我播放宋史通俗演义fm
+audio,我想听宋史通俗演义fm,audio_search,"{""action"": ""play""}",请帮我播放宋史通俗演义fm
+audio,打开宋史通俗演义fm,audio_search,"{""action"": ""play""}",请帮我播放宋史通俗演义fm
+audio,我想听国学经典有声版,audio_search,"{""action"": ""play""}",请听一下国学经典有声版
+audio,帮我播放国学经典有声版,audio_search,"{""action"": ""play""}",请听一下国学经典有声版
+audio,来一下国学经典有声版,audio_search,"{""action"": ""play""}",请听一下国学经典有声版
+audio,帮我找一下骆驼祥子有声版,audio_search,"{""action"": ""search""}",搜索骆驼祥子有声版
+audio,我想听骆驼祥子有声版,audio_search,"{""action"": ""search""}",搜索骆驼祥子有声版
+audio,播放骆驼祥子有声版,audio_search,"{""action"": ""search""}",搜索骆驼祥子有声版
+audio,帮我搜一下隋唐史有声讲解,audio_search,"{""action"": ""search""}",搜索隋唐史有声讲解
+audio,我想听隋唐史有声讲解，搜索一下,audio_search,"{""action"": ""search""}",搜索隋唐史有声讲解
+audio,请搜索隋唐史有声讲解,audio_search,"{""action"": ""search""}",搜索隋唐史有声讲解
+audio,帮我搜一下职场技能提升音频,audio_search,"{""action"": ""search""}",搜索职场技能提升音频
+audio,我想找职场技能提升音频,audio_search,"{""action"": ""search""}",搜索职场技能提升音频
+audio,播放职场技能提升音频,audio_search,"{""action"": ""search""}",搜索职场技能提升音频
+audio,帮我找一下觉醒年代的有声版,audio_search,"{""action"": ""search""}",搜索觉醒年代的有声版
+audio,我想听觉醒年代的有声版,audio_search,"{""action"": ""search""}",搜索觉醒年代的有声版
+audio,请搜索觉醒年代的有声版,audio_search,"{""action"": ""search""}",搜索觉醒年代的有声版
+audio,给我放关于毛泽东的有声读物,audio_search,"{""action"": ""play""}",我想听关于毛泽东的有声读物
+audio,我想听毛泽东的有声书,audio_search,"{""action"": ""play""}",我想听关于毛泽东的有声读物
+audio,帮我找毛泽东的有声读物,audio_search,"{""action"": ""play""}",我想听关于毛泽东的有声读物
+audio,帮我找一下大奉打更人第888章的有声版,audio_search,"{""action"": ""search""}",搜索大奉打更人第888章有声版
+audio,我想听大奉打更人第888章有声版,audio_search,"{""action"": ""search""}",搜索大奉打更人第888章有声版
+audio,请搜索大奉打更人第888章有声版,audio_search,"{""action"": ""search""}",搜索大奉打更人第888章有声版
+audio,播放庆余年小说，从第50集开始,audio_search,"{""action"": ""play""}",从第50集播放庆余年小说
+audio,庆余年小说第50集，播放,audio_search,"{""action"": ""play""}",从第50集播放庆余年小说
+audio,我想看庆余年小说，从第50集起播,audio_search,"{""action"": ""play""}",从第50集播放庆余年小说
+audio,播放斗罗大陆的最后一集,audio_search,"{""action"": ""play""}",收听斗罗大陆最后一集那一集
+audio,我想看斗罗大陆大结局,audio_search,"{""action"": ""play""}",收听斗罗大陆最后一集那一集
+audio,把斗罗大陆最后一集放一下,audio_search,"{""action"": ""play""}",收听斗罗大陆最后一集那一集
+audio,播放财经早知道音频今天的第一期,audio_search,"{""action"": ""play""}",听一下财经早知道音频今天第一期
+audio,我想听财经早知道音频，今天是第一期,audio_search,"{""action"": ""play""}",听一下财经早知道音频今天第一期
+audio,把财经早知道音频今天的第一期放一下,audio_search,"{""action"": ""play""}",听一下财经早知道音频今天第一期
+audio,帮我找一下十万个为什么第十集的有声书,audio_search,"{""action"": ""search""}",搜索十万个为什么第十集有声书
+audio,我想听十万个为什么第十集的有声书,audio_search,"{""action"": ""search""}",搜索十万个为什么第十集有声书
+audio,请搜索十万个为什么第十集的有声书,audio_search,"{""action"": ""search""}",搜索十万个为什么第十集有声书
+audio,播放米吴科学漫画大探险有声版的第三集,audio_search,"{""action"": ""play""}",放第三集的米吴科学漫画大探险有声版
+audio,我想听米吴科学漫画大探险有声版第三集,audio_search,"{""action"": ""play""}",放第三集的米吴科学漫画大探险有声版
+audio,打开米吴科学漫画大探险有声版，看第三集,audio_search,"{""action"": ""play""}",放第三集的米吴科学漫画大探险有声版
+audio,帮我找一下围城有声版第3章,audio_search,"{""action"": ""search""}",搜索围城有声版第3章
+audio,我想听围城有声版第3章,audio_search,"{""action"": ""search""}",搜索围城有声版第3章
+audio,请播放围城有声版第3章,audio_search,"{""action"": ""search""}",搜索围城有声版第3章
+audio,给我放超级宝贝jojo第1集的有声版,audio_search,"{""action"": ""play""}",播放有声版的超级宝贝jojo第1集
+audio,超级宝贝jojo第1集，我要听有声版,audio_search,"{""action"": ""play""}",播放有声版的超级宝贝jojo第1集
+audio,把超级宝贝jojo第1集切换成有声版播放,audio_search,"{""action"": ""play""}",播放有声版的超级宝贝jojo第1集
+audio,帮我播放voa慢速英语音频第十篇,audio_search,"{""action"": ""play""}",给我放个voa慢速英语音频第十篇
+audio,我想听voa慢速英语音频第十篇,audio_search,"{""action"": ""play""}",给我放个voa慢速英语音频第十篇
+audio,请放一下voa慢速英语音频第十篇,audio_search,"{""action"": ""play""}",给我放个voa慢速英语音频第十篇
+audio,播放ted演讲英文音频第五集,audio_search,"{""action"": ""play""}",给我听ted演讲英文音频第五集
+audio,我想听ted演讲英文音频第五集,audio_search,"{""action"": ""play""}",给我听ted演讲英文音频第五集
+audio,把ted演讲英文音频第五集放出来,audio_search,"{""action"": ""play""}",给我听ted演讲英文音频第五集
+audio,我想听米小圈有声故事第十四集,audio_search,"{""action"": ""play""}",播放米小圈有声故事第十四集
+audio,给我放米小圈有声故事第十四集,audio_search,"{""action"": ""play""}",播放米小圈有声故事第十四集
+audio,播放米小圈有声故事第十四集行不行,audio_search,"{""action"": ""play""}",播放米小圈有声故事第十四集
+audio,给我找职场的小说,audio_search,"{""action"": ""play""}",我想听职场的小说
+audio,播放职场的小说,audio_search,"{""action"": ""play""}",我想听职场的小说
+audio,我想听关于职场的小说,audio_search,"{""action"": ""play""}",我想听职场的小说
+audio,给我找点历史类的书，像讲唐朝的就行,audio_search,"{""action"": ""play""}",我想听历史类的书比如讲唐朝的
+audio,我想听历史题材的书，比如关于唐朝的,audio_search,"{""action"": ""play""}",我想听历史类的书比如讲唐朝的
+audio,帮我推荐历史类的书，要讲唐朝的那种,audio_search,"{""action"": ""play""}",我想听历史类的书比如讲唐朝的
+audio,帮我搜一下恐怖灵异的故事,audio_search,"{""action"": ""search""}",搜索恐怖灵异的故事
+audio,我想看恐怖灵异的故事，搜索一下,audio_search,"{""action"": ""search""}",搜索恐怖灵异的故事
+audio,麻烦搜索恐怖灵异的故事,audio_search,"{""action"": ""search""}",搜索恐怖灵异的故事
+audio,明朝历史的有声书有哪些,audio_search,"{""action"": ""search""}",关于明朝历史的有声书都有哪些
+audio,都有哪些关于明朝历史的有声书,audio_search,"{""action"": ""search""}",关于明朝历史的有声书都有哪些
+audio,明朝历史的有声书都有什么,audio_search,"{""action"": ""search""}",关于明朝历史的有声书都有哪些
+audio,唐朝历史的音频有什么推荐,audio_search,"{""action"": ""search""}",讲唐朝历史的音频有哪些推荐
+audio,有没有唐朝历史的音频可以推荐,audio_search,"{""action"": ""search""}",讲唐朝历史的音频有哪些推荐
+audio,求推荐一些唐朝历史的音频,audio_search,"{""action"": ""search""}",讲唐朝历史的音频有哪些推荐
+audio,清朝历史的广播节目有哪些,audio_search,"{""action"": ""search""}",关于清朝历史的广播节目有哪些
+audio,有哪些关于清朝历史的广播节目,audio_search,"{""action"": ""search""}",关于清朝历史的广播节目有哪些
+audio,帮我找一下讲解宋朝历史的fm,audio_search,"{""action"": ""search""}",给我推荐讲解宋朝历史的fm
+audio,我想听讲解宋朝历史的fm,audio_search,"{""action"": ""search""}",给我推荐讲解宋朝历史的fm
+audio,请推荐一些讲解宋朝历史的fm,audio_search,"{""action"": ""search""}",给我推荐讲解宋朝历史的fm
+audio,有哪些三国历史相关的有声书,audio_search,"{""action"": ""search""}",三国历史相关的有声书有哪些
+audio,春秋战国相关的音频资源有哪些,audio_search,"{""action"": ""search""}",讲解春秋战国的音频有哪些
+audio,我想找一些关于春秋战国时期的音频讲解,audio_search,"{""action"": ""search""}",讲解春秋战国的音频有哪些
+audio,有没有春秋战国历史的音频可以听,audio_search,"{""action"": ""search""}",讲解春秋战国的音频有哪些
+audio,历史悬疑类的有声书有什么,audio_search,"{""action"": ""search""}",历史悬疑有声书有哪些
+audio,有没有历史悬疑题材的有声书,audio_search,"{""action"": ""search""}",历史悬疑有声书有哪些
+audio,我想找历史悬疑的有声书,audio_search,"{""action"": ""search""}",历史悬疑有声书有哪些
+audio,给我找一下适合孩子听的历史节目,audio_search,"{""action"": ""search""}",帮我搜索适合孩子听的历史节目
+audio,搜索一下适合孩子听的历史节目,audio_search,"{""action"": ""search""}",帮我搜索适合孩子听的历史节目
+audio,帮我搜一下适合孩子听的历史节目,audio_search,"{""action"": ""search""}",帮我搜索适合孩子听的历史节目
+audio,有哪些正史讲解类历史节目,audio_search,"{""action"": ""search""}",正史讲解类历史节目有哪些
+audio,正史讲解类历史节目都有什么,audio_search,"{""action"": ""search""}",正史讲解类历史节目有哪些
+audio,野史类历史音频有什么推荐,audio_search,"{""action"": ""search""}",野史类历史音频有哪些推荐
+audio,推荐一些野史类历史音频,audio_search,"{""action"": ""search""}",野史类历史音频有哪些推荐
+audio,野史类历史音频有哪些,audio_search,"{""action"": ""search""}",野史类历史音频有哪些推荐
+audio,除了明朝那些事儿，还有哪些明史有声书,audio_search,"{""action"": ""search""}",除了明朝那些事儿还有哪些明史有声书
+audio,明史有声书除了明朝那些事儿还有啥,audio_search,"{""action"": ""search""}",除了明朝那些事儿还有哪些明史有声书
+audio,除了明朝那些事儿，明史有声书还有哪些,audio_search,"{""action"": ""search""}",除了明朝那些事儿还有哪些明史有声书
+audio,我想听古风的广播剧,audio_search,"{""action"": ""play""}",播放古风的广播剧
+audio,帮我放一个古风的广播剧,audio_search,"{""action"": ""play""}",播放古风的广播剧
+audio,来一个古风的广播剧,audio_search,"{""action"": ""play""}",播放古风的广播剧
+audio,帮我播放今晚九点半的fm,audio_search,"{""action"": ""play""}",播放今晚九点半fm
+audio,我想听今晚九点半的fm,audio_search,"{""action"": ""play""}",播放今晚九点半fm
+audio,打开今晚九点半的fm,audio_search,"{""action"": ""play""}",播放今晚九点半fm
+audio,帮我找一下民国言情广播剧,audio_search,"{""action"": ""search""}",搜索民国言情广播剧
+audio,我想听民国言情广播剧,audio_search,"{""action"": ""search""}",搜索民国言情广播剧
+audio,搜一搜民国言情广播剧,audio_search,"{""action"": ""search""}",搜索民国言情广播剧
+audio,我想听社会职场类的有声书,audio_search,"{""action"": ""play""}",我要听社会职场有声内容
+audio,帮我播放社会职场题材的有声内容,audio_search,"{""action"": ""play""}",我要听社会职场有声内容
+audio,社会职场主题的有声内容，我要听,audio_search,"{""action"": ""play""}",我要听社会职场有声内容
+audio,我想听古风仙侠广播剧,audio_search,"{""action"": ""play""}",播放古风仙侠广播剧
+audio,给我放一个古风仙侠广播剧,audio_search,"{""action"": ""play""}",播放古风仙侠广播剧
+audio,来一段古风仙侠广播剧,audio_search,"{""action"": ""play""}",播放古风仙侠广播剧
+audio,搜一下灵异悬疑故事,audio_search,"{""action"": ""search""}",帮我搜灵异悬疑故事
+audio,我想看灵异悬疑故事,audio_search,"{""action"": ""search""}",帮我搜灵异悬疑故事
+audio,帮我找灵异悬疑故事,audio_search,"{""action"": ""search""}",帮我搜灵异悬疑故事
+audio,我想听心理科普的有声书,audio_search,"{""action"": ""play""}",播放心理科普有声音频
+audio,给我放心理科普类的音频节目,audio_search,"{""action"": ""play""}",播放心理科普有声音频
+audio,打开心理科普有声内容,audio_search,"{""action"": ""play""}",播放心理科普有声音频
+audio,帮我搜一下都市爱情类的广播剧,audio_search,"{""action"": ""search""}",搜索都市爱情类广播剧
+audio,我想找都市爱情题材的广播剧,audio_search,"{""action"": ""search""}",搜索都市爱情类广播剧
+audio,请搜索都市爱情类型的广播剧,audio_search,"{""action"": ""search""}",搜索都市爱情类广播剧
+audio,帮我搜一下有声剧场榜最火的广播剧,audio_search,"{""action"": ""search""}",搜索有声剧场榜最火的广播剧
+audio,我想找有声剧场榜最火的广播剧,audio_search,"{""action"": ""search""}",搜索有声剧场榜最火的广播剧
+audio,查一下有声剧场榜最火的广播剧,audio_search,"{""action"": ""search""}",搜索有声剧场榜最火的广播剧
+audio,帮我查一下近期有声书热播榜的前五名,audio_search,"{""action"": ""search""}",搜索近期有声书热播榜前五名
+audio,我想看看近期有声书热播榜前五名,audio_search,"{""action"": ""search""}",搜索近期有声书热播榜前五名
+audio,近期有声书热播榜前五名有哪些,audio_search,"{""action"": ""search""}",搜索近期有声书热播榜前五名
+audio,帮我放一下今天热播榜第一的有声书,audio_search,"{""action"": ""play""}",给我播放今天热播榜第一的有声书
+audio,今天热播榜第一的有声书，播放一下,audio_search,"{""action"": ""play""}",给我播放今天热播榜第一的有声书
+audio,我想听今天热播榜第一的有声书,audio_search,"{""action"": ""play""}",给我播放今天热播榜第一的有声书
+audio,帮我搜一下好评榜上的悬疑小说,audio_search,"{""action"": ""search""}",搜索好评榜上的悬疑小说
+audio,我想看好评榜上的悬疑小说,audio_search,"{""action"": ""search""}",搜索好评榜上的悬疑小说
+audio,在好评榜里找悬疑小说,audio_search,"{""action"": ""search""}",搜索好评榜上的悬疑小说
+audio,给我放本周最新推荐的有声书,audio_search,"{""action"": ""play""}",我要听本周最新的推荐有声书
+audio,本周最新推荐的有声书，我要听,audio_search,"{""action"": ""play""}",我要听本周最新的推荐有声书
+audio,帮我找本周最新推荐的有声书来听,audio_search,"{""action"": ""play""}",我要听本周最新的推荐有声书
+audio,帮我搜一下今天上新排行最高的有声书,audio_search,"{""action"": ""search""}",搜今天上新排行最高的有声书
+audio,今天上新排行最高的有声书，搜一下,audio_search,"{""action"": ""search""}",搜今天上新排行最高的有声书
+audio,我想搜今天上新排行最高的有声书,audio_search,"{""action"": ""search""}",搜今天上新排行最高的有声书
+audio,请搜索口碑榜里的职场有声节目,audio_search,"{""action"": ""search""}",帮我找口碑榜上的职场有声节目
+audio,我想看口碑榜上的职场类有声节目,audio_search,"{""action"": ""search""}",帮我找口碑榜上的职场有声节目
+audio,帮我在口碑榜中找职场有声节目,audio_search,"{""action"": ""search""}",帮我找口碑榜上的职场有声节目
+audio,帮我找南派三叔写的全部有声书,audio_search,"{""action"": ""search""}",搜索南派三叔写的所有有声书
+audio,我想听南派三叔创作的所有有声读物,audio_search,"{""action"": ""search""}",搜索南派三叔写的所有有声书
+audio,请搜索南派三叔所著的全部有声书,audio_search,"{""action"": ""search""}",搜索南派三叔写的所有有声书
+audio,播放priest的所有广播剧或者小说,audio_search,"{""action"": ""play""}",给我放priest的所有广播剧或小说
+audio,我想听priest的全部广播剧和小说,audio_search,"{""action"": ""play""}",给我放priest的所有广播剧或小说
+audio,把priest的广播剧和小说都放出来,audio_search,"{""action"": ""play""}",给我放priest的所有广播剧或小说
+audio,郑渊洁的童话有声书有吗,audio_search,"{""action"": ""search""}",有没有郑渊洁的童话有声书
+audio,我想听郑渊洁的童话有声书,audio_search,"{""action"": ""search""}",有没有郑渊洁的童话有声书
+audio,郑渊洁的童话有声书在哪里,audio_search,"{""action"": ""search""}",有没有郑渊洁的童话有声书
+sports,给我看看挪威队,sports_team_search,"{""sport_team"": ""挪威队""}",挪威队
+sports,播放挪威队,sports_team_search,"{""sport_team"": ""挪威队""}",挪威队
+sports,给我看看瑞士队,sports_team_search,"{""sport_team"": ""瑞士队""}",瑞士队
+sports,搜索瑞士队,sports_team_search,"{""sport_team"": ""瑞士队""}",瑞士队
+sports,帮我看看国际米兰队,sports_team_search,"{""sport_team"": ""国际米兰队""}",国际米兰队
+sports,搜索一下国际米兰队,sports_team_search,"{""sport_team"": ""国际米兰队""}",国际米兰队
+sports,我想了解国际米兰队,sports_team_search,"{""sport_team"": ""国际米兰队""}",国际米兰队
+sports,欧冠联赛助攻榜,sports_rank_search,"{""sport_game"":""欧冠"",""sport_rank_type"":""助攻榜""}",欧冠助攻榜
+sports,帮我看看 NBA 助攻榜,sports_rank_search,"{""sport_game"":""NBA"",""sport_rank_type"":""助攻榜""}",NBA 助攻榜
+sports,我想看 NBA 助攻榜,sports_rank_search,"{""sport_game"":""NBA"",""sport_rank_type"":""助攻榜""}",NBA 助攻榜
+sports,篮球亚洲杯盖帽榜是多少,sports_rank_search,"{""sport_game"":""篮球亚洲杯"",""sport_rank_type"":""盖帽榜""}",篮球亚洲杯盖帽榜
+sports,我想看尤文图斯,sports_team_search,"{""sport_team"":""尤文图斯""}",尤文图斯
+sports,给我看看本菲卡,sports_team_search,"{""sport_team"":""本菲卡""}",本菲卡
+sports,搜索本菲卡,sports_team_search,"{""sport_team"":""本菲卡""}",本菲卡
+sports,达拉斯独行侠队,sports_team_search,"{""sport_team"":""达拉斯独行侠""}",达拉斯独行侠
+sports,帮我看看立陶宛男篮,sports_team_search,"{""sport_team"":""立陶宛男篮""}",立陶宛男篮
+sports,搜索一下立陶宛男篮,sports_team_search,"{""sport_team"":""立陶宛男篮""}",立陶宛男篮
+sports,我想看立陶宛男篮,sports_team_search,"{""sport_team"":""立陶宛男篮""}",立陶宛男篮
+sports,帮我预测一下11月12日骑士的比赛谁赢得概率大,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""预测一下11月12日骑士的比赛谁赢得概率大""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",预测一下11月12日骑士的比赛谁赢得概率大
+sports,11月12日步行者和奇才的比赛得分是多少,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""11月12日步行者和奇才的比赛得分""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",11月12日步行者和奇才的比赛得分
+sports,帮我查一下11月12日步行者和奇才的比赛得分,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""11月12日步行者和奇才的比赛得分""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",11月12日步行者和奇才的比赛得分
+sports,帮我总结一下11月5日活塞的表现,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""总结一下11月5日活塞的表现""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",总结一下11月5日活塞的表现
+sports,请总结一下11月5日活塞的表现,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""总结一下11月5日活塞的表现""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",总结一下11月5日活塞的表现
+sports,帮我总结一下NBA球赛,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""总结一下NBA球赛""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",总结一下NBA球赛
+sports,给我总结一下NBA球赛,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""总结一下NBA球赛""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",总结一下NBA球赛
+sports,帮我总结一下本届世界杯的整体战况,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""总结一下本届世界杯的整体战况""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",总结一下本届世界杯的整体战况
+sports,除了之前提到的，海信还赞助了哪些体育赛事,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""海信还赞助了哪些体育赛事""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",海信还赞助了哪些体育赛事
+sports,请问海信还赞助了哪些体育赛事,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""海信还赞助了哪些体育赛事""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",海信还赞助了哪些体育赛事
+sports,给我讲讲皇马的历史,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""皇马的历史""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",皇马的历史
+sports,我想了解皇马的历史,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""皇马的历史""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",皇马的历史
+sports,帮我查一下皇马的历史,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""皇马的历史""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",皇马的历史
+sports,请问姆斯是谁,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""姆斯是谁""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",姆斯是谁
+sports,姆斯是谁啊,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""姆斯是谁""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",姆斯是谁
+sports,梅西是谁啊,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""梅西是谁""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",梅西是谁
+sports,请问梅西是谁,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""梅西是谁""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",梅西是谁
+sports,能告诉我梅西是谁吗,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""梅西是谁""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",梅西是谁
+sports,我想了解姆巴佩的个人信息,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""姆巴佩的个人信息""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",姆巴佩的个人信息
+sports,查一下赖斯的信息,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""赖斯的信息""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",赖斯的信息
+sports,帮我查一下哈里凯恩的简介,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""哈里凯恩的简介""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",哈里凯恩的简介
+sports,查一下萨卡的资料,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""萨卡的资料""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",萨卡的资料
+sports,萨卡的资料是什么,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""萨卡的资料""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",萨卡的资料
+sports,给我看看萨卡的资料,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""萨卡的资料""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",萨卡的资料
+sports,帮我查一下欧联的助攻榜,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""欧联的助攻榜""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",欧联的助攻榜
+sports,我想看看欧联的助攻榜,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""欧联的助攻榜""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",欧联的助攻榜
+sports,欧联的助攻榜给我,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""欧联的助攻榜""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",欧联的助攻榜
+sports,我要看欧洲杯进球排名,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""欧洲杯进球排名""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",欧洲杯进球排名
+sports,法甲助攻榜是多少,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""法甲助攻榜""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",法甲助攻榜
+sports,给我看看广州亚运会金牌榜,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""广州亚运会金牌榜""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",广州亚运会金牌榜
+sports,查一下广州亚运会金牌榜,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""广州亚运会金牌榜""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",广州亚运会金牌榜
+sports,帮我看看德甲的积分榜单,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""德甲的积分榜单""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",德甲的积分榜单
+sports,我想查一下德甲的积分榜单,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""德甲的积分榜单""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",德甲的积分榜单
+sports,德甲的积分榜单给我,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""德甲的积分榜单""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",德甲的积分榜单
+sports,帮我看看德甲的助攻榜,fan_knowledge_agent,"{""messages"": [{""role"": ""user"", ""content"": ""德甲的助攻榜""}], ""sceneTypeIntentList"": [{""sceneType"": ""sport_qa""}], ""stream"": false}",德甲的助攻榜
+tv_control,帮我把170HZ疾速屏打开,display_control,"{""operation"":""打开"",""object"":""170hz疾速屏"",""value"":"""",""device"":"""",""location"":""""}",打开170HZ疾速屏
+tv_control,170HZ疾速屏，打开,display_control,"{""operation"":""打开"",""object"":""170hz疾速屏"",""value"":"""",""device"":"""",""location"":""""}",打开170HZ疾速屏
+tv_control,设置音量为30%,numeric_adjust,"{""operation"":""设置"",""object"":""音量"",""value"":""30%"",""device"":"""",""location"":""""}",音量设置为30%
+tv_control,我想设置一下亮度,numeric_adjust,"{""operation"": ""设置"", ""object"": ""亮度"", ""value"": """", ""device"": """", ""location"": """"}",亮度设置
+tv_control,30分钟之后自动关机,timer_control,"{""operation"":""打开"",""object"":""关机"",""device"":"""",""location"":"""",""date_time"":""30分钟""}",30分钟后自动关机
+tv_control,45分钟之后自动关机,timer_control,"{""operation"":""打开"",""object"":""关机"",""device"":"""",""location"":"""",""date_time"":""45分钟""}",45分钟后自动关机
+tv_control,打开电视,power_control,"{""operation"": ""打开"", ""object"": ""开机"", ""value"": """", ""device"": """", ""location"": """"}",开启电视
+tv_control,设置对比度为30%,numeric_adjust,"{""operation"":""设置"",""object"":""对比度"",""value"":""30%"",""device"":"""",""location"":""""}",对比度设置为30%
+tv_control,无线网络打开,network_control,"{""operation"": ""打开"", ""object"": ""无线网络"", ""value"": """", ""device"": """", ""location"": """"}",无线网络
+tv_control,把无线网络打开,network_control,"{""operation"": ""打开"", ""object"": ""无线网络"", ""value"": """", ""device"": """", ""location"": """"}",无线网络
+tv_control,没声音,numeric_adjust,"{""operation"": ""打开"", ""object"": ""静音"", ""value"": """", ""device"": """", ""location"": """"}",关闭声音
+tv_control,静音模式打开,numeric_adjust,"{""operation"": ""打开"", ""object"": ""静音"", ""value"": """", ""device"": """", ""location"": """"}",开启静音
+tv_control,电视静音,numeric_adjust,"{""operation"": ""打开"", ""object"": ""静音"", ""value"": """", ""device"": """", ""location"": """"}",开启静音
+tv_control,全屏打开,screen_layout,"{""operation"": ""打开"", ""object"": ""全屏"", ""value"": """", ""device"": """", ""location"": """"}",打开全屏
+tv_control,打开全屏模式,screen_layout,"{""operation"": ""打开"", ""object"": ""全屏"", ""value"": """", ""device"": """", ""location"": """"}",打开全屏
+tv_control,切换到全屏模式,screen_layout,"{""operation"": ""打开"", ""object"": ""全屏"", ""value"": """", ""device"": """", ""location"": """"}",全屏功能
+tv_control,把画面全屏显示,screen_layout,"{""operation"": ""打开"", ""object"": ""全屏"", ""value"": """", ""device"": """", ""location"": """"}",全屏功能
+tv_control,将声音模式设置为音乐模式,mode_control,"{""operation"": ""设置"", ""object"": ""声音模式"", ""value"": ""音乐模式"", ""device"": """", ""location"": """"}",设置声音模式为音乐模式
+tv_control,设置一下图像模式为体育模式,mode_control,"{""operation"": ""设置"", ""object"": ""图像模式"", ""value"": ""体育模式"", ""device"": """", ""location"": """"}",设置图像模式为体育模式
+tv_control,开启影院模式,mode_control,"{""operation"": ""设置"", ""object"": """", ""value"": ""影院模式"", ""device"": """", ""location"": """"}",打开影院模式模式
+tv_control,把摄像头控制模式打开,smart_camera,"{""operation"": ""打开"", ""object"": ""摄像头控制模式"", ""value"": """", ""device"": """", ""location"": """"}",打开摄像头控制模式
+tv_control,切换到摄像头控制模式,smart_camera,"{""operation"": ""打开"", ""object"": ""摄像头控制模式"", ""value"": """", ""device"": """", ""location"": """"}",进入摄像头控制模式
+tv_control,切换到商场模式,mode_control,"{""operation"": ""打开"", ""object"": ""商场模式"", ""value"": """", ""device"": """", ""location"": """"}",进入商场模式
+tv_control,切换到遥控器喜爱键,common_control,"{""operation"": ""打开"", ""object"": ""遥控器喜爱键"", ""value"": """", ""device"": """", ""location"": """"}",进入遥控器喜爱键
+tv_control,按遥控器直播键,common_control,"{""operation"": ""打开"", ""object"": ""遥控器直播键"", ""value"": """", ""device"": """", ""location"": """"}",启动遥控器直播键
+tv_control,切换到输入法,common_control,"{""operation"": ""打开"", ""object"": ""输入法"", ""value"": """", ""device"": """", ""location"": """"}",进入输入法
+tv_control,帮我启动一下网络连接测试,network_control,"{""operation"": ""打开"", ""object"": ""网络连接测试"", ""value"": """", ""device"": """", ""location"": """"}",启动网络连接测试
+tv_control,请执行网络连接测试,network_control,"{""operation"": ""打开"", ""object"": ""网络连接测试"", ""value"": """", ""device"": """", ""location"": """"}",启动网络连接测试
+tv_control,打开网络连接测试功能,network_control,"{""operation"": ""打开"", ""object"": ""网络连接测试"", ""value"": """", ""device"": """", ""location"": """"}",启动网络连接测试
+tv_control,远场语音开关打开,common_control,"{""operation"": ""打开"", ""object"": ""远场语音开关"", ""value"": """", ""device"": """", ""location"": """"}",启动远场语音开关
+tv_control,切换到电视模式,mode_control,"{""operation"": ""打开"", ""object"": ""电视模式"", ""value"": """", ""device"": """", ""location"": """"}",进入电视模式
+tv_control,把电视模式打开,mode_control,"{""operation"": ""打开"", ""object"": ""电视模式"", ""value"": """", ""device"": """", ""location"": """"}",进入电视模式
+tv_control,播放u盘,common_control,"{""operation"": ""打开"", ""object"": ""u盘"", ""value"": """", ""device"": """", ""location"": """"}",启动u盘
+tv_control,读取u盘,common_control,"{""operation"": ""打开"", ""object"": ""u盘"", ""value"": """", ""device"": """", ""location"": """"}",启动u盘
+tv_control,切换到u盘,common_control,"{""operation"": ""打开"", ""object"": ""u盘"", ""value"": """", ""device"": """", ""location"": """"}",进入u盘
+tv_control,u盘音乐打开,common_control,"{""operation"": ""打开"", ""object"": ""u盘音乐"", ""value"": """", ""device"": """", ""location"": """"}",打开u盘音乐
+tv_control,u盘音乐启动,common_control,"{""operation"": ""打开"", ""object"": ""u盘音乐"", ""value"": """", ""device"": """", ""location"": """"}",启动u盘音乐
+tv_control,切到u盘音乐,common_control,"{""operation"": ""打开"", ""object"": ""u盘音乐"", ""value"": """", ""device"": """", ""location"": """"}",进入u盘音乐
+tv_control,把u盘视频打开,common_control,"{""operation"": ""打开"", ""object"": ""u盘视频"", ""value"": """", ""device"": """", ""location"": """"}",打开u盘视频
+tv_control,播放u盘视频,common_control,"{""operation"": ""打开"", ""object"": ""u盘视频"", ""value"": """", ""device"": """", ""location"": """"}",启动u盘视频
+tv_control,u盘视频启动,common_control,"{""operation"": ""打开"", ""object"": ""u盘视频"", ""value"": """", ""device"": """", ""location"": """"}",启动u盘视频
+tv_control,去u盘视频,common_control,"{""operation"": ""打开"", ""object"": ""u盘视频"", ""value"": """", ""device"": """", ""location"": """"}",进入u盘视频
+tv_control,帮我打开绑定机顶盒,source_switch,"{""operation"": ""打开"", ""object"": ""绑定机顶盒"", ""value"": """", ""device"": """", ""location"": """"}",打开绑定机顶盒
+tv_control,把绑定机顶盒打开,source_switch,"{""operation"": ""打开"", ""object"": ""绑定机顶盒"", ""value"": """", ""device"": """", ""location"": """"}",打开绑定机顶盒
+tv_control,去绑定机顶盒,source_switch,"{""operation"": ""打开"", ""object"": ""绑定机顶盒"", ""value"": """", ""device"": """", ""location"": """"}",进入绑定机顶盒
+tv_control,我要绑定机顶盒,source_switch,"{""operation"": ""打开"", ""object"": ""绑定机顶盒"", ""value"": """", ""device"": """", ""location"": """"}",进入绑定机顶盒
+tv_control,启动录音功能,common_control,"{""operation"":""打开"",""object"":""录音"",""value"":"""",""device"":"""",""location"":""""}",进入录音
+tv_control,开始录音,common_control,"{""operation"":""打开"",""object"":""录音"",""value"":"""",""device"":"""",""location"":""""}",进入录音
+tv_control,换下一个,playback_control,"{""operation"":""下"",""object"":"""",""value"":""个"",""device"":"""",""location"":""""}",切下一个
+tv_control,换一部，不好听,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""部"",""device"":"""",""location"":""""}",不好听换一部
+tv_control,这部不好听，换一部,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""部"",""device"":"""",""location"":""""}",不好听换一部
+tv_control,换下一部,playback_control,"{""operation"":""下"",""object"":"""",""value"":""部"",""device"":"""",""location"":""""}",播下一部
+tv_control,看下一集,playback_control,"{""operation"":""下"",""object"":"""",""value"":""集"",""device"":"""",""location"":""""}",播下一集
+tv_control,换下一集,playback_control,"{""operation"":""下"",""object"":"""",""value"":""集"",""device"":"""",""location"":""""}",帮我切下一集
+tv_control,往后翻一集,playback_control,"{""operation"":""下"",""object"":"""",""value"":""集"",""device"":"""",""location"":""""}",往后切一集
+tv_control,停一下,playback_control,"{""operation"": ""停止"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",别播了
+tv_control,先别放了,playback_control,"{""operation"": ""停止"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",别播了
+tv_control,把播放暂停,playback_control,"{""operation"": ""停止"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",把播放停掉
+tv_control,把音乐关掉,playback_control,"{""operation"": ""关闭"", ""object"": ""音乐播放控制"", ""value"": """", ""device"": """", ""location"": """"}",把音乐退出来
+tv_control,退出音乐,playback_control,"{""operation"": ""关闭"", ""object"": ""音乐播放控制"", ""value"": """", ""device"": """", ""location"": """"}",把音乐退出来
+tv_control,停止播放音乐,playback_control,"{""operation"": ""关闭"", ""object"": ""音乐播放控制"", ""value"": """", ""device"": """", ""location"": """"}",把音乐退出来
+tv_control,音乐停一下,playback_control,"{""operation"": ""关闭"", ""object"": ""音乐播放控制"", ""value"": """", ""device"": """", ""location"": """"}",音乐关了吧
+tv_control,关闭音乐,playback_control,"{""operation"": ""关闭"", ""object"": ""音乐播放控制"", ""value"": """", ""device"": """", ""location"": """"}",音乐关了吧
+tv_control,暂停音乐,playback_control,"{""operation"": ""停止"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",麻烦停一下音乐
+tv_control,音乐暂停一下,playback_control,"{""operation"": ""停止"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",麻烦停一下音乐
+tv_control,音乐别停，接着放,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",把音乐放着继续
+tv_control,让音乐继续播放,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",把音乐放着继续
+tv_control,继续播放音乐,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",继续放音乐
+tv_control,接着放歌,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",继续放音乐
+tv_control,音乐继续放,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",继续放音乐
+tv_control,再来点歌听,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",继续放歌听
+tv_control,音乐接着放,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",帮我把音乐接着放
+tv_control,把音乐继续放,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",帮我把音乐接着放
+tv_control,接着放,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",接着播吧
+tv_control,继续看,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",接着播吧
+tv_control,往下放,playback_control,"{""operation"": ""播放"", ""object"": ""播放控制"", ""value"": """", ""device"": """", ""location"": """"}",继续放下去
+tv_control,下一首,playback_control,"{""operation"":""下"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",换下一首歌
+tv_control,换下一首,playback_control,"{""operation"":""下"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",换下一首歌
+tv_control,切一首别的歌,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",换一首别的歌
+tv_control,换首别的歌,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",换一首别的歌
+tv_control,来首别的歌,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",换一首别的歌
+tv_control,再放一首,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",再来一首吧
+tv_control,换一首歌,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",再来一首吧
+tv_control,继续播放下一首,playback_control,"{""operation"":""下"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",接着放下一首
+tv_control,把这首歌换掉,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",这首歌切了吧
+tv_control,跳过这一首，换下一首,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",跳过去换一首
+tv_control,切歌，换一首,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",跳过去换一首
+tv_control,下一首，换一首,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",跳过去换一首
+tv_control,换一首，这首不好听,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",不好听换一首
+tv_control,这首不好听，换一首吧,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",不好听换一首
+tv_control,不好听，给我换一首,playback_control,"{""operation"":""切换"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",不好听换一首
+tv_control,来一首上一首,playback_control,"{""operation"":""上"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",播放上一首
+tv_control,返回上一首,playback_control,"{""operation"":""上"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",换回上一首
+tv_control,切回上一首,playback_control,"{""operation"":""上"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",换到上一首
+tv_control,把上一首退回来,playback_control,"{""operation"":""上"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",帮我退回上一首
+tv_control,把上一首倒回来,playback_control,"{""operation"":""上"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",帮我倒回上一首
+tv_control,退回到上一首,playback_control,"{""operation"":""上"",""object"":"""",""value"":""首"",""device"":"""",""location"":""""}",帮我倒回上一首
+tv_control,帮我开通一下屏保VIP,screensaver_control,,我需要开通屏保VIP
+tv_control,请给我开通屏保VIP,screensaver_control,,我需要开通屏保VIP
+tv_control,我想申请开通屏保VIP,screensaver_control,,申请开通屏保VIP
+tv_control,请帮我办理屏保VIP开通,screensaver_control,,申请开通屏保VIP
+tv_control,将第1个设置为壁纸,screensaver_control,"{""operation"":""设置"",""object"":""壁纸"",""value"":""1"",""device"":"""",""location"":""""}",设置第1个为壁纸
+tv_control,壁纸设置成第1个,screensaver_control,"{""operation"":""设置"",""object"":""壁纸"",""value"":""1"",""device"":"""",""location"":""""}",设置第1个为壁纸
+tv_control,第2个设置成壁画,screensaver_control,"{""operation"":""设置"",""object"":""壁画"",""value"":""2"",""device"":"""",""location"":""""}",我要把第2个设置成壁画
+tv_control,把第1个设为屏保,screensaver_control,"{""operation"":""设置"",""object"":""屏保"",""value"":""1"",""device"":"""",""location"":""""}",使用第1个作为屏保
+tv_control,用第1个做屏保,screensaver_control,"{""operation"":""设置"",""object"":""屏保"",""value"":""1"",""device"":"""",""location"":""""}",使用第1个作为屏保
+tv_control,屏保换成第1个,screensaver_control,"{""operation"":""设置"",""object"":""屏保"",""value"":""1"",""device"":"""",""location"":""""}",使用第1个作为屏保
+tv_control,用第1个做壁画,screensaver_control,"{""operation"":""设置"",""object"":""壁画"",""value"":""1"",""device"":"""",""location"":""""}",使用第1个作为壁画
+tv_control,将第1个作为壁画,screensaver_control,"{""operation"":""设置"",""object"":""壁画"",""value"":""1"",""device"":"""",""location"":""""}",使用第1个作为壁画
+tv_control,请帮我打开屏保画册,screensaver_control,"{""operation"":""打开"",""object"":""屏保画册"",""value"":"""",""device"":"""",""location"":""""}",帮我打开屏保画册
+tv_control,帮我把屏保画册打开,screensaver_control,"{""operation"":""打开"",""object"":""屏保画册"",""value"":"""",""device"":"""",""location"":""""}",帮我打开屏保画册
+tv_control,请播放屏保画册,screensaver_control,"{""operation"":""打开"",""object"":""屏保画册"",""value"":"""",""device"":"""",""location"":""""}",我要看屏保画册
+tv_control,启动一下屏保画册,screensaver_control,"{""operation"":""打开"",""object"":""屏保画册"",""value"":"""",""device"":"""",""location"":""""}",放一下屏保画册
+tv_control,播放屏保画册,screensaver_control,"{""operation"":""打开"",""object"":""屏保画册"",""value"":"""",""device"":"""",""location"":""""}",放一下屏保画册
+tv_control,帮我启动屏保画册,screensaver_control,"{""operation"":""打开"",""object"":""屏保画册"",""value"":"""",""device"":"""",""location"":""""}",开一下屏保画册
+tv_control,把屏保画册调出来,screensaver_control,"{""operation"":""打开"",""object"":""屏保画册"",""value"":"""",""device"":"""",""location"":""""}",帮我把屏保画册放出来
+tv_control,请打开壁画,screensaver_control,"{""operation"":""打开"",""object"":""壁画"",""value"":"""",""device"":"""",""location"":""""}",打开壁画
+tv_control,打开一下壁画,screensaver_control,"{""operation"":""打开"",""object"":""壁画"",""value"":"""",""device"":"""",""location"":""""}",打开壁画
+tv_control,请打开壁纸,screensaver_control,"{""operation"":""打开"",""object"":""壁纸"",""value"":"""",""device"":"""",""location"":""""}",帮我打开壁纸
+tv_control,打开电视屏保,screensaver_control,"{""operation"":""打开"",""object"":""屏保"",""value"":"""",""device"":""电视"",""location"":""""}",帮电视机打开屏保
+tv_control,壁纸打开,screensaver_control,"{""operation"":""打开"",""object"":""壁纸"",""value"":"""",""device"":"""",""location"":""""}",将壁纸打开
+tv_control,打开电视的屏保设置,screensaver_control,"{""operation"":""设置"",""object"":""屏保"",""value"":"""",""device"":""电视"",""location"":""""}",电视打开屏保设置
+tv_control,退出屏保模式,screensaver_control,"{""operation"":""关闭"",""object"":""屏保"",""value"":"""",""device"":"""",""location"":""""}",退出屏保
+tv_control,屏保给我关了,screensaver_control,"{""operation"":""关闭"",""object"":""屏保"",""value"":"""",""device"":"""",""location"":""""}",屏保关掉
+tv_control,把屏保停了,screensaver_control,"{""operation"":""关闭"",""object"":""屏保"",""value"":"""",""device"":"""",""location"":""""}",取消屏保
+tv_control,请关闭屏保,screensaver_control,"{""operation"":""关闭"",""object"":""屏保"",""value"":"""",""device"":"""",""location"":""""}",将屏保关闭
+tv_control,关闭电视的屏保,screensaver_control,"{""operation"":""关闭"",""object"":""屏保"",""value"":"""",""device"":"""",""location"":""""}",关掉屏幕的屏保
+tv_control,把屏保关了,screensaver_control,"{""operation"":""关闭"",""object"":""屏保"",""value"":"""",""device"":"""",""location"":""""}",关掉屏幕的屏保
+tv_control,关闭现在运行的屏保,screensaver_control,"{""operation"":""关闭"",""object"":""屏保"",""value"":"""",""device"":"""",""location"":""""}",关闭正在运行的屏保
+tv_control,把屏保关闭一下,screensaver_control,"{""operation"":""关闭"",""object"":""屏保"",""value"":"""",""device"":"""",""location"":""""}",可以关闭屏保吗

@@ -4164,11 +4164,11 @@ educ,我想听丑小鸭的故事,educ_search,"{""query"":{""and"":[{""field"":""
 educ,帮我讲讲丑小鸭的故事,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""丑小鸭""},{""field"":""children_second_genre"",""value"":""故事""}]}}",给我讲丑小鸭的故事
 educ,给我说说丑小鸭的故事,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""丑小鸭""},{""field"":""children_second_genre"",""value"":""故事""}]}}",给我讲丑小鸭的故事
 educ,讲个丑小鸭的故事给我听,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""丑小鸭""},{""field"":""children_second_genre"",""value"":""故事""}]}}",给我讲丑小鸭的故事
-educ,帮我播放成语故事免费,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""成语故事""},{""field"":""is_fee"",""value"":""0""}]}}",直接播放成语故事免费
-educ,我想看成语故事免费,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""成语故事""},{""field"":""is_fee"",""value"":""0""}]}}",直接播放成语故事免费
-educ,播放一下成语故事免费,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""成语故事""},{""field"":""is_fee"",""value"":""0""}]}}",直接播放成语故事免费
-educ,来，播放成语故事免费,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""成语故事""},{""field"":""is_fee"",""value"":""0""}]}}",直接播放成语故事免费
-educ,打开成语故事免费,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""成语故事""},{""field"":""is_fee"",""value"":""0""}]}}",直接播放成语故事免费
+audio,帮我播放成语故事免费,audio_search,"{""action"":""play""}",直接播放成语故事免费
+audio,我想看成语故事免费,audio_search,"{""action"":""play""}",直接播放成语故事免费
+audio,播放一下成语故事免费,audio_search,"{""action"":""play""}",直接播放成语故事免费
+audio,来，播放成语故事免费,audio_search,"{""action"":""play""}",直接播放成语故事免费
+audio,打开成语故事免费,audio_search,"{""action"":""play""}",直接播放成语故事免费
 educ,帮我找一下科普海洋知识的儿童绘本,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""海洋知识""},{""field"":""children_second_genre"",""value"":""科普""},{""field"":""children_second_genre"",""value"":""绘本""}]}}",找一下科普海洋知识的儿童绘本
 educ,我想看科普海洋知识的儿童绘本,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""海洋知识""},{""field"":""children_second_genre"",""value"":""科普""},{""field"":""children_second_genre"",""value"":""绘本""}]}}",找一下科普海洋知识的儿童绘本
 educ,请搜索科普海洋知识的儿童绘本,educ_search,"{""query"":{""and"":[{""field"":""title"",""value"":""海洋知识""},{""field"":""children_second_genre"",""value"":""科普""},{""field"":""children_second_genre"",""value"":""绘本""}]}}",找一下科普海洋知识的儿童绘本

@@ -29,7 +29,7 @@ import time
 import uuid
 from typing import Any
 
-from . import catalog, fanparams, fewshot, llm, slots
+from . import catalog, device_schema, entity, fanparams, fewshot, llm, slots
 from .config import get_settings
 from .models import OneIntent
 from .parser import parse_json_loose, parse_oneshot
@@ -98,8 +98,8 @@ _WEEKDAY = "一二三四五六日"
 _REQ_TS: contextvars.ContextVar[Any] = contextvars.ContextVar("hc_req_ts", default=None)
 
 
-def _now_line(ts: Any = None) -> str:
-    """渲染「当前时间」行，如 `当前时间：2026-11-01 17:17 星期日（北京时间）`。"""
+def _now_dt(ts: Any = None) -> datetime.datetime:
+    """请求时间基准（北京时间）：取 data.timestamp，缺失或偏离本机 >2 天时用本机时间。"""
     now = time.time()
     t = now
     try:
@@ -110,7 +110,12 @@ def _now_line(ts: Any = None) -> str:
         v = v / 1000.0 if v > 1e11 else v                   # 毫秒 → 秒
         if abs(v - now) <= 2 * 86400:
             t = v
-    d = datetime.datetime.fromtimestamp(t, _TZ)
+    return datetime.datetime.fromtimestamp(t, _TZ)
+
+
+def _now_line(ts: Any = None) -> str:
+    """渲染「当前时间」行，如 `当前时间：2026-11-01 17:17 星期日（北京时间）`。"""
+    d = _now_dt(ts)
     return f"当前时间：{d:%Y-%m-%d %H:%M} 星期{_WEEKDAY[d.weekday()]}（北京时间）"
 
 
@@ -290,12 +295,13 @@ class Intent:
     """一条计划条目。index 为 1-start 计划序号；src 为喂给工具解析的用户原话。"""
 
     __slots__ = ("query", "domain", "tool", "params", "index", "depends",
-                 "dep_on", "src", "include_tool_result", "tool_result")
+                 "dep_on", "src", "include_tool_result", "tool_result", "after")
 
     def __init__(self, query: str, domain: str = "", tool: str = "",
                  params: dict[str, Any] | None = None, index: int = 0,
                  depends: bool = False, dep_on: int = 0, src: str = "",
-                 include_tool_result: bool = False, tool_result: str = "") -> None:
+                 include_tool_result: bool = False, tool_result: str = "",
+                 after: int = 0) -> None:
         self.query = query
         self.domain = domain
         self.tool = tool
@@ -306,6 +312,9 @@ class Intent:
         self.src = src
         self.include_tool_result = include_tool_result
         self.tool_result = tool_result
+        # 仅执行顺序依赖（不用其结果）：本条已带 tool/params，可与 after 目标同批发出，
+        # 由 step.dependsOn 告知 runtime 先后；区别于 depends（结果依赖，须等下一 tick 改写）。
+        self.after = after
 
 
 class Plan:
@@ -326,25 +335,33 @@ class Plan:
 def parse_plan(text: str) -> Plan:
     """LLM 输出 → Plan。复用一把出 parser 的全部容错；解析失败 → 空 Plan。
 
-    多步架构：首轮只为【可立即执行】条目定 tool/params；依赖条目只保留 q/d/dep，
+    多步架构：首轮只为【可立即执行】条目定 tool/params；依赖条目只保留 q/d（无 tool），
     其 tool/params 由续跑轮（拿到前序结果、完成指代消解后）再生成。模型若仍给了依赖条目的
     tool/params，这里一律丢弃——否则续跑会把这个"盲猜"的工具当计划工具钉死。
     """
     intents, _err = parse_oneshot(text)
     out: list[Intent] = []
+    # dep 仅表示「依赖前序【执行结果】」。不依赖结果的条目一律首轮直接发出，即使计划里夹着 dep 条；
+    # 它们按序串成 dependsOn 链（指向前一个非 dep 条），由 runtime 保证先后，不等 dep 条的结果。
+    prev_direct = 0
     for i, it in enumerate(intents, start=1):
-        dep = bool(it.dep)
+        # 不再要求模型写 dep：后一条默认依赖前一条。第 2 条起没有 tool（只写 q/d）= 要等前一步
+        # 结果出来再改写填参；旧输出里的显式 dep 仍兼容，一律归一为依赖紧邻前一条。
+        dep = i > 1 and (bool(it.dep) or not it.tool)
         out.append(Intent(
             query=it.q, domain=it.d or "",
             tool="" if dep else (it.tool or ""),
             params={} if dep else it.params,
-            index=i, depends=dep, dep_on=it.dep, src=it.q,
+            index=i, depends=dep, dep_on=(i - 1 if dep else 0), src=it.q,
+            after=0 if dep else prev_direct,
         ))
+        if not dep:
+            prev_direct = i
     return Plan(out)
 
 
 # ---------------------------------------------------------------------------
-# 批次派生（契约派生，非语言规则：由 dep 序号确定当前可执行批）
+# 批次派生（契约派生，非语言规则：由条目顺序确定当前可执行批）
 # ---------------------------------------------------------------------------
 def _executed_indexes(history: list[dict[str, Any]] | None) -> set[int]:
     """从 toolHistory 提取「已执行过的 step 序号」。"""
@@ -363,14 +380,19 @@ def _executed_indexes(history: list[dict[str, Any]] | None) -> set[int]:
 
 
 def next_batch(plan: Plan, executed: set[int]) -> list[Intent]:
-    """下一批：无依赖全发(并行)；依赖意图需其依赖项已执行(串行)。"""
+    """下一批：无依赖全发(并行)；结果依赖需其依赖项已执行(串行)；
+    顺序依赖(after)只要目标已执行或在本批内即可同批发出（dependsOn 交 runtime 排序）。"""
     out: list[Intent] = []
+    in_batch: set[int] = set()
     for it in plan.intents:
         if it.index in executed:
             continue
         if it.depends and it.dep_on not in executed:
             continue
+        if it.after and it.after not in executed and it.after not in in_batch:
+            continue
         out.append(it)
+        in_batch.add(it.index)
         if len(out) >= get_settings().max_plan_steps:
             break
     return out
@@ -614,6 +636,17 @@ def _steps_from_batch(batch: list[Intent],
         tool_name = it.tool or ""
         params: Any = dict(it.params) if isinstance(it.params, dict) else {}
 
+        # 设备虚拟 schema（HC_DEVICE_VIRTUAL）：LLM 只写 action/target/value/time，在此查表还原成真实
+        # operation/object。无法还原（缺 action 等）按「没选出工具」处理，走下面的知识问答兜底。
+        if (tool_name and get_settings().device_virtual
+                and (it.domain or catalog.domain_of_tool(tool_name)) == "device"):
+            try:
+                params = device_schema.compile_tolerant(tool_name, params)
+            except ValueError as exc:
+                logger.warning("设备虚拟参数无法还原，降级兜底：tool=%s params=%s err=%s",
+                               tool_name, params, exc)
+                tool_name, params = "", {}
+
         # 兜底：无工具（选工具失败 / 目录不可用）→ 泛知识问答。
         # 【不要】在此清空 it.domain —— 域是有效信号，下面 rebuild 用 QA_SCENE_BY_DOMAIN
         # 把它转成 sceneType：d="" 落域失败 → knowledge_qa（通用 qa，同 hcAgent）；
@@ -628,6 +661,12 @@ def _steps_from_batch(batch: list[Intent],
         if turnslow_hits and tool_name in turnslow_hits:
             reason = turnslow_hits[tool_name]
             target = _turnslow_route(tool_name, reason, it.domain)
+            # 同域 fuzzy 兜底只试一次：兜底目标自己也返回过 turnSlow（如 NO_DATA）→ 收口 fan 终点。
+            # 否则 LLM 每轮仍选原工具、查到的仍是其首个 reason，会反复重发 fuzzy 直到 runtime tick 上限。
+            if target != _TURNSLOW_QA_TOOL and target in turnslow_hits:
+                logger.info("turnSlow 兜底 %s 已返回过 turnSlow(%s)，收口泛知识问答",
+                            target, turnslow_hits[target])
+                target = _TURNSLOW_QA_TOOL
             fb_q = it.src if single else (it.query or it.src or "")
             if target == _TURNSLOW_QA_TOOL:
                 # qa 是链路终点：走到它就是最后一发，forceStop 置真（runtime 不可 override）。
@@ -672,7 +711,8 @@ def _steps_from_batch(batch: list[Intent],
             "toolName": tool_name,
             "parameters": params,
             "plan": None,
-            "dependsOn": [f"s{it.dep_on}"] if it.depends and it.dep_on else [],
+            "dependsOn": ([f"s{it.dep_on}"] if it.depends and it.dep_on
+                          else [f"s{it.after}"] if it.after else []),
             "retext": it.src if single else (it.query or it.src),
             "hitQuery": it.query,      # 透传真正发给工具/展示的改写后 query（审计）
         }
@@ -728,7 +768,9 @@ class TraceStateMachine:
         try:
             message = await llm.chat(
                 [{"role": "system",
-                  "content": fewshot.system_prompt(build_oneshot_prompt(block, slot_block), query)},
+                  "content": fewshot.system_prompt(build_oneshot_prompt(block, slot_block), query,
+                                        _now_dt(_REQ_TS.get()))
+                  + entity.context_block(query)},
                  {"role": "user", "content": user}])
         except llm.LLMError as exc:
             logger.error("首轮计划 LLM 失败：%s", exc)
@@ -763,11 +805,14 @@ class TraceStateMachine:
             return Intent(query=q, domain=it.domain, tool=tool, params=params,
                           index=it.index, depends=it.depends, dep_on=it.dep_on,
                           src=it.src, include_tool_result=it.include_tool_result,
-                          tool_result=tool_result if it.include_tool_result else "")
+                          tool_result=tool_result if it.include_tool_result else "",
+                          after=it.after)
 
         resolved = list(await asyncio.gather(*[resolve(it) for it in batch]))
-        cursor = max((i.index for i in resolved), default=0)
-        stop = not [i for i in plan.intents if i.index > cursor]
+        # 收口按「已执行 ∪ 本批」判：早先按最大序号游标判，混合计划（s3/s4 首轮已随 s1 发出、
+        # 本轮只发 s2）会误判仍有剩余 → stop=false，runtime 多跑一个空 tick。
+        sent = executed | {i.index for i in resolved}
+        stop = all(i.index in sent for i in plan.intents)
         if stop:
             self._clear(key)
         else:
@@ -964,7 +1009,8 @@ async def build_response(req) -> dict[str, Any]:
         body["data"]["debug"] = {
             "planId": body["data"]["planId"],
             "intents": [{"index": i.index, "query": i.query, "domain": i.domain,
-                         "tool": i.tool, "depends_on_previous": i.depends} for i in batch],
+                         "tool": i.tool, "depends_on_previous": i.depends,
+                         "after": i.after} for i in batch],
         }
     return body
 
@@ -977,7 +1023,8 @@ async def run_oneshot(query: str, metadata: dict[str, Any] | None = None):
     from .models import OneResponse
     started = time.perf_counter()
     system = fewshot.system_prompt(
-        build_oneshot_prompt(_catalog_block(), await slots.slot_block_for(query)), query)
+        build_oneshot_prompt(_catalog_block(), await slots.slot_block_for(query)), query, _now_dt()) \
+        + entity.context_block(query)
     messages = [
         {"role": "system", "content": system},
         {"role": "user", "content": f"{_now_line()}\n用户请求：{query}"},

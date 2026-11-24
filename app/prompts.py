@@ -7,15 +7,19 @@
 """
 from __future__ import annotations
 
+from . import device_schema
+from .config import get_settings
+
 # 基础 prompt：任务 + 输出契约 + 域判别 + 规则。参数块与锚例在 build_oneshot_prompt 里追加。
 ONESHOT_PROMPT = """你是电视语音助手。读用户请求，**一次性**给出执行计划：拆句、改写、定域、选工具、填参数。
 
-【输出】顶层 JSON 数组，每一项是一条计划，只输出数组本身，不要 ``` 解释、不要 thinking。条目分两种：
-- 可立即执行的条目（不依赖其他条的结果）：{"q": <改写后自包含子请求>, "d": <域>, "vt": <域:工具>, "params": <参数对象>}
-- 依赖条目（要用更早一条的结果才能执行）：{"q": <子请求>, "d": <域>, "dep": <所依赖条序号>}
-  **依赖条目只写 q/d/dep，不写 vt、不写 params**：它的指代要等前一步结果出来后才能消解，
-  届时系统会再改写并选工具填参。
-并行（多条互不依赖）→ 每条都是可立即执行条目；串行 → 第 1 条可立即执行，后续为依赖条目。
+【输出】顶层 JSON 数组，只输出数组本身，不要 ``` 解释、不要 thinking。数组顺序就是执行顺序，多意图按用户说出的顺序依次执行，每条一个工具。条目分两种：
+- 普通条目（参数现在就能确定）：{"q": <改写后自包含子请求>, "d": <域>, "vt": <域:工具>, "params": <参数对象>}
+  如"播放三体，跳到第十五分钟"：跳转排在起播之后即可，照常写 vt/params，不需要额外标记先后。
+- 依赖条目（本条要选什么 tool、填什么参数，取决于【前一个 tool 的执行结果】，只能是第 2 条起）：{"q": <子请求>, "d": <域>}
+  **依赖条目只写 q/d，不写 vt、不写 params**：它的指代要等前一步结果出来后才能消解，
+  届时系统会再改写并选工具填参。仅有先后顺序、不需要前一步结果的（如"听歌，再把音量调到10"），
+  照常写 vt/params，不是依赖条目。
 
 字段规则：
 - "q": 改写后【自包含、可直接执行】的一句话子请求；保留用户核心意图动词（"听"不可改成"播放"）。
@@ -28,9 +32,8 @@ ONESHOT_PROMPT = """你是电视语音助手。读用户请求，**一次性**�
   目录里没列出的参数（如 retext、整句透传的原话）由系统自动补，**不要填**。
   相对时间（今天/明天/周末/上周/最近三天…）一律以用户消息里给出的【当前时间】为基准换算成具体日期，
   严禁自行假设年份或日期；格式按目录中该工具的时间字段要求。
-- "dep": 仅当该条依赖【更早一条】的结果（如"该导演的影片""第三个""第二部""评分最高的一部"）才用，
-  值=所依赖条的序号（从 1 计数），写在条目顶层（不要写进 params）；并行独立条目不写。
-  依赖条目的 q 保留指代与要问的属性（如"第二部的导演是谁"），不要提前猜具体内容。
+- 依赖条目：仅当该条要用【前一条】的结果（如"该导演的影片""第三个""第二部""评分最高的一部"）才用；
+  "然后/接着/再"只表示先后，不是依赖。q 保留指代与要问的属性（如"第二部的导演是谁"），不要提前猜具体内容。
 
 【域判别——按内容本质选域，别只看"视频/播放"就归 vod】：
 - sports：比赛/赛事/锦标赛/决赛/预选赛/录像集锦/比分/赛程/球队排名/网球/跳水/格斗/足球/篮球/NBA/搏击。
@@ -50,7 +53,7 @@ ONESHOT_PROMPT = """你是电视语音助手。读用户请求，**一次性**�
    注意：推荐/给我推荐/按我喜好推荐是【检索动作，非纯聊天】，必须拆出并落到对应内容域。
 4. 【排序/筛选修饰归属】：用户在第一句就带排序/筛选修饰（"评分最高的/人气最高的/最新的一部/播放量最高"）时，
    该修饰**属于第一句检索**，必须保留在第一句 q 与其 params 里，**严禁**下放成第二句对结果的二次筛选。
-   第二句只保留对结果的属性提问（"这一部的导演是谁"），并用 dep 指向第一句。
+   第二句只保留对结果的属性提问（"这一部的导演是谁"），并写成依赖条目（只写 q/d）。
 
 【工具与参数目录】
 __TOOLS__
@@ -71,13 +74,18 @@ _ANCHORS = """
 [{"q":"播放战狼2","d":"vod","vt":"vod:vod_search_all","params":{"action":"play","query":{"field":"title","value":"战狼2"}}},
  {"q":"把音量调到30","d":"device","vt":"device:numeric_adjust","params":{"object":"volume","value":"30"}}]
 
+用户：播放三体，跳到第十五分钟，音量调到8
+[{"q":"播放《三体》","d":"audio","vt":"audio:audio_search","params":{"action":"play"}},
+ {"q":"跳到第十五分钟","d":"device","vt":"device:playback_control","params":{"operation":"跳转","object":"播放控制","value":"15分钟"}},
+ {"q":"音量调到8","d":"device","vt":"device:numeric_adjust","params":{"operation":"设置","object":"音量","value":"8"}}]
+
 用户：搜索评分最高的胡歌演的电影，导演是谁
 [{"q":"搜索评分最高的胡歌演的电影","d":"vod","vt":"vod:vod_search_all","params":{"action":"search","query":{"and":[{"field":"actor","value":"胡歌"},{"field":"category","value":"电影"}]},"sort":{"rate":{"order":"desc"}}}},
- {"q":"这一部电影的导演是谁","d":"vod","dep":1}]
+ {"q":"这一部电影的导演是谁","d":"vod"}]
 
 用户：搜索刘德华最近的电影，第三个的导演是谁
 [{"q":"搜索刘德华最近的电影","d":"vod","vt":"vod:vod_search_all","params":{"action":"search","query":{"and":[{"field":"actor","value":"刘德华"},{"field":"category","value":"电影"}]},"sort":{"new":{"order":"desc"}}}},
- {"q":"搜索结果中第三部的导演是谁","d":"vod","dep":1}]
+ {"q":"搜索结果中第三部的导演是谁","d":"vod"}]
 
 用户：你好
 []
@@ -97,7 +105,11 @@ def build_oneshot_prompt(catalog_block: str = "", slot_block: str = "") -> str:
         # 目录为空（hcTools 未起/拉取失败）：仍可拆句定域，工具与参数留空由下游兜底。
         base = base.replace("【工具与参数目录】\n__TOOLS__\n",
                             "【工具与参数目录】（当前不可用：只填 q 与 d，tool/params 留空）\n")
-    return base + _ANCHORS + (slot_block or "")
+    anchors = _ANCHORS
+    if get_settings().device_virtual:                 # 设备锚例换成虚拟写法（LLM 只感知虚拟 schema）
+        for old, new in device_schema.ANCHOR_REWRITES:
+            anchors = anchors.replace(old, new)
+    return base + anchors + (slot_block or "")
 
 
 # T1 续跑：把【待执行意图】用上一步真实结果改写成自包含 query，并**同时**给出 tool+params。

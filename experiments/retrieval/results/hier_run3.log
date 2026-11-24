@@ -1,0 +1,27 @@
+  llm 500/2754
+  llm 1000/2754
+  llm 1500/2754
+  llm 2000/2754
+  llm 2500/2754
+[L2s2/lso] lib=2821 t+p=73.0% tool=89.1% shots=3.88 rule=0.10 ent=0.00 (204s)
+  llm 500/1178
+  llm 1000/1178
+[hier_L2s2/lso] lib=2821 t+p=75.1% tool=89.7% shots=3.93 rule=0.30 ent=0.21 (111s)
+  llm 500/1862
+  llm 1000/1862
+  llm 1500/1862
+[hier_L2s3/lso] lib=3150 t+p=75.7% tool=90.1% shots=3.94 rule=0.30 ent=0.21 (138s)
+  llm 500/969
+[base_hier/lso] lib=16977 t+p=78.1% tool=91.7% shots=3.96 rule=0.30 ent=0.21 (109s)
+[hier_L2s2_elso/lso] lib=2821 t+p=73.7% tool=89.0% shots=3.91 rule=0.30 ent=0.13 (29s)
+[hier_L2s3_elso/lso] lib=3150 t+p=74.3% tool=89.4% shots=3.92 rule=0.30 ent=0.13 (17s)
+[base_hier_elso/lso] lib=16977 t+p=76.5% tool=91.0% shots=3.95 rule=0.30 ent=0.13 (31s)
+
+arm           fs       lib topk  shots    tool     t+p     vod   educ    edu  music  audio sports tv_con
+L2s2          lso     2821    4   3.88   89.1%   73.0%    64.3   51.2   69.2   70.0   83.9   71.8   83.3
+hier_L2s2     lso     2821    4   3.93   89.7%   75.1%    69.1   63.1   69.3   73.2   83.1   70.1   83.3
+hier_L2s3     lso     3150    4   3.94   90.1%   75.7%    67.9   62.9   72.7   74.8   83.1   70.3   83.8
+base_hier     lso    16977    4   3.96   91.7%   78.1%    70.3   66.2   80.4   77.4   83.9   71.8   84.7
+hier_L2s2_elsolso     2821    4   3.91   89.0%   73.7%    66.2   56.2   69.3   70.4   83.1   71.2   83.3
+hier_L2s3_elsolso     3150    4   3.92   89.4%   74.3%    64.6   57.2   72.7   71.3   83.1   71.2   83.8
+base_hier_elsolso    16977    4   3.95   91.0%   76.5%    67.7   58.7   80.4   74.0   83.9   71.0   84.7

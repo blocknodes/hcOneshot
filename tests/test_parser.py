@@ -3,6 +3,8 @@
 """parser / catalog 单测（无外部依赖，不起服务）。"""
 from __future__ import annotations
 
+import json
+
 import sys
 import time
 from pathlib import Path
@@ -23,6 +25,7 @@ def _set_file_catalog() -> None:
     # 单测与 .env 隔离：精简目录 / few-shot 都按默认值（关）测
     os.environ["HC_CATALOG_COMPACT"] = "0"
     os.environ["HC_FEWSHOT_ENABLED"] = "0"
+    os.environ["HC_ENTITY_ENABLED"] = "0"
     from app import config
     config.get_settings.cache_clear()
 
@@ -108,6 +111,14 @@ def _all_docs_present() -> bool:
                 print(f"    缺参数说明: {t['id']}.{k}")
                 return False
     return True
+
+
+def _raises(fn) -> bool:
+    try:
+        fn()
+    except ValueError:
+        return True
+    return False
 
 
 def main() -> int:
@@ -351,6 +362,13 @@ def main() -> int:
     results.append(case("parse_json_loose 解析裸 null 得 None",
                         parse_json_loose("null") is None
                         and parse_json_loose("jsonnull") is None))
+    # 7n) 检索树叶子漏写 value：{"field":"category":"电影"} → 补成 field/value；合法输出不受影响
+    raw = '[{"q":"热门喜剧电影","d":"vod","vt":"vod:vod_search_all","params":{"action":"search","query":{"and":[{"field":"tag","value":"喜剧"},{"field":"category":"电影"}]}}}]'
+    v = parse_json_loose(raw)
+    results.append(case("叶子漏写 value 能修复",
+                        isinstance(v, list) and v[0]["params"]["query"]["and"][1] == {"field": "category", "value": "电影"}))
+    ok_raw = '[{"q":"a","params":{"query":{"field":"title","value":"x:\\"y\\""}}}]'
+    results.append(case("合法叶子不被改写", parse_json_loose(ok_raw) == json.loads(ok_raw)))
     # ```json 紧贴内容（无换行）
     it, err = parse_oneshot('```json[{"q":"a","d":"vod","tool":"vod_search_all"}]```')
     results.append(case("```json 无换行紧贴", len(it) == 1))
@@ -460,12 +478,12 @@ def main() -> int:
     results.append(case("toolHistory 序号识别",
                         _executed_indexes([{"id": "s1"}, {"index": 2}]) == {1, 2}))
 
-    # step 组装：并行两条 → 各自 id/dependsOn/retext
+    # step 组装：多意图顺序执行 → s2.dependsOn=[s1]
     _b = parse_plan('[{"q":"放首歌","d":"music","tool":"music_song_search","params":{}},'
                     '{"q":"调音量到30","d":"device","tool":"numeric_adjust","params":{"value":"30"}}]')
     _s, _f = _steps_from_batch(_b.intents)
     results.append(case("step id/dependsOn 拼装",
-                        [x["id"] for x in _s] == ["s1", "s2"] and all(not x["dependsOn"] for x in _s)
+                        [x["id"] for x in _s] == ["s1", "s2"] and [x["dependsOn"] for x in _s] == [[], ["s1"]]
                         and _f is False))
 
     # fan 契约规范化：模型给 messages:string → 必须变数组 + riskRespStrategy + sceneType
@@ -529,6 +547,21 @@ def main() -> int:
     _ms3, _mf3 = _steps_from_batch(_mb, history=_hist("vod_search_all"))  # 裸 turnSlow 无 reason
     results.append(case("裸 turnSlow(无 reason)→fan 终点",
                         _ms3[0]["toolName"] == "fan_knowledge_agent" and _mf3 is True))
+    # 同域 fuzzy 兜底只试一次：fuzzy 自己也 turnSlow 过（如 NO_DATA）→ 收口 fan 终点。
+    # 曾因只查 LLM 所选工具（search_all）的首个 reason，fuzzy 返回 NO_DATA 后仍被反复重发，
+    # 跑满 runtime tick 上限（线上「请播放张云雷的相声」11 tick、端上一直「正在思考」）。
+    _hist_chain = _hist("vod_search_all", "NO_SLOT_MAPPING_VALUE") + [
+        {"index": 1, "id": "s1", "toolName": "vod_fuzzy_search",
+         "result": {"data": {"turnSlow": True, "reason": "NO_DATA"}}}]
+    _ms4, _mf4 = _steps_from_batch(_mb, history=_hist_chain)
+    results.append(case("fuzzy 兜底后又 turnSlow(NO_DATA)→fan 终点（不重发 fuzzy）",
+                        _ms4[0]["toolName"] == "fan_knowledge_agent" and _mf4 is True,
+                        f"{_ms4[0]['toolName']} force={_mf4}"))
+    _mb_fz = [Intent(query="q", domain="vod", tool="vod_fuzzy_search", index=1, src="q")]
+    _ms5, _mf5 = _steps_from_batch(_mb_fz, history=_hist_chain)
+    results.append(case("计划直接选 fuzzy 且 fuzzy 已 turnSlow→fan 终点",
+                        _ms5[0]["toolName"] == "fan_knowledge_agent" and _mf5 is True,
+                        f"{_ms5[0]['toolName']} force={_mf5}"))
 
     # _tool_result_text：最新一步的候选优先，带「第N部」序号
     _tr = _tool_result_text([{"index": 1, "result": {"data": {"memoryData": [{"data": [
@@ -1199,6 +1232,269 @@ def main() -> int:
     results.append(case("目录块与 prompt 锚例均不含 retext",
                         "retext" not in _blk2
                         and '"retext"' not in __import__("app.prompts", fromlist=["x"])._ANCHORS))
+
+    # ---- after：仅执行顺序依赖（同批发出 + dependsOn），以及混合计划收口 ----
+    _af, _ = parse_oneshot('[{"q":"播放《三体》","d":"audio","vt":"audio:audio_search","params":{"action":"play"}},'
+                           '{"q":"跳到第十五分钟","d":"device","vt":"device:playback_control",'
+                           '"params":{"operation":"跳转","object":"播放控制","value":"15分钟"},"after":1},'
+                           '{"q":"音量调到8","d":"device","vt":"device:numeric_adjust",'
+                           '"params":{"operation":"设置","object":"音量","value":"8","after":"1"}}]')
+    results.append(case("after 解析：顶层/params 内均识别，归一为序号，不入 params",
+                        [i.after for i in _af] == [0, 1, 1] and [i.dep for i in _af] == [0, 0, 0]
+                        and "after" not in _af[2].params))
+    _af2, _ = parse_oneshot('[{"q":"","d":"audio"},{"q":"a","d":"audio","vt":"audio:audio_search","params":{"action":"play"}},'
+                            '{"q":"b","d":"device","vt":"device:playback_control","params":{"operation":"跳转","object":"播放控制"},"after":2},'
+                            '{"q":"c","d":"device","vt":"device:playback_control","params":{"operation":"跳转","object":"播放控制"},"after":1},'
+                            '{"q":"d","d":"audio","dep":2,"after":3}]')
+    results.append(case("after 重映射/指向丢弃条清零/与 dep 同在以 dep 为准",
+                        [i.after for i in _af2] == [0, 1, 0, 0] and _af2[3].dep == 1))
+    _afp = parse_plan('[{"q":"播放《三体》","d":"audio","vt":"audio:audio_search","params":{"action":"play"}},'
+                      '{"q":"跳到第十五分钟","d":"device","vt":"device:playback_control",'
+                      '"params":{"operation":"跳转","object":"播放控制","value":"15分钟"},"after":1}]')
+    _afb = next_batch(_afp, set())
+    _afs, _ = _steps_from_batch(_afb)
+    results.append(case("after 条目与目标同批发出，step.dependsOn=[目标]，tool/params 保留",
+                        [i.index for i in _afb] == [1, 2]
+                        and _afs[1]["dependsOn"] == ["s1"] and _afs[0]["dependsOn"] == []
+                        and _afs[1]["toolName"] == "playback_control"
+                        and _afs[1]["parameters"]["value"] == "15分钟"))
+    _afw = parse_plan('[{"q":"搜郭德纲相声","d":"audio","vt":"audio:audio_search","params":{"action":"search"}},'
+                      '{"q":"播放第一个","d":"audio","dep":1},'
+                      '{"q":"跳到第十五分钟","d":"device","vt":"device:playback_control",'
+                      '"params":{"operation":"跳转","object":"播放控制"},"after":2}]')
+    results.append(case("跳转不依赖结果：首轮与 s1 同批（串在 s1 后），dep 条 s2 等结果后续跑",
+                        [i.index for i in next_batch(_afw, set())] == [1, 3]
+                        and _afw.intents[2].after == 1
+                        and [i.index for i in next_batch(_afw, {1, 3})] == [2]))
+
+    _af_calls: list = []
+    _af_replies = [
+        '[{"q":"播放《三体》","d":"audio","vt":"audio:audio_search","params":{"action":"play"}},'
+        '{"q":"跳到第十五分钟","d":"device","vt":"device:playback_control",'
+        '"params":{"operation":"跳转","object":"播放控制","value":"15分钟"}},'
+        '{"q":"音量调到8","d":"device","vt":"device:numeric_adjust","params":{"operation":"设置","object":"音量","value":"8"}}]',
+        '[{"q":"播放《晴天》","d":"music","vt":"music:music_song_search","params":{"song":["晴天"]}},'
+        '{"q":"第一首是谁唱的","d":"music","dep":1},'
+        '{"q":"音量调到10","d":"device","vt":"device:numeric_adjust","params":{"operation":"设置","object":"音量","value":"10"}}]',
+        '{"q":"《晴天》是谁唱的","tool":"fan_knowledge_agent","params":{"messages":"《晴天》是谁唱的"}}',
+    ]
+
+    async def _af_chat(messages, metadata=None):
+        _af_calls.append(1)
+        return {"content": _af_replies[len(_af_calls) - 1]}
+
+    _orig_chat6, _orig_sm6 = _eng2.llm.chat, _eng2._sm
+    _sm6 = _TSM2()
+    _eng2.llm.chat, _eng2._sm = _af_chat, (lambda: _sm6)
+    try:
+        with _MTL2:
+            _MT_CONTEXT.clear()
+        _ra = asyncio.get_event_loop().run_until_complete(_eng2.build_response(
+            SlowRequest(traceId="a1", deviceId="da1",
+                        data={"query": "播放三体，跳到第十五分钟，音量调到8"})))
+        _sa = _ra["data"]["steps"]
+        results.append(case("e2e 顺序依赖：一次返回全部 3 步、s2.dependsOn=[s1]、stop=true、1 次 LLM",
+                            [s["id"] for s in _sa] == ["s1", "s2", "s3"]
+                            and [s["dependsOn"] for s in _sa] == [[], ["s1"], ["s2"]]
+                            and _ra["stop"] is True and len(_af_calls) == 1))
+        with _MTL2:
+            _MT_CONTEXT.clear()
+        _rb1 = asyncio.get_event_loop().run_until_complete(_eng2.build_response(
+            SlowRequest(traceId="b1", deviceId="db1", data={"query": "播放晴天，第一首是谁唱的，音量调到10"})))
+        _hb1 = [{"index": 1, "id": "s1", "toolName": "music_song_search",
+                 "result": {"data": {"memoryData": [{"data": [{"mediaTitle": "晴天"}]}]}}},
+                {"index": 3, "id": "s3", "toolName": "numeric_adjust", "result": {"code": 200}}]
+        _rb2 = asyncio.get_event_loop().run_until_complete(_eng2.build_response(
+            SlowRequest(traceId="b2", deviceId="db1",
+                        data={"query": "播放晴天，第一首是谁唱的，音量调到10", "toolHistory": _hb1})))
+        results.append(case("不依赖结果的 s3 与 s1 首轮同批(s3.dependsOn=[s1])；s2(dep) 续跑后 stop=true",
+                            [s["id"] for s in _rb1["data"]["steps"]] == ["s1", "s3"]
+                            and _rb1["data"]["steps"][1]["dependsOn"] == ["s1"] and _rb1["stop"] is False
+                            and [s["id"] for s in _rb2["data"]["steps"]] == ["s2"] and _rb2["stop"] is True))
+    finally:
+        _eng2.llm.chat, _eng2._sm = _orig_chat6, _orig_sm6
+
+    # 不依赖结果的条目不被夹在中间的 dep 条卡住：s1、s3 首轮同批，s3.dependsOn=[s1]；s2 等结果
+    _mx = parse_plan('[{"q":"搜周星驰的电影","d":"vod","vt":"vod:vod_search_all","params":{"action":"search"}},'
+                     '{"q":"第一部的导演是谁","d":"vod"},'
+                     '{"q":"音量调到10","d":"device","vt":"device:numeric_adjust","params":{"value":"10"}}]')
+    results.append(case("dep 条不阻塞后面不依赖结果的条目：首轮 s1+s3，s3 串在 s1 后；s2 续跑",
+                        [i.index for i in next_batch(_mx, set())] == [1, 3]
+                        and _mx.intents[2].after == 1
+                        and [i.index for i in next_batch(_mx, {1, 3})] == [2]))
+    # 两条都有 tool、都无 dep：一次发出，s2.dependsOn=[s1]
+    _tw = parse_plan('[{"q":"听晴天","d":"music","vt":"music:music_song_search","params":{"song":["晴天"]}},'
+                     '{"q":"音量调到10","d":"device","vt":"device:numeric_adjust","params":{"value":"10"}}]')
+    _tb = next_batch(_tw, set())
+    results.append(case("无 dep 的两步：一批全发，s2.dependsOn=[s1]",
+                        [i.index for i in _tb] == [1, 2] and _steps_from_batch(_tb)[0][1]["dependsOn"] == ["s1"]))
+
+    # ---- 设备域虚拟 schema（app/device_schema.py）----
+    from app import device_schema as _ds
+    _cc = _ds.compile_call
+    results.append(case("虚拟 schema：关机/暂停/全屏/回到主页/关屏/静音 → 真实 operation+object",
+                        _cc("power_control", {"action": "关机"}) == {"operation": "打开", "object": "关机"}
+                        and _cc("playback_control", {"action": "暂停"}) == {"operation": "停止", "object": "播放控制"}
+                        and _cc("screen_layout", {"action": "全屏"}) == {"operation": "打开", "object": "全屏"}
+                        and _cc("common_control", {"action": "回到主页"}) == {"operation": "打开", "object": "主页"}
+                        and _cc("screensaver_control", {"action": "关屏"}) == {"operation": "关闭", "object": "屏幕"}
+                        and _cc("numeric_adjust", {"action": "静音"}) == {"operation": "打开", "object": "静音"}))
+    results.append(case("虚拟 schema：value 透传、time→date_time、带 target 走通用动作",
+                        _cc("playback_control", {"action": "下一个", "value": "集"})
+                        == {"operation": "下", "object": "播放控制", "value": "集"}
+                        and _cc("timer_control", {"action": "定时关机", "time": "30分钟"})
+                        == {"operation": "打开", "object": "关机", "date_time": "30分钟"}
+                        and _cc("numeric_adjust", {"action": "设置", "target": "音量", "value": "30"})
+                        == {"operation": "设置", "object": "音量", "value": "30"}
+                        and _cc("common_control", {"action": "返回", "target": "蓝牙设置"})
+                        == {"operation": "返回", "object": "蓝牙设置"}))
+    results.append(case("虚拟 schema：往返无损（含通用动作）；缺 operation / 重名歧义抛 ValueError",
+                        all(_cc(t, _ds.decompile_call(t, p)) == p for t, p in (
+                            ("power_control", {"operation": "打开", "object": "重启"}),
+                            ("mode_control", {"operation": "设置", "object": "图像模式", "value": "标准"}),
+                            ("display_control", {"operation": "关闭", "object": "原画显示"}),
+                            ("solve_picture_sound_problem_control", {"intent": "colors_washed_out"})))
+                        and all(_raises(lambda a=a: a()) for a in (
+                            lambda: _ds.decompile_call("power_control", {"object": "开机"}),
+                            lambda: _ds.compile_call("power_control", {}),
+                            lambda: _ds.decompile_call("playback_control", {"operation": "顺序播放"})))))
+
+    # ---- few-shot 示例日期：按当前时间重算相对日期（2026-11-23 周一）----
+    import datetime as _rbdt
+    from app import fewshot as _rbfs
+    _rbnow = _rbdt.date(2026, 11, 23)
+    _rbe = lambda q, v: f'用户：{q}\n{{"field":"sport_time","value":"{v}"}}'
+    results.append(case("示例日期：周六→20261128、后天→20261125、「一下周六」不当下周",
+                        '"20261128"' in _rbfs._rebase_dates(_rbe("周六的篮球赛，麻烦预约一下", "20260912"), _rbnow)
+                        and '"20261128"' in _rbfs._rebase_dates(_rbe("预约一下周六亚马尔的比赛", "20260912"), _rbnow)
+                        and '"20261125"' in _rbfs._rebase_dates(_rbe("预约后天杨家玉的比赛", "20260826"), _rbnow)))
+    results.append(case("示例日期：上周范围换算；绝对日期示例与 now 缺省不改",
+                        "20261116 00:00:00" in _rbfs._rebase_dates(
+                            _rbe("上周的篮球赛", "20260831 00:00:00"), _rbnow)
+                        and _rbfs._rebase_dates(_rbe("预约9月14日的比赛", "20260914"), _rbnow)
+                        == _rbe("预约9月14日的比赛", "20260914")
+                        and _rbfs._rebase_dates(_rbe("周六的篮球赛", "20260912"), None)
+                        == _rbe("周六的篮球赛", "20260912")))
+
+    # ---- HC_DEVICE_VIRTUAL：LLM 只感知虚拟 schema，后处理还原 ----
+    import tempfile as _dvtf
+    from pathlib import Path as _dvP
+    from app import catalog as _dvcat, fewshot as _dvfs
+    from app.config import get_settings as _dvgs
+    from app.engine import _steps_from_batch as _dvsfb, parse_plan as _dvpp
+    from app.parser import parse_oneshot as _dvpo
+    from app.prompts import build_oneshot_prompt as _dvbop
+    _dvst = _dvgs()
+    _dvblk_off, _dvpr_off = _dvcat.render_oneshot_block(), _dvbop("x")
+    _dvvod_off = [l for l in _dvblk_off.split("\n") if l.startswith("- vod:vod_search_all")]
+    _dvst.device_virtual = True
+    try:
+        _dvblk_on, _dvpr_on = _dvcat.render_oneshot_block(), _dvbop("x")
+        _dvdev_on = _dvblk_on[_dvblk_on.index("【device】"):_dvblk_on.index("【education】")]
+        results.append(case("虚拟开：目录块设备部分只有 action 写法（无 operation），透传类保留，其他域不变",
+                            "device:power_control | 必填 action[开机|关机|重启]" in _dvdev_on
+                            and "operation" not in _dvdev_on.replace("solve_picture", "")
+                            .split("device:fan_knowledge_agent")[0].split("device:solve")[0]
+                            and "device:solve_picture_sound_problem_control" in _dvdev_on
+                            and "device:fan_knowledge_agent" in _dvdev_on
+                            and [l for l in _dvblk_on.split("\n") if l.startswith("- vod:vod_search_all")] == _dvvod_off))
+        results.append(case("虚拟开：设备锚例换成 action 写法，不再有 operation/object:volume",
+                            '"params":{"action":"设置","target":"音量","value":"30"}' in _dvpr_on
+                            and '"params":{"action":"跳转","value":"15分钟"}' in _dvpr_on
+                            and '"object":"volume"' not in _dvpr_on and '"object":"播放控制"' not in _dvpr_on))
+        _dvpl = _dvpp('[{"q":"关机","d":"device","vt":"device:power_control","params":{"action":"关机"}},'
+                  '{"q":"暂停","d":"device","vt":"device:playback_control","params":{"action":"暂停"}},'
+                  '{"q":"音量调到30","d":"device","vt":"device:numeric_adjust",'
+                  '"params":{"action":"设置","target":"音量","value":"30"}},'
+                  '{"q":"30分钟后关机","d":"device","vt":"device:timer_control",'
+                  '"params":{"action":"定时关机","time":"30分钟"}}]')
+        _dvsv, _ = _dvsfb(_dvpl.intents)
+        results.append(case("虚拟开：后处理把虚拟参数还原成真实 operation/object（工具名不变）",
+                            [(x["toolName"], x["parameters"]) for x in _dvsv] == [
+                                ("power_control", {"operation": "打开", "object": "关机"}),
+                                ("playback_control", {"operation": "停止", "object": "播放控制"}),
+                                ("numeric_adjust", {"operation": "设置", "object": "音量", "value": "30"}),
+                                ("timer_control", {"operation": "打开", "object": "关机", "date_time": "30分钟"})]))
+        _pl2 = _dvpp('[{"q":"关机","d":"device","vt":"device:power_control","params":{"operation":"打开","object":"关机"}},'
+                   '{"q":"关个机","d":"device","vt":"device:power_control","params":{}}]')
+        _sv2, _ = _dvsfb(_pl2.intents)
+        results.append(case("虚拟开：模型仍写真实参数→原样放行；缺 action 无法还原→降级 fan 兜底",
+                            _sv2[0]["parameters"] == {"operation": "打开", "object": "关机"}
+                            and _sv2[1]["toolName"] == "fan_knowledge_agent"))
+        _dvtop = _dvpo('[{"q":"关机","d":"device","vt":"device:power_control","action":"关机"}]')[0][0]
+        results.append(case("虚拟开：顶层 action 折回 params", _dvtop.params == {"action": "关机"}))
+        with _dvtf.TemporaryDirectory() as _dvtd:
+            _dvlib = _dvP(_dvtd) / "lib.csv"
+            _dvlib.write_text(
+                "domain,query,tool,tool_param\n"
+                "tv_control,帮我关机,power_control,\"{\"\"operation\"\":\"\"打开\"\",\"\"object\"\":\"\"关机\"\",\"\"device\"\":\"\"\"\"}\"\n"
+                "tv_control,开通屏保会员,screensaver_control,{}\n"
+                "vod,来部电影,vod_fuzzy_search,{}\n", encoding="utf-8")
+            _dvix = _dvfs._Index(_dvlib)
+            _dvtx = {d["q"]: d["text"] for d in _dvix.docs}
+            results.append(case("虚拟开：单意图库设备示例转虚拟写法；无法表示的丢弃；其他域照旧",
+                                '"params":{"action":"关机"}' in _dvtx.get("帮我关机", "")
+                                and "开通屏保会员" not in _dvtx and "来部电影" in _dvtx))
+        _dvvp = _dvfs.virtualize_plan('[{"q":"放歌","d":"music","vt":"music:music_song_recommend","params":{}},'
+                                  '{"q":"换一个看看","d":"device","vt":"device:playback_control",'
+                                  '"params":{"operation":"切换","value":"个"}}]')
+        results.append(case("虚拟开：多意图库设备步转虚拟写法（缺 object 的切换并入 换一个）；无法表示整条丢弃",
+                            _dvvp is not None and '"params":{"action":"换一个","value":"个"}' in _dvvp
+                            and _dvfs.virtualize_plan('[{"q":"x","d":"device","vt":"device:power_control","params":{"object":"开机"}}]') is None))
+    finally:
+        _dvst.device_virtual = False
+    _dvblk_back = _dvcat.render_oneshot_block()
+    results.append(case("虚拟关：目录块、锚例与开启前逐字节一致（默认行为不变）",
+                        _dvblk_back == _dvblk_off and _dvbop("x") == _dvpr_off
+                        and "device:power_control" in _dvblk_back
+                        and "action[开机|关机|重启]" not in _dvblk_back))
+
+    # 目录块：target 必填性写清；screensaver 展示 device（标注里「帮电视机打开屏保」要填 device=电视）
+    _rb = {l.split(" | ")[0]: l for l in _ds.render_block().split("\n")}
+    results.append(case("虚拟目录：纯通用工具 target 必填；混合工具注明通用动作必须带 target；screensaver 展示 device",
+                        "必填 action[设置|打开|关闭] target" in _rb["- device:mode_control"]
+                        and "必须带 target" in _rb["- device:screensaver_control"]
+                        and "必须带 target" in _rb["- device:numeric_adjust"]
+                        and "可选 target value device" in _rb["- device:screensaver_control"]
+                        and "target" not in _rb["- device:power_control"]
+                        and "device" not in _rb["- device:numeric_adjust"].split(" | ")[1]
+                        and _cc("screensaver_control", {"action": "打开", "target": "屏保", "device": "电视"})
+                        == {"operation": "打开", "object": "屏保", "device": "电视"}))
+
+    # 实体库（app/entity.py）：默认关；开启后最长匹配、多类型按 count 排序、大小写合并、leave-seed-out、坏库降级
+    import tempfile as _ettmp
+    from app import entity as _ent
+    from app.config import get_settings as _etgs
+    _etst = _etgs()
+    results.append(case("实体库默认关：context_block 为空串", _etst.entity_enabled is False
+                        and _ent.context_block("播放三生三世十里桃花") == ""))
+    with _ettmp.NamedTemporaryFile("w", suffix=".csv", delete=False, encoding="utf-8") as _etf:
+        _etf.write("name,domain,field,count,hint,seeds\n"
+                   "三生三世,music,song,1,,[]\n"
+                   "三生三世十里桃花,music,ip,2,,\"[\"\"a\"\"]\"\n"
+                   "三生三世十里桃花,vod,title,9,电视剧,\"[\"\"a\"\", \"\"b\"\"]\"\n"
+                   "NBA,sports,sport_game,3,,\"[\"\"q1\"\"]\"\n"
+                   "nba,sports,sport_game,2,,\"[\"\"q1\"\"]\"\n")
+    _et_old = (_etst.entity_enabled, _etst.entity_lib)
+    _etst.entity_enabled, _etst.entity_lib = True, _etf.name
+    try:
+        _eb = _ent.context_block("播放 三生三世十里桃花")
+        results.append(case("实体库开：最长匹配（不再拆出短名）、多类型按 count 降序、带 category 提示",
+                            "- 三生三世十里桃花：影视·片名（vod.title，常见 category=电视剧）；音乐·IP" in _eb
+                            and "- 三生三世：" not in _eb and _eb.startswith("\n【实体库参考】")))
+        _en = _ent.context_block("看nba")
+        results.append(case("实体库：只差大小写的同类条目合并成一条", _en.count("体育·赛事") == 1))
+        results.append(case("实体库 leave-seed-out：只来自本题的条目去掉，别处也出现过的保留",
+                            _ent.render("nba", exclude_seed="q1") == ""
+                            and "music.ip" not in _ent.render("三生三世十里桃花", exclude_seed="a")
+                            and "vod.title" in _ent.render("三生三世十里桃花", exclude_seed="a")))
+        results.append(case("实体库：无命中 → 空串", _ent.context_block("音量调到30") == ""))
+        _etst.entity_lib = _etf.name + ".missing"
+        results.append(case("实体库缺失 → 降级空串，不抛", _ent.context_block("三生三世十里桃花") == ""))
+    finally:
+        _etst.entity_enabled, _etst.entity_lib = _et_old
+        _ent._LEX, _ent._LEX_PATH = None, ""
+        Path(_etf.name).unlink(missing_ok=True)
 
     ok = all(results)
     print(f"\n{'ALL PASS' if ok else 'SOME FAILED'} ({sum(results)}/{len(results)})")
