@@ -108,3 +108,35 @@ device_source_switch,device,4,信号源|HDMI|hdmi|USB|usb|机顶盒|AV|av,,,,"�
 device_mode_control,device,4,模式,,,,"【设备口径：模式（device:mode_control）】真实参数用 operation（动作）+ object（对象）+ value（数值/时间/集数，可选），不要把动作词直接写进 operation（如不能写 operation=全屏/关机/主页）：
   设成/切换到/改为 XX模式 → {""operation"":""设置"",""object"":""图像模式|声音模式|音效模式"",""value"":""XX""}（value 去掉「模式」二字，如 儿童）
   打开/进入/开启 某个独立模式（护眼模式、商场模式、会议模式…）→ {""operation"":""打开"",""object"":""护眼模式""}（原词作 object，不写 value）"
+educ_history_title_to_search,children,1,"看过|刚才看|刚刚看|上次看|上一次|前天看|昨天看|以前看|之前看|最近.{0,3}天.{0,2}看|返回刚才|刚看",动画|动漫|卡通|汪汪队|父与子|啦咘啦哆|玛莎和熊|百变工程车|救援队|樱桃小丸子|托马斯|佩奇|熊出没|喜羊羊|超级飞侠|奥特曼|巧虎|海底小纵队|猪猪侠|小马宝莉|宝宝|儿童|少儿,,,"【口径提示：少儿「看过的XX」带作品名】
+- 用户带了具体作品名（如「播放以前看过的父与子」「返回刚才看的汪汪队」「放我前天看的百变工程车超级救援队」）：用 educ_search_all，只按作品名检索，忽略「以前/刚才/上次/前天/最近几天」等历史时间描述，不要用 educ_history，不传 time。
+- 只有纯查看历史（「我看过的动画」「最近看了什么」，没有具体作品名）才用 educ_history。
+- 作品名后带「动画」→ {""and"":[{""field"":""content_type"",""value"":""动画""},{""field"":""title"",""value"":""<作品名>""}]}，否则 {""field"":""title"",""value"":""<作品名>""}。
+例：播放以前看过的父与子 → educ_search_all {""query"":{""field"":""title"",""value"":""父与子""}}
+例：播放我最近几天看的樱桃小丸子动画 → educ_search_all {""query"":{""and"":[{""field"":""content_type"",""value"":""动画""},{""field"":""title"",""value"":""樱桃小丸子""}]}}
+例：返回刚才看的那个汪汪队 → educ_search_all {""query"":{""field"":""title"",""value"":""汪汪队""}}（不是 educ_history）
+例：播放上次看的安全警长啦咘啦哆 → educ_search_all {""query"":{""field"":""title"",""value"":""安全警长啦咘啦哆""}}（不是 educ_history）
+例：我要上一次播放的玛莎和熊 → educ_search_all {""query"":{""field"":""title"",""value"":""玛莎和熊""}}"
+audio_history_action,audio,1,"听过|刚[刚才]听|上次听|之前听|上一次听|(?:接着|继续)听.{0,4}(?:昨天|前天|上周|上个月|之前|上次|今天)|上周播|昨天播|收听历史|收听记录",,,,"【口径提示：有声历史 audio_history】
+- audio_history 的 action 必填：「播放/接着听/继续听/我要听」我听过的某内容=play；「我之前听过的XX/听过什么/查看」=search。
+- 「刚刚/刚才/上次」听的某个内容（无具体日期）→ 只传 action，不传 time。例：播放我刚刚听的那个麻衣少年行免费的 → {""action"":""play""}
+- 「我之前听过的相声广播」→ {""action"":""search""}（没有日期不传 time，不传 query）。
+- 有明确日期/周/月才传 time，周一到周日按【当前时间】换算：「接着听上周播的那个鬼故事」→ {""action"":""play"",""time"":""<上周一> 00:00:00 TO <上周日> 23:59:59""}，用 audio_history，不要用 audio_search。
+- 「刚刚/刚才听的那个XX」即使带了具体节目名，也是历史起播：audio_history {""action"":""play""}，不要用 audio_search。"
+educ_derive_fuzzy,children,1,衍生作品|衍生品|衍生的,,,,【口径提示：少儿衍生作品】问「XX的衍生作品/衍生系列有哪些」是描述性/关联查找，用 educ_fuzzy_search（参数 query=用户原话），不要用 educ_search_all。
+educ_and_form,children,2,古诗,搞笑|古诗,,,"【口径提示：少儿多条件】多个条件只用 {""and"":[{""field"":..,""value"":..},{...}]}，每个叶子一个 field/value，不要用 operator/values 数组。「搞笑X」中「搞笑」→ children_third_genre，X 为作品/内容名 → title 原样（古诗不要改成古诗词）。
+例：请播放搞笑古诗 → educ_search_all {""query"":{""and"":[{""field"":""children_third_genre"",""value"":""搞笑""},{""field"":""title"",""value"":""古诗""}]}}"
+music_full_version,music,1,全歌版|完整版,,,,"【口径提示：音乐「全歌版/完整版」】「全歌版/完整版」只是修饰语，不是 tag，不要放进参数。例：播放小马宝莉全歌版 → music_song_search {""ip"":[""小马宝莉""]}"
+music_chart_tag,music,1,"榜.{0,3}(?:歌|曲)",,,,"【口径提示：音乐「XX榜的歌曲」】点播「摇滚榜/民谣榜的歌曲」是按风格点歌：用 music_song_search，tag=[风格]（摇滚榜→""摇滚""），不要用 fan_knowledge_agent。例：放摇滚榜的歌曲 → music_song_search {""tag"":[""摇滚""]}"
+sports_reserve_single,sports,1,"预约.{0,12}(?:决赛|半决赛|比赛|联赛|赛)|(?:决赛|比赛).{0,6}预约",,,,"【口径提示：体育预约】预约赛事只输出一步 sports_match_reservation，不要追加 fan_knowledge_agent 等其他步骤。
+- 时间只到日期：「今天晚上7点35」等具体钟点忽略，用 {""field"":""sport_time"",""value"":""<yyyyMMdd>""}（明天/后天/大后天等相对日期也一律换算成 yyyyMMdd 8 位数字，不要带横线），不要用 sport_time_range。
+- 赛事名→sport_game，阶段（决赛/半决赛）→sport_competition_phase，用 and 组合。
+例：预约中超今天晚上7点35决赛 → {""query"":{""and"":[{""field"":""sport_competition_phase"",""value"":""决赛""},{""field"":""sport_game"",""value"":""中超""},{""field"":""sport_time"",""value"":""<今天yyyyMMdd>""}]}}"
+vod_area_category_sort,vod,1,"(?:泰国|韩国|日本|美国|英国|国内|内地|香港|台湾|国产|欧美|印度).{0,6}(?:电视剧|连续剧|剧)|(?:高分|人气|最新)",电视|剧|高分|最新,,,"【口径提示：vod 地区+品类+排序】
+- 有国家/地区词（泰国、国内、韩国…）+ 电视剧/电影：area 叶子必须保留，与 category 用 and 组合。「国内」→ area=国内。
+- 「最新」→ sort {""new"":{""order"":""desc""}}；「高分」→ rate desc；「人气/热门/最火」→ hot desc；「高分人气」→ sort 同时含 hot 和 rate（均 desc）。
+- 「电视连续剧」「连续剧」category 均取「电视剧」。
+例：最新泰国电视剧 → {""action"":""search"",""query"":{""and"":[{""field"":""area"",""value"":""泰国""},{""field"":""category"",""value"":""电视剧""}]},""sort"":{""new"":{""order"":""desc""}}}
+例：高分人气电视连续剧国内 → {""action"":""search"",""query"":{""and"":[{""field"":""area"",""value"":""国内""},{""field"":""category"",""value"":""电视剧""}]},""sort"":{""hot"":{""order"":""desc""},""rate"":{""order"":""desc""}}}"
+sports_no_infer_name,sports,1,[男女]单|[男女]双|混双,,,,"【口径提示：体育项目名】「女单/男单/混双」只是细分项，不要据此推断并添加 sport_name（如乒乓球/网球）；用户没明说项目名就不传 sport_name。
+例：名古屋亚运会女单决赛 → sports_match_search {""query"":{""and"":[{""field"":""sport_competition_phase"",""value"":""决赛""},{""field"":""sport_game"",""value"":""亚运会""}]}}"

@@ -79,5 +79,9 @@ for k, v in s.model_dump().items():
 PYEOF
 } 2>&1 | tee -a "$LOG_FILE"
 
-exec uvicorn app.main:app --host "$HOST" --port "$PORT" --reload \
+# 默认不开 --reload；开发时需要热重载可用 HC_RELOAD=1 ./run.sh
+RELOAD_ARGS=()
+[ "${HC_RELOAD:-0}" = "1" ] && RELOAD_ARGS=(--reload)
+
+exec uvicorn app.main:app --host "$HOST" --port "$PORT" "${RELOAD_ARGS[@]}" \
      --timeout-graceful-shutdown 5 2>&1 | tee -a "$LOG_FILE"

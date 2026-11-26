@@ -31,6 +31,8 @@
     则不原样采用，改按标注重建。标注设备步无法用虚拟 schema 表示（约 0.3%）的样本丢弃。
 
 用法：python3 tools/gen_sft_dpo_label.py [--prefix train_new_20261116]
+      python3 tools/gen_sft_dpo_label.py --gold-csv testset/train_manual/train.csv \\
+          --log '../hcSmith/train_pattern/_raw/*.jsonl' --prefix train_pattern_manual
       python3 tools/gen_sft_dpo_label.py --device-virtual --log '../hcSmith/train_vir/_raw/*.jsonl' --prefix train_vir_20261116
 """
 from __future__ import annotations
@@ -75,6 +77,16 @@ def _norm(tool: str, params: dict) -> dict:
             and p.get("operation") in device_schema._PB_OPS):
         p["object"] = "播放控制"
     return p
+
+
+def _sort_str_lists(o):
+    """纯字符串数组（如 music 的 tag/singer、检索树的 values）顺序无语义：比较前排序。"""
+    if isinstance(o, dict):
+        return {k: _sort_str_lists(v) for k, v in o.items()}
+    if isinstance(o, list):
+        xs = [_sort_str_lists(x) for x in o]
+        return sorted(xs) if xs and all(isinstance(x, str) for x in xs) else xs
+    return o
 
 
 def same_params(tool: str, gold_p: dict, model_p: dict) -> bool:
@@ -135,6 +147,44 @@ def load_single(gold_dir: Path, stats, drops) -> dict[str, dict]:
                 continue
             out[q] = {"kind": "single", "query": query, "id": prefix,
                       "steps": [{"seg": query, "d": d, "tool": tool, "params": params}]}
+    return out
+
+
+def load_csv(path: Path, stats, drops) -> dict[str, dict]:
+    """单步金标 CSV（列 domain,query,tool,tool_param；domain 为 vod/educ/edu/... 前缀），
+    如 testset/train_manual/train.csv。清洗口径同 load_single。"""
+    out: dict[str, dict] = {}
+    for r in csv.DictReader(open(path, encoding="utf-8-sig")):
+        query = r["query"].strip()
+        q = nq(query)
+        prefix = r["domain"].strip()
+        d = DOMAIN_MAP.get(prefix, "")
+        tool = TOOL_ALIAS.get(r["tool"].strip(), r["tool"].strip())
+        why = ""
+        if not q or not tool or not d:
+            why = "bad_label"
+        elif tool not in catalog.valid_tools_for(d):
+            why = "tool_not_in_catalog"
+        params = {}
+        if not why:
+            raw = (r.get("tool_param") or "").strip()
+            if raw:
+                params = parse_json_loose(raw)
+                if not isinstance(params, dict):
+                    why = "param_unparseable"
+        if not why:
+            params = _clean_params(d, tool, params, query)
+            if not params and _needs_params(d, tool):
+                why = "param_missing"
+        if why:
+            stats[f"drop_single_{why}"] += 1
+            drops.append({"src": prefix, "query": query, "tool": tool, "reason": why})
+            continue
+        if q in out:
+            stats["single_dup_query"] += 1
+            continue
+        out[q] = {"kind": "single", "query": query, "id": prefix,
+                  "steps": [{"seg": query, "d": d, "tool": tool, "params": params}]}
     return out
 
 
@@ -253,7 +303,8 @@ def judge(raw: str, g: dict, virtual: bool = False) -> tuple[str, list]:
             if not same_params(s["tool"], s["params"], mp):
                 return "param_diff", its
             continue
-        a, b = canon_params(s["params"], s["tool"]), canon_params(mp, s["tool"])
+        a = canon_params(_sort_str_lists(s["params"]), s["tool"])
+        b = canon_params(_sort_str_lists(mp), s["tool"])
         if a != b and _loose(a) != _loose(b):
             return "param_diff", its
     return "match", its
@@ -292,6 +343,9 @@ def rebuild(g: dict, its, virtual: bool = False) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gold-dir", default=str(DEF_GOLD_DIR))
+    ap.add_argument("--gold-csv", default="",
+                    help="改用单步金标 CSV（domain,query,tool,tool_param），如 testset/train_manual/train.csv；"
+                         "给出时忽略 --gold-dir 与多意图标注")
     ap.add_argument("--log", default=DEF_LOG)
     ap.add_argument("--outdir", default=str(DEF_OUT))
     ap.add_argument("--prefix", default="train_new_20261116")
@@ -303,11 +357,15 @@ def main() -> int:
     stats: collections.Counter = collections.Counter()
     drops: list[dict] = []
     gold_dir = Path(args.gold_dir)
-    gold = load_single(gold_dir, stats, drops)
-    multi = load_multi(gold_dir / "multi_intent.csv", args.include_review, stats, drops)
-    for q in set(gold) & set(multi):
-        stats["gold_overlap_single_vs_multi"] += 1
-    gold.update({q: g for q, g in multi.items() if q not in gold})
+    if args.gold_csv:
+        gold_dir = Path(args.gold_csv)
+        gold = load_csv(gold_dir, stats, drops)
+    else:
+        gold = load_single(gold_dir, stats, drops)
+        multi = load_multi(gold_dir / "multi_intent.csv", args.include_review, stats, drops)
+        for q in set(gold) & set(multi):
+            stats["gold_overlap_single_vs_multi"] += 1
+        gold.update({q: g for q, g in multi.items() if q not in gold})
 
     virtual = args.device_virtual
     if virtual:

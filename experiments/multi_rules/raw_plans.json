@@ -1,0 +1,6024 @@
+[
+ {
+  "query": "播放汪苏泷个歌音量调到5",
+  "steps": [
+   {
+    "q": "播放汪苏泷的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "汪苏泷"
+     ]
+    }
+   },
+   {
+    "q": "音量调到5",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "5"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放奥特之歌循环播放",
+  "steps": [
+   {
+    "q": "播放奥特之歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "奥特之歌"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "“播放《稻香》，音量调到 50\"",
+  "steps": [
+   {
+    "q": "播放《稻香》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "稻香"
+     ]
+    }
+   },
+   {
+    "q": "音量调到50",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "50"
+    }
+   }
+  ]
+ },
+ {
+  "query": "开机播放小苹果",
+  "steps": [
+   {
+    "q": "开机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   },
+   {
+    "q": "播放小苹果",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小苹果"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放生日快乐歌循环播放",
+  "steps": [
+   {
+    "q": "播放生日快乐歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "生日快乐歌"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲触不可及音量调到15",
+  "steps": [
+   {
+    "q": "播放歌曲《触不可及》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "触不可及"
+     ]
+    }
+   },
+   {
+    "q": "把音量调到15",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "15"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开QQ音乐声音调到12",
+  "steps": [
+   {
+    "q": "打开QQ音乐",
+    "d": "device",
+    "tool": "source_switch",
+    "params": {
+     "operation": "打开",
+     "object": "QQ音乐"
+    }
+   },
+   {
+    "q": "把音量调到12",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "12"
+    }
+   }
+  ]
+ },
+ {
+  "query": "把电视屏幕关掉听音乐",
+  "steps": [
+   {
+    "q": "把电视屏幕关掉",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "听音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "打开屏保播放音乐",
+  "steps": [
+   {
+    "q": "打开屏保",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "打开",
+     "object": "屏保"
+    }
+   },
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "放歌声音小一点",
+  "steps": [
+   {
+    "q": "放歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听孙露的歌音量30",
+  "steps": [
+   {
+    "q": "我想听孙露的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "孙露"
+     ]
+    }
+   },
+   {
+    "q": "音量调到30",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "30"
+    }
+   }
+  ]
+ },
+ {
+  "query": "放首歌小声一点",
+  "steps": [
+   {
+    "q": "放首歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "音量调小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "小鸡声音大一点",
+  "steps": [
+   {
+    "q": "把小鸡的声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "开机放首歌",
+  "steps": [
+   {
+    "q": "开机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   },
+   {
+    "q": "放首歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "关屏放歌",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "放歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "播放烟火里的尘埃重新播放",
+  "steps": [
+   {
+    "q": "播放《烟火里的尘埃》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "烟火里的尘埃"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "陪我过个冬循环播放",
+  "steps": [
+   {
+    "q": "单曲循环播放《陪我过个冬》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "陪我过个冬"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放猪猪侠音乐声音调到八",
+  "steps": [
+   {
+    "q": "播放猪猪侠音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "猪猪侠"
+     ]
+    }
+   },
+   {
+    "q": "把声音调到八",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "8"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐声音小一点",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放其它音乐随机播放",
+  "steps": [
+   {
+    "q": "随机播放一首",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "开机播放歌曲",
+  "steps": [
+   {
+    "q": "开机播放歌曲",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放世上只有妈妈好循环播放",
+  "steps": [
+   {
+    "q": "播放世上只有妈妈好",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "世上只有妈妈好"
+     ]
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开QQ音乐循环播放小跳蛙",
+  "steps": [
+   {
+    "q": "打开QQ音乐循环播放小跳蛙",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "小跳蛙"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放恋爱告急单曲循环",
+  "steps": [
+   {
+    "q": "播放《恋爱告急》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "恋爱告急"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "全屏我要听歌",
+  "steps": [
+   {
+    "q": "全屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   },
+   {
+    "q": "我要听歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "播放苹果香循环播放",
+  "steps": [
+   {
+    "q": "播放苹果香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "苹果香"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "钢琴曲高山流水循环播放",
+  "steps": [
+   {
+    "q": "播放钢琴曲高山流水",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "钢琴"
+     ],
+     "song": [
+      "高山流水"
+     ]
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放恭喜发财单曲循环",
+  "steps": [
+   {
+    "q": "播放恭喜发财",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "恭喜发财"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "重启听音乐",
+  "steps": [
+   {
+    "q": "重启听音乐",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "重启"
+    }
+   }
+  ]
+ },
+ {
+  "query": "开机我的姑娘",
+  "steps": [
+   {
+    "q": "开机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   },
+   {
+    "q": "播放《我的姑娘》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "我的姑娘"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开音乐再小点声",
+  "steps": [
+   {
+    "q": "打开音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "把音量调小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听周杰伦，声音大一点",
+  "steps": [
+   {
+    "q": "我想听周杰伦",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "周杰伦"
+     ]
+    }
+   },
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐按顺序播放",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "按顺序播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "顺序播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "音乐汪峰的无处安放音量调到20",
+  "steps": [
+   {
+    "q": "播放汪峰的无处安放",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "无处安放"
+     ],
+     "singer": [
+      "汪峰"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "息屏听音乐。",
+  "steps": [
+   {
+    "q": "息屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "听音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "我要听彩云之南把音量调到10",
+  "steps": [
+   {
+    "q": "我要听彩云之南",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "彩云之南"
+     ]
+    }
+   },
+   {
+    "q": "把音量调到10",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "10"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放儿歌声音大一点",
+  "steps": [
+   {
+    "q": "播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   },
+   {
+    "q": "把声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放我的歌声里单曲循环",
+  "steps": [
+   {
+    "q": "播放《我的歌声里》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "我的歌声里"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听一首那英的歌把声音调到25",
+  "steps": [
+   {
+    "q": "我想听一首那英的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "那英"
+     ]
+    }
+   },
+   {
+    "q": "把声音调到25",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "25"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放赠送歌曲随机播放",
+  "steps": [
+   {
+    "q": "随机播放一首歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "播放鲨鱼一家的歌曲音量调到六",
+  "steps": [
+   {
+    "q": "播放鲨鱼一家的歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "ip": [
+      "鲨鱼一家"
+     ]
+    }
+   },
+   {
+    "q": "音量调到六",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "6"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放琵琶行歌曲单曲循环",
+  "steps": [
+   {
+    "q": "播放琵琶行歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "琵琶行"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放免费中华五千年儿歌循环播放",
+  "steps": [
+   {
+    "q": "播放免费中华五千年儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "and": [
+       {
+        "field": "title",
+        "value": "中华五千年"
+       },
+       {
+        "field": "children_second_genre",
+        "value": "儿歌"
+       },
+       {
+        "field": "is_fee",
+        "value": "0"
+       }
+      ]
+     }
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "屏幕关闭放歌",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "放歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "放音乐放大屏幕",
+  "steps": [
+   {
+    "q": "放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "放大屏幕",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "放大",
+     "object": "画面"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲望故乡循环播放",
+  "steps": [
+   {
+    "q": "播放歌曲望故乡",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "望故乡"
+     ]
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关屏播音乐",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "小美满单曲循环",
+  "steps": [
+   {
+    "q": "单曲循环小美满",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小美满"
+     ],
+     "tag": [
+      "单曲循环"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "放流行歌曲声音小一点",
+  "steps": [
+   {
+    "q": "播放流行歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "流行"
+     ]
+    }
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "全屏播放去唱歌",
+  "steps": [
+   {
+    "q": "全屏播放去唱歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "去唱歌"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放儿歌大点声音",
+  "steps": [
+   {
+    "q": "播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   },
+   {
+    "q": "把声音调大点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放心上的罗加循环播放",
+  "steps": [
+   {
+    "q": "播放心上的罗加",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "心上的罗加"
+     ]
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放小苹果歌曲单曲循环",
+  "steps": [
+   {
+    "q": "播放小苹果歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小苹果"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "放一个DJ版的歌曲声音大一点",
+  "steps": [
+   {
+    "q": "播放DJ版的歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "version": [
+      "dj版"
+     ]
+    }
+   },
+   {
+    "q": "把声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "息屏放歌",
+  "steps": [
+   {
+    "q": "息屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "放歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "关屏听画你",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "播放画你",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "画你"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐息屏",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "息屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放汪苏泷的歌音量调到5",
+  "steps": [
+   {
+    "q": "播放汪苏泷的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "汪苏泷"
+     ]
+    }
+   },
+   {
+    "q": "音量调到5",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "5"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放达拉崩吧单曲循环",
+  "steps": [
+   {
+    "q": "播放达拉崩吧单曲循环",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "达拉崩吧"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "好汉歌循环播放",
+  "steps": [
+   {
+    "q": "单曲循环播放好汉歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "好汉歌"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "退出少儿模式播放海草舞",
+  "steps": [
+   {
+    "q": "退出少儿模式",
+    "d": "device",
+    "tool": "mode_control",
+    "params": {
+     "operation": "关闭",
+     "object": "少儿模式"
+    }
+   },
+   {
+    "q": "播放海草舞",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "海草舞"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐大声点",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "把音量调大",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "开机海阔天空",
+  "steps": [
+   {
+    "q": "播放海阔天空",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "海阔天空"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "息屏，我要听音乐。",
+  "steps": [
+   {
+    "q": "息屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "我要听音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "播放推送歌曲随机播放",
+  "steps": [
+   {
+    "q": "随机播放一首",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "听音乐调亮",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "把屏幕调亮一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "亮度"
+    }
+   }
+  ]
+ },
+ {
+  "query": "想听邓丽君的歌曲甜蜜蜜音量20",
+  "steps": [
+   {
+    "q": "想听邓丽君的歌曲甜蜜蜜",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "甜蜜蜜"
+     ],
+     "singer": [
+      "邓丽君"
+     ]
+    }
+   },
+   {
+    "q": "音量20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "声音放大一点播放音乐",
+  "steps": [
+   {
+    "q": "把声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "播放宝贝jojo儿歌全屏播放",
+  "steps": [
+   {
+    "q": "播放宝贝jojo儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "title",
+      "value": "宝贝jojo"
+     }
+    }
+   },
+   {
+    "q": "全屏播放",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "声音大点播放大海",
+  "steps": [
+   {
+    "q": "声音大点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放大海",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "大海"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲诺言音量调到15",
+  "steps": [
+   {
+    "q": "播放歌曲诺言",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "诺言"
+     ]
+    }
+   },
+   {
+    "q": "音量调到15",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "15"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开QQ音乐随机播放一首",
+  "steps": [
+   {
+    "q": "打开QQ音乐随机播放一首",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "热门"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "开机放一首歌",
+  "steps": [
+   {
+    "q": "开机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   },
+   {
+    "q": "播放一首歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "大点声音放音乐",
+  "steps": [
+   {
+    "q": "把声音调大点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "历史记录顺便把声音放到八",
+  "steps": [
+   {
+    "q": "查看我的收听历史",
+    "d": "audio",
+    "tool": "audio_history",
+    "params": {
+     "action": "search"
+    }
+   },
+   {
+    "q": "把音量调到8",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "8"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲鸟儿摇循环播放",
+  "steps": [
+   {
+    "q": "播放歌曲鸟儿摇",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "鸟儿摇"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "开机播放孤勇者",
+  "steps": [
+   {
+    "q": "开机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   },
+   {
+    "q": "播放孤勇者",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "孤勇者"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听江智民的心碎音量调到30",
+  "steps": [
+   {
+    "q": "我想听江智民的心碎",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "心碎"
+     ],
+     "singer": [
+      "江智民"
+     ]
+    }
+   },
+   {
+    "q": "音量调到30",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "30"
+    }
+   }
+  ]
+ },
+ {
+  "query": "帮我播放一首音乐并且将声音调到七",
+  "steps": [
+   {
+    "q": "播放一首音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   },
+   {
+    "q": "将声音调到七",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "7"
+    }
+   }
+  ]
+ },
+ {
+  "query": "把声音调到13我想听审判时刻",
+  "steps": [
+   {
+    "q": "把声音调到13",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "13"
+    }
+   },
+   {
+    "q": "我想听审判时刻",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "审判时刻"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听汪峰的无处安放音量调到30",
+  "steps": [
+   {
+    "q": "我想听汪峰的无处安放",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "无处安放"
+     ],
+     "singer": [
+      "汪峰"
+     ]
+    }
+   },
+   {
+    "q": "音量调到30",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "30"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听赵鹏的把悲伤留给自己音量25",
+  "steps": [
+   {
+    "q": "我想听赵鹏的把悲伤留给自己",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "把悲伤留给自己"
+     ],
+     "singer": [
+      "赵鹏"
+     ]
+    }
+   },
+   {
+    "q": "音量调到25",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "25"
+    }
+   }
+  ]
+ },
+ {
+  "query": "能不能息屏听音乐",
+  "steps": [
+   {
+    "q": "息屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "听音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "关闭屏幕听音乐。",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "听音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "放音乐音量调到12",
+  "steps": [
+   {
+    "q": "放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "音量调到12",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "12"
+    }
+   }
+  ]
+ },
+ {
+  "query": "小鸡小鸡小声一点",
+  "steps": [
+   {
+    "q": "播放《小鸡小鸡》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小鸡小鸡"
+     ]
+    }
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "闭屏听音乐",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "听音乐开机",
+  "steps": [
+   {
+    "q": "把电视开机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开QQ音乐播放全屏",
+  "steps": [
+   {
+    "q": "打开QQ音乐",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "热门"
+     ]
+    }
+   },
+   {
+    "q": "全屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "给我播放九九女儿红DJ版音量调到20",
+  "steps": [
+   {
+    "q": "播放九九女儿红DJ版",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "九九女儿红"
+     ],
+     "version": [
+      "DJ版"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "筷子兄弟小苹果全屏打开",
+  "steps": [
+   {
+    "q": "播放筷子兄弟的小苹果",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小苹果"
+     ],
+     "singer": [
+      "筷子兄弟"
+     ]
+    }
+   },
+   {
+    "q": "全屏打开",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放小苹果歌曲小点声",
+  "steps": [
+   {
+    "q": "播放小苹果",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小苹果"
+     ]
+    }
+   },
+   {
+    "q": "把声音调小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放DJ大点声",
+  "steps": [
+   {
+    "q": "播放DJ大点声",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "dj"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听张玮伽的月牙泉声音开到20",
+  "steps": [
+   {
+    "q": "我想听张玮伽的月牙泉",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "月牙泉"
+     ],
+     "singer": [
+      "张玮伽"
+     ]
+    }
+   },
+   {
+    "q": "声音开到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听邓丽君的音乐声音大一点",
+  "steps": [
+   {
+    "q": "我想听邓丽君的音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "邓丽君"
+     ]
+    }
+   },
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲美丽的神话单曲循环",
+  "steps": [
+   {
+    "q": "播放歌曲《美丽的神话》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "美丽的神话"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "海信小聚息屏播放音乐",
+  "steps": [
+   {
+    "q": "息屏播放音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "海信小聚"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "你好哈利播放汪峰的无处安放音量调到15",
+  "steps": [
+   {
+    "q": "你好",
+    "d": "device",
+    "tool": "common_control",
+    "params": {
+     "operation": "你好"
+    }
+   },
+   {
+    "q": "播放哈利",
+    "d": "vod",
+    "tool": "vod_search_all",
+    "params": {
+     "action": "play",
+     "query": {
+      "field": "title",
+      "value": "哈利"
+     }
+    }
+   },
+   {
+    "q": "播放汪峰的无处安放",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "无处安放"
+     ],
+     "singer": [
+      "汪峰"
+     ]
+    }
+   },
+   {
+    "q": "音量调到15",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "15"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐声音调大一点",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   },
+   {
+    "q": "把音量调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "音乐打开全屏",
+  "steps": [
+   {
+    "q": "打开全屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放牵丝戏声音大一点",
+  "steps": [
+   {
+    "q": "播放牵丝戏",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "牵丝戏"
+     ]
+    }
+   },
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "夜夜夜漫长声音放大",
+  "steps": [
+   {
+    "q": "播放《夜夜夜漫长》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "夜夜夜漫长"
+     ]
+    }
+   },
+   {
+    "q": "声音放大",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关闭屏幕并播放音乐",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "最炫民族风循环播放",
+  "steps": [
+   {
+    "q": "单曲循环播放最炫民族风",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "最炫民族风"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放好听的音乐音量开到13",
+  "steps": [
+   {
+    "q": "播放好听的音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "好听"
+     ]
+    }
+   },
+   {
+    "q": "音量开到13",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "13"
+    }
+   }
+  ]
+ },
+ {
+  "query": "开机播放生日歌",
+  "steps": [
+   {
+    "q": "开机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   },
+   {
+    "q": "播放生日歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "生日歌"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "关闭屏幕然后放一首邓紫棋的歌",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "放一首邓紫棋的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "邓紫棋"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开QQ音乐小声一点",
+  "steps": [
+   {
+    "q": "打开QQ音乐",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "热门"
+     ]
+    }
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放手机害人不浅单曲循环",
+  "steps": [
+   {
+    "q": "播放手机害人不浅",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "手机害人不浅"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开屏保放歌",
+  "steps": [
+   {
+    "q": "打开屏保",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "打开",
+     "object": "屏保"
+    }
+   },
+   {
+    "q": "放歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "想听周深的触不可及音量25",
+  "steps": [
+   {
+    "q": "想听周深的触不可及",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "触不可及"
+     ],
+     "singer": [
+      "周深"
+     ]
+    }
+   },
+   {
+    "q": "音量调到25",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "25"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐然后息屏",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "息屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐音量调高",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "音量调高",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "黑屏继续播放儿歌",
+  "steps": [
+   {
+    "q": "黑屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "继续播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "query": "给我播放邓丽君的我只在乎你声音调到15",
+  "steps": [
+   {
+    "q": "播放邓丽君的我只在乎你",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "我只在乎你"
+     ],
+     "singer": [
+      "邓丽君"
+     ]
+    }
+   },
+   {
+    "q": "把声音调到15",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "15"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放免费的奢香夫人歌曲全屏的",
+  "steps": [
+   {
+    "q": "播放免费的奢香夫人歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "奢香夫人"
+     ],
+     "version": [
+      "免费版"
+     ]
+    }
+   },
+   {
+    "q": "全屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "嗯音乐声音大一点",
+  "steps": [
+   {
+    "q": "把音乐声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "唱歌声音大一点",
+  "steps": [
+   {
+    "q": "把唱歌声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲小背篓声音调到3",
+  "steps": [
+   {
+    "q": "播放歌曲小背篓",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小背篓"
+     ]
+    }
+   },
+   {
+    "q": "把声音调到3",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "3"
+    }
+   }
+  ]
+ },
+ {
+  "query": "嗯我要听音乐Tuesday声音调到20",
+  "steps": [
+   {
+    "q": "播放歌曲Tuesday",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "Tuesday"
+     ]
+    }
+   },
+   {
+    "q": "把音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "只听音乐关闭屏幕",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐声音开大一点",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "声音开大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我要听月亮代表我的心音量调到20",
+  "steps": [
+   {
+    "q": "播放《月亮代表我的心》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "月亮代表我的心"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放生日歌循环播放",
+  "steps": [
+   {
+    "q": "播放生日歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "生日歌"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "汪峰的歌曲无处安放声音大一点",
+  "steps": [
+   {
+    "q": "播放汪峰演唱的歌曲无处安放",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "无处安放"
+     ],
+     "singer": [
+      "汪峰"
+     ]
+    }
+   },
+   {
+    "q": "把声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放一首刀马刀马单曲循环",
+  "steps": [
+   {
+    "q": "播放刀马刀马",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "刀马刀马"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲顺序播放",
+  "steps": [
+   {
+    "q": "播放歌曲顺序播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "顺序播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放儿歌熄屏",
+  "steps": [
+   {
+    "q": "播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   },
+   {
+    "q": "熄屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听桥边的姑娘声音调15",
+  "steps": [
+   {
+    "q": "播放《桥边的姑娘》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "桥边的姑娘"
+     ]
+    }
+   },
+   {
+    "q": "把音量调到15",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "15"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放海来阿木音乐音量加到八",
+  "steps": [
+   {
+    "q": "播放海来阿木音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "海来阿木"
+     ]
+    }
+   },
+   {
+    "q": "音量加到八",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "8"
+    }
+   }
+  ]
+ },
+ {
+  "query": "小声一点我要听歌",
+  "steps": [
+   {
+    "q": "音量调小",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放歌曲",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "我想听我怀念的并循环播放",
+  "steps": [
+   {
+    "q": "我想听我怀念的",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "我怀念的"
+     ]
+    }
+   },
+   {
+    "q": "并循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放大花轿声音大一点",
+  "steps": [
+   {
+    "q": "播放大花轿",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "大花轿"
+     ]
+    }
+   },
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "小点声音播放歌曲",
+  "steps": [
+   {
+    "q": "把音量调小",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放歌曲",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲小美满音量20",
+  "steps": [
+   {
+    "q": "播放歌曲小美满",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小美满"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "梦里的你单曲循环唱",
+  "steps": [
+   {
+    "q": "单曲循环唱《梦里的你》",
+    "d": "music",
+    "tool": "music_ksong_search",
+    "params": {
+     "song": [
+      "梦里的你"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放抖音热歌声音大一点",
+  "steps": [
+   {
+    "q": "播放抖音热歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "抖音"
+     ]
+    }
+   },
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "开机孤勇者",
+  "steps": [
+   {
+    "q": "播放孤勇者",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "孤勇者"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "给我播放没那么简单循环播放",
+  "steps": [
+   {
+    "q": "播放没那么简单",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "没那么简单"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开QQ音乐然后关闭屏幕",
+  "steps": [
+   {
+    "q": "打开QQ音乐",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "热门"
+     ]
+    }
+   },
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐声音到9",
+  "steps": [
+   {
+    "q": "播放音乐声音到9",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "声音到9"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐大点声音",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "把声音调大",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐然后关闭屏幕",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放一路发发发循环播放",
+  "steps": [
+   {
+    "q": "播放一路发发发",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "一路发发发"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听汪峰的歌曲无处安放音量20",
+  "steps": [
+   {
+    "q": "我想听汪峰的歌曲无处安放",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "无处安放"
+     ],
+     "singer": [
+      "汪峰"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "放首音乐循环播放",
+  "steps": [
+   {
+    "q": "放首音乐循环播放",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "搜索歌曲声音加到10",
+  "steps": [
+   {
+    "q": "搜索歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   },
+   {
+    "q": "声音加到10",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "10"
+    }
+   }
+  ]
+ },
+ {
+  "query": "唱一首童年老家声音高一点",
+  "steps": [
+   {
+    "q": "唱一首童年老家",
+    "d": "music",
+    "tool": "music_ksong_search",
+    "params": {
+     "song": [
+      "童年老家"
+     ]
+    }
+   },
+   {
+    "q": "声音高一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "声音"
+    }
+   }
+  ]
+ },
+ {
+  "query": "全屏播放播放音乐",
+  "steps": [
+   {
+    "q": "全屏播放",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   },
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "息屏播放儿歌。",
+  "steps": [
+   {
+    "q": "息屏播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放免费歌曲循环播放",
+  "steps": [
+   {
+    "q": "播放免费歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "免费"
+     ]
+    }
+   },
+   {
+    "q": "开启循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关掉画面听音乐",
+  "steps": [
+   {
+    "q": "关掉画面听音乐",
+    "d": "device",
+    "tool": "audio_control",
+    "params": {
+     "operation": "关闭",
+     "object": "画面"
+    }
+   }
+  ]
+ },
+ {
+  "query": "放音乐大声点",
+  "steps": [
+   {
+    "q": "放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "声音大声点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲说了再见单曲循环",
+  "steps": [
+   {
+    "q": "播放歌曲《说了再见》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "说了再见"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲全屏",
+  "steps": [
+   {
+    "q": "播放歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   },
+   {
+    "q": "全屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放儿歌并且息屏",
+  "steps": [
+   {
+    "q": "播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   },
+   {
+    "q": "息屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐声音大一点",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐音量减小",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "音量减小",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放反乌托邦音乐单曲循环",
+  "steps": [
+   {
+    "q": "播放反乌托邦音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "反乌托邦"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "声音大一点点播放依娜和恰恰",
+  "steps": [
+   {
+    "q": "把声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放依娜和恰恰",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "title",
+      "value": "依娜和恰恰"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "query": "声音调到一然后播放王栎鑫的FLOWERS",
+  "steps": [
+   {
+    "q": "声音调到一",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "1"
+    }
+   },
+   {
+    "q": "播放王栎鑫的FLOWERS",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "王栎鑫"
+     ],
+     "song": [
+      "FLOWERS"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放大雨还在下循环播放",
+  "steps": [
+   {
+    "q": "播放《大雨还在下》",
+    "d": "vod",
+    "tool": "vod_search_all",
+    "params": {
+     "action": "play",
+     "query": {
+      "field": "title",
+      "value": "大雨还在下"
+     }
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "放歌曲声音小一点",
+  "steps": [
+   {
+    "q": "把歌曲声音调小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐调小音量",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "调小音量",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "熄屏遇君",
+  "steps": [
+   {
+    "q": "熄屏",
+    "d": "device",
+    "tool": "mode_control",
+    "params": {
+     "operation": "打开",
+     "object": "熄屏模式"
+    }
+   }
+  ]
+ },
+ {
+  "query": "大花轿循环播放",
+  "steps": [
+   {
+    "q": "单曲循环播放大花轿",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "大花轿"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放节奏盒子歌曲循环播放",
+  "steps": [
+   {
+    "q": "播放节奏盒子歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "节奏盒子"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开U盘听首歌",
+  "steps": [
+   {
+    "q": "打开U盘模式",
+    "d": "device",
+    "tool": "source_switch",
+    "params": {
+     "operation": "设置",
+     "object": "信号源",
+     "value": "U盘"
+    }
+   },
+   {
+    "q": "播放一首歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲音量升高",
+  "steps": [
+   {
+    "q": "播放歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   },
+   {
+    "q": "音量升高",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放像中枪一样循环播放",
+  "steps": [
+   {
+    "q": "播放《像中枪一样》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "像中枪一样"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听陪我过个冬循环播放",
+  "steps": [
+   {
+    "q": "我想听陪我过个冬",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "陪我过个冬"
+     ]
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开电视打开QQ音乐",
+  "steps": [
+   {
+    "q": "打开电视",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "开机"
+    }
+   },
+   {
+    "q": "打开QQ音乐",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "热门"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "我要听音乐声音大一点",
+  "steps": [
+   {
+    "q": "把音乐声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "全屏播放我要听歌曲",
+  "steps": [
+   {
+    "q": "全屏播放我要听歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "我要听歌曲"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "音量开高歌曲播放无悔今生爱过你歌曲播放",
+  "steps": [
+   {
+    "q": "把音量调高",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放无悔今生爱过你",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "无悔今生爱过你"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "唱个儿歌大点声音",
+  "steps": [
+   {
+    "q": "唱个儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   },
+   {
+    "q": "大点声音",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌曲写给黄淮声音调到十",
+  "steps": [
+   {
+    "q": "播放歌曲《写给黄淮》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "写给黄淮"
+     ]
+    }
+   },
+   {
+    "q": "把声音调到十",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "10"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放赵鹏的歌曲月亮代表我的心声音调到20",
+  "steps": [
+   {
+    "q": "播放赵鹏的歌曲月亮代表我的心",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "月亮代表我的心"
+     ],
+     "singer": [
+      "赵鹏"
+     ]
+    }
+   },
+   {
+    "q": "声音调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐并把声音关到4",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "把声音关到4",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "4"
+    }
+   }
+  ]
+ },
+ {
+  "query": "呃黑屏播放音乐",
+  "steps": [
+   {
+    "q": "黑屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "循环播放陈粒的小半",
+  "steps": [
+   {
+    "q": "单曲循环播放陈粒的小半",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小半"
+     ],
+     "singer": [
+      "陈粒"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "兰花草循环播放",
+  "steps": [
+   {
+    "q": "单曲循环播放兰花草",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "兰花草"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开有声听小点声",
+  "steps": [
+   {
+    "q": "打开有声书",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "把音量调小",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "奇迹再现循环播放",
+  "steps": [
+   {
+    "q": "播放奇迹再现",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "奇迹再现"
+     ]
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关闭屏幕播放搀扶",
+  "steps": [
+   {
+    "q": "关闭屏幕",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   },
+   {
+    "q": "播放搀扶",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "搀扶"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "声音大一点播放儿歌",
+  "steps": [
+   {
+    "q": "把声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "query": "放首歌，声音调大",
+  "steps": [
+   {
+    "q": "放首歌",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "声音调大",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听歌曲飞声音调到20",
+  "steps": [
+   {
+    "q": "播放歌曲飞",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "飞"
+     ]
+    }
+   },
+   {
+    "q": "把声音调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放音乐加大音量",
+  "steps": [
+   {
+    "q": "播放音乐",
+    "d": "music",
+    "tool": "music_song_recommend",
+    "params": {}
+   },
+   {
+    "q": "加大音量",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "闭屏播放我们都拥有海洋",
+  "steps": [
+   {
+    "q": "播放《我们都拥有海洋》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "我们都拥有海洋"
+     ]
+    }
+   },
+   {
+    "q": "闭屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开逆战声音调到8",
+  "steps": [
+   {
+    "q": "播放逆战",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "ip": [
+      "逆战"
+     ]
+    }
+   },
+   {
+    "q": "把音量调到8",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "8"
+    }
+   }
+  ]
+ },
+ {
+  "query": "可以熄屏播放歌曲吗",
+  "steps": [
+   {
+    "q": "可以熄屏播放歌曲吗",
+    "d": "device",
+    "tool": "fan_knowledge_agent",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "我想听降央卓玛的歌音量20",
+  "steps": [
+   {
+    "q": "我想听降央卓玛的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "降央卓玛"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放歌声音大一点",
+  "steps": [
+   {
+    "q": "播放歌曲",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   },
+   {
+    "q": "把声音调大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听月亮代表我的心音量20",
+  "steps": [
+   {
+    "q": "我想听月亮代表我的心",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "月亮代表我的心"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "搜索歌曲遗失的心跳声音加到5",
+  "steps": [
+   {
+    "q": "搜索歌曲遗失的心跳",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "遗失的心跳"
+     ]
+    }
+   },
+   {
+    "q": "声音加到5",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "声音",
+     "value": "5"
+    }
+   }
+  ]
+ },
+ {
+  "query": "小城夏天单曲循环",
+  "steps": [
+   {
+    "q": "单曲循环播放小城夏天",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小城夏天"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听歌曲飞音量30",
+  "steps": [
+   {
+    "q": "播放歌曲《飞》",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "飞"
+     ]
+    }
+   },
+   {
+    "q": "把音量调到30",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "30"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开有声专区，播放郭德纲的相声，声音大一点",
+  "steps": [
+   {
+    "q": "打开有声专区",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "播放郭德纲的相声",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "返回主页，播放晴天，单曲循环",
+  "steps": [
+   {
+    "q": "返回主页",
+    "d": "device",
+    "tool": "common_control",
+    "params": {
+     "operation": "打开",
+     "object": "主页"
+    }
+   },
+   {
+    "q": "播放晴天",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "晴天"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开音乐历史记录，再播放稻香，音量调到20",
+  "steps": [
+   {
+    "q": "打开音乐历史记录",
+    "d": "music",
+    "tool": "music_song_history",
+    "params": {}
+   },
+   {
+    "q": "播放稻香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "稻香"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "回到首页，我想听单田芳的评书，声音小一点",
+  "steps": [
+   {
+    "q": "回到首页",
+    "d": "device",
+    "tool": "common_control",
+    "params": {
+     "operation": "打开",
+     "object": "主页"
+    }
+   },
+   {
+    "q": "我想听单田芳的评书",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "返回首页，播放孤勇者，循环播放",
+  "steps": [
+   {
+    "q": "返回首页",
+    "d": "device",
+    "tool": "common_control",
+    "params": {
+     "operation": "打开",
+     "object": "主页"
+    }
+   },
+   {
+    "q": "播放孤勇者",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "孤勇者"
+     ]
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开有声专区，播放睡前故事，然后熄屏",
+  "steps": [
+   {
+    "q": "打开有声专区",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "search"
+    }
+   },
+   {
+    "q": "播放睡前故事",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "熄屏",
+    "d": "device",
+    "tool": "mode_control",
+    "params": {
+     "operation": "打开",
+     "object": "熄屏模式"
+    }
+   }
+  ]
+ },
+ {
+  "query": "回到主页，播放甜蜜蜜的MV，全屏",
+  "steps": [
+   {
+    "q": "回到主页",
+    "d": "device",
+    "tool": "common_control",
+    "params": {
+     "operation": "打开",
+     "object": "主页"
+    }
+   },
+   {
+    "q": "播放甜蜜蜜的MV",
+    "d": "music",
+    "tool": "music_song_mv_search",
+    "params": {
+     "song": [
+      "甜蜜蜜"
+     ]
+    }
+   },
+   {
+    "q": "全屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开音乐历史，播放刀郎的罗刹海市，声音调到15",
+  "steps": [
+   {
+    "q": "打开音乐历史",
+    "d": "music",
+    "tool": "music_song_history",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "打开喜马拉雅首页，播放三体，音量调到10",
+  "steps": [
+   {
+    "q": "打开喜马拉雅首页",
+    "d": "device",
+    "tool": "common_control",
+    "params": {
+     "operation": "打开",
+     "object": "喜马拉雅"
+    }
+   },
+   {
+    "q": "播放《三体》",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "音量调到10",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "10"
+    }
+   }
+  ]
+ },
+ {
+  "query": "返回主页，放一首儿歌，声音小一点",
+  "steps": [
+   {
+    "q": "返回主页",
+    "d": "device",
+    "tool": "common_control",
+    "params": {
+     "operation": "打开",
+     "object": "主页"
+    }
+   },
+   {
+    "q": "放一首儿歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "儿歌"
+     ]
+    }
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "现在音量是多少，播放晴天",
+  "steps": [
+   {
+    "q": "现在音量是多少",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "查询",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放晴天",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "晴天"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "查一下现在的亮度，放一首孤勇者",
+  "steps": [
+   {
+    "q": "查一下现在的亮度",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "查询",
+     "object": "亮度"
+    }
+   },
+   {
+    "q": "放一首孤勇者",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "孤勇者"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "还有多久关机，播放郭德纲的相声",
+  "steps": [
+   {
+    "q": "还有多久关机",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "查询",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "播放郭德纲的相声",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   }
+  ]
+ },
+ {
+  "query": "现在声音多大，我想听稻香",
+  "steps": [
+   {
+    "q": "现在的音量",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "查询",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "我想听稻香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "稻香"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "看一下当前音量，然后播放睡前故事",
+  "steps": [
+   {
+    "q": "当前音量是多少",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "查询",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放睡前故事",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   }
+  ]
+ },
+ {
+  "query": "当前亮度是多少，播放周杰伦的七里香",
+  "steps": [
+   {
+    "q": "当前亮度是多少",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "查询",
+     "object": "亮度"
+    }
+   },
+   {
+    "q": "播放周杰伦的七里香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "七里香"
+     ],
+     "singer": [
+      "周杰伦"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "距离关机还有多长时间，放首儿歌",
+  "steps": [
+   {
+    "q": "查询一下关机时间",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "查询",
+     "object": "剩余关机时长"
+    }
+   },
+   {
+    "q": "放首儿歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "儿童歌曲"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "现在对比度多少，播放稻香",
+  "steps": [
+   {
+    "q": "现在对比度多少",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "查询",
+     "object": "对比度"
+    }
+   },
+   {
+    "q": "播放稻香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "稻香"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "查一下定时关机还剩多久，播放单田芳的评书",
+  "steps": [
+   {
+    "q": "查一下定时关机还剩多久",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "查询",
+     "object": "剩余关机时长"
+    }
+   },
+   {
+    "q": "播放单田芳的评书",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   }
+  ]
+ },
+ {
+  "query": "音量现在是多少，播放小说三体",
+  "steps": [
+   {
+    "q": "现在音量是多少",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "查询",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放小说《三体》",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   }
+  ]
+ },
+ {
+  "query": "找几段郭德纲的相声，播放第三个",
+  "steps": [
+   {
+    "q": "找几段郭德纲的相声",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "search"
+    }
+   },
+   {
+    "q": "播放第三个",
+    "d": "audio",
+    "tool": "",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "郭德纲的相声，我要听第三个",
+  "steps": [
+   {
+    "q": "搜索郭德纲的相声",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "search"
+    }
+   },
+   {
+    "q": "播放搜索结果中的第三个",
+    "d": "audio",
+    "tool": "",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "搜索周杰伦的歌，播放第二首",
+  "steps": [
+   {
+    "q": "搜索周杰伦的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "周杰伦"
+     ]
+    }
+   },
+   {
+    "q": "播放第二首",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "打开我的音乐收藏，播放第一首",
+  "steps": [
+   {
+    "q": "打开我的音乐收藏，播放第一首",
+    "d": "music",
+    "tool": "music_song_favorite_search",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "七里香专辑有哪些歌，播放第三首",
+  "steps": [
+   {
+    "q": "七里香专辑有哪些歌",
+    "d": "music",
+    "tool": "fan_knowledge_agent",
+    "params": {}
+   },
+   {
+    "q": "播放第三首",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "album": [
+      "七里香"
+     ],
+     "tag": [
+      "第三首"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "找一些睡前故事，播放第二个",
+  "steps": [
+   {
+    "q": "找一些睡前故事",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "search"
+    }
+   },
+   {
+    "q": "播放第二个",
+    "d": "audio",
+    "tool": "",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "打开音乐历史记录，播放第一首",
+  "steps": [
+   {
+    "q": "打开音乐历史记录，播放第一首",
+    "d": "music",
+    "tool": "music_song_history",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "搜索单田芳的评书，从第五个开始播放",
+  "steps": [
+   {
+    "q": "搜索单田芳的评书",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "search"
+    }
+   },
+   {
+    "q": "从第五个开始播放",
+    "d": "audio",
+    "tool": "",
+    "params": {}
+   }
+  ]
+ },
+ {
+  "query": "找几首邓丽君的歌，放最后一首",
+  "steps": [
+   {
+    "q": "找几首邓丽君的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "邓丽君"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开有声收听历史，播放第一个",
+  "steps": [
+   {
+    "q": "打开有声收听历史",
+    "d": "audio",
+    "tool": "audio_history",
+    "params": {
+     "action": "search"
+    }
+   },
+   {
+    "q": "播放第一个",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放晴天，换成稻香，声音加三",
+  "steps": [
+   {
+    "q": "播放晴天",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "晴天"
+     ]
+    }
+   },
+   {
+    "q": "换成稻香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "稻香"
+     ]
+    }
+   },
+   {
+    "q": "声音加三",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量",
+     "value": "3"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放郭德纲的相声，不对，换成单田芳的评书，声音小一点",
+  "steps": [
+   {
+    "q": "播放郭德纲的相声",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "换成单田芳的评书",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "音量调到10，不，调到25，播放孤勇者",
+  "steps": [
+   {
+    "q": "音量调到25",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "25"
+    }
+   },
+   {
+    "q": "播放孤勇者",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "孤勇者"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "放七里香，算了还是放青花瓷，单曲循环",
+  "steps": [
+   {
+    "q": "播放七里香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "七里香"
+     ]
+    }
+   },
+   {
+    "q": "播放青花瓷",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "青花瓷"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放三体，换成鬼吹灯，音量调到15",
+  "steps": [
+   {
+    "q": "播放《三体》",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "换成鬼吹灯",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "音量调到15",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "15"
+    }
+   }
+  ]
+ },
+ {
+  "query": "声音大一点，不对，小一点，播放儿歌",
+  "steps": [
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   },
+   {
+    "q": "播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放周杰伦的歌，改成林俊杰的，全屏",
+  "steps": [
+   {
+    "q": "播放周杰伦的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "周杰伦"
+     ]
+    }
+   },
+   {
+    "q": "换成林俊杰的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "林俊杰"
+     ]
+    }
+   },
+   {
+    "q": "全屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "放首儿歌，还是听睡前故事吧，然后熄屏",
+  "steps": [
+   {
+    "q": "放首儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "content_type",
+      "value": "儿歌"
+     }
+    }
+   },
+   {
+    "q": "听睡前故事",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "熄屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "亮度调到50，不要了，调到30，播放甜蜜蜜",
+  "steps": [
+   {
+    "q": "亮度调到50",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "亮度",
+     "value": "50"
+    }
+   },
+   {
+    "q": "亮度调到30",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "亮度",
+     "value": "30"
+    }
+   },
+   {
+    "q": "播放甜蜜蜜",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "甜蜜蜜"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放小苹果，换成最炫民族风，循环播放",
+  "steps": [
+   {
+    "q": "播放小苹果",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小苹果"
+     ]
+    }
+   },
+   {
+    "q": "换成最炫民族风",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "最炫民族风"
+     ]
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放郭德纲的相声，设置定时关机",
+  "steps": [
+   {
+    "q": "播放郭德纲的相声",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "设置定时关机",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   }
+  ]
+ },
+ {
+  "query": "放一首稻香，定时关机",
+  "steps": [
+   {
+    "q": "放一首稻香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "稻香"
+     ]
+    }
+   },
+   {
+    "q": "定时关机",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我想听睡前故事，帮我定个时关机",
+  "steps": [
+   {
+    "q": "我想听睡前故事",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "帮我定个时关机",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放周杰伦的歌，设置定时熄屏",
+  "steps": [
+   {
+    "q": "播放周杰伦的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "周杰伦"
+     ]
+    }
+   },
+   {
+    "q": "设置定时熄屏",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "打开",
+     "object": "熄屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放孤勇者，帮我调一下音量",
+  "steps": [
+   {
+    "q": "播放孤勇者",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "孤勇者"
+     ]
+    }
+   },
+   {
+    "q": "帮我调一下音量",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "放点儿歌，设置一个定时关机",
+  "steps": [
+   {
+    "q": "放点儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   },
+   {
+    "q": "设置一个定时关机",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   }
+  ]
+ },
+ {
+  "query": "听单田芳的评书，定时关闭电视",
+  "steps": [
+   {
+    "q": "听单田芳的评书",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "定时关闭电视",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放邓丽君的歌，帮我设个定时关机",
+  "steps": [
+   {
+    "q": "播放邓丽君的歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "singer": [
+      "邓丽君"
+     ]
+    }
+   },
+   {
+    "q": "帮我设个定时关机",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   }
+  ]
+ },
+ {
+  "query": "播放轻音乐，帮我设个定时熄屏",
+  "steps": [
+   {
+    "q": "播放轻音乐",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "轻音乐"
+     ]
+    }
+   },
+   {
+    "q": "帮我设个定时熄屏",
+    "d": "device",
+    "tool": "timer_control",
+    "params": {
+     "operation": "打开",
+     "object": "熄屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "我要听评书，亮度调一下",
+  "steps": [
+   {
+    "q": "我要听评书",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "把屏幕亮度调一下",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "亮度"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关机，播放儿歌，声音大一点",
+  "steps": [
+   {
+    "q": "关机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "播放儿歌",
+    "d": "children",
+    "tool": "educ_search_all",
+    "params": {
+     "query": {
+      "field": "children_second_genre",
+      "value": "儿歌"
+     }
+    }
+   },
+   {
+    "q": "声音大一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关机播放晴天单曲循环",
+  "steps": [
+   {
+    "q": "关机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "播放晴天",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "晴天"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "query": "关闭电视，我要听郭德纲的相声，音量调到10",
+  "steps": [
+   {
+    "q": "关闭电视",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "我要听郭德纲的相声",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "音量调到10",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "10"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关机，放一首孤勇者，全屏",
+  "steps": [
+   {
+    "q": "关机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "放一首孤勇者",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "孤勇者"
+     ]
+    }
+   },
+   {
+    "q": "全屏",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关电视播放睡前故事然后熄屏",
+  "steps": [
+   {
+    "q": "关电视",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "播放睡前故事",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "熄屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关机我想听稻香声音小一点",
+  "steps": [
+   {
+    "q": "关机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "我想听稻香",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "稻香"
+     ]
+    }
+   },
+   {
+    "q": "声音小一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关机，用QQ音乐播放七里香，音量调到20",
+  "steps": [
+   {
+    "q": "关机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "用QQ音乐播放七里香",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "七里香"
+     ]
+    }
+   },
+   {
+    "q": "音量调到20",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "设置",
+     "object": "音量",
+     "value": "20"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关闭电视，播放单田芳的评书，循环播放",
+  "steps": [
+   {
+    "q": "关闭电视",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "播放单田芳的评书",
+    "d": "audio",
+    "tool": "audio_search",
+    "params": {
+     "action": "play"
+    }
+   },
+   {
+    "q": "循环播放",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "循环播放",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关机关机播放小苹果大点声",
+  "steps": [
+   {
+    "q": "关机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "播放小苹果",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "song": [
+      "小苹果"
+     ]
+    }
+   },
+   {
+    "q": "把声音调大",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量"
+    }
+   }
+  ]
+ },
+ {
+  "query": "关机，放首儿歌，亮度调低一点",
+  "steps": [
+   {
+    "q": "关机",
+    "d": "device",
+    "tool": "power_control",
+    "params": {
+     "operation": "打开",
+     "object": "关机"
+    }
+   },
+   {
+    "q": "放首儿歌",
+    "d": "music",
+    "tool": "music_song_search",
+    "params": {
+     "tag": [
+      "儿童歌曲"
+     ]
+    }
+   },
+   {
+    "q": "亮度调低一点",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "降低",
+     "object": "亮度"
+    }
+   }
+  ]
+ },
+ {
+  "query": "用QQ音乐播放稻香，声音加三",
+  "steps": [
+   {
+    "q": "用QQ音乐播放稻香",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "稻香"
+     ]
+    }
+   },
+   {
+    "q": "声音加三",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量",
+     "value": "3"
+    }
+   }
+  ]
+ },
+ {
+  "query": "酷狗音乐播放稻香，声音加三",
+  "steps": [
+   {
+    "q": "在酷狗音乐播放稻香",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "稻香"
+     ]
+    }
+   },
+   {
+    "q": "声音加三",
+    "d": "device",
+    "tool": "numeric_adjust",
+    "params": {
+     "operation": "提高",
+     "object": "音量",
+     "value": "3"
+    }
+   }
+  ]
+ },
+ {
+  "query": "用QQ音乐放周杰伦的晴天，单曲循环",
+  "steps": [
+   {
+    "q": "用QQ音乐播放周杰伦的晴天",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "周杰伦",
+      "晴天"
+     ]
+    }
+   },
+   {
+    "q": "单曲循环",
+    "d": "device",
+    "tool": "playback_control",
+    "params": {
+     "operation": "单曲循环",
+     "object": "播放列表"
+    }
+   }
+  ]
+ },
+ {
+  "query": "打开酷狗播放孤勇者，然后熄屏",
+  "steps": [
+   {
+    "q": "打开酷狗播放孤勇者",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "孤勇者"
+     ]
+    }
+   },
+   {
+    "q": "熄屏",
+    "d": "device",
+    "tool": "screensaver_control",
+    "params": {
+     "operation": "关闭",
+     "object": "屏幕"
+    }
+   }
+  ]
+ },
+ {
+  "query": "在QQ音乐里放七里香，全屏播放",
+  "steps": [
+   {
+    "q": "在QQ音乐里放七里香",
+    "d": "music",
+    "tool": "music_song_qqmusic_search",
+    "params": {
+     "keywords": [
+      "七里香"
+     ]
+    }
+   },
+   {
+    "q": "全屏播放",
+    "d": "device",
+    "tool": "screen_layout",
+    "params": {
+     "operation": "打开",
+     "object": "全屏"
+    }
+   }
+  ]
+ }
+]

@@ -360,6 +360,40 @@ def parse_plan(text: str) -> Plan:
     return Plan(out)
 
 
+def _apply_multi_rules(query: str, plan: Plan) -> Plan:
+    """HC_MULTI_RULES=1 且模型已拆出 ≥2 步时：Plan → steps → multi_rules.patch（只改各步 d/tool/params，步数/顺序/q 不变）→ Plan。
+    编号/依赖按 parse_plan 同口径重建（第 2 条起无 tool = 结果依赖前一条，其余按序串 after 链）；
+    retext 为系统代填参数，去掉由 _steps_from_batch 统一补。任何异常 → 原计划。"""
+    if len(plan.intents) < 2:          # 单意图不动：规则只修补模型已拆好的多意图
+        return plan
+    try:
+        from . import multi_rules
+        steps = [{"q": it.query, "d": it.domain, "tool": it.tool, "params": dict(it.params or {})}
+                 for it in plan.intents]
+        new_steps = multi_rules.patch(query, steps)
+        if not new_steps:
+            return plan
+        out: list[Intent] = []
+        prev_direct = 0
+        for i, s in enumerate(new_steps, start=1):
+            tool = s.get("tool") or ""
+            dep = i > 1 and not tool
+            params = {k: v for k, v in (s.get("params") or {}).items() if k != "retext"}
+            q = s.get("q") or query
+            out.append(Intent(
+                query=q, domain=s.get("d") or "",
+                tool="" if dep else tool, params={} if dep else params,
+                index=i, depends=dep, dep_on=(i - 1 if dep else 0), src=q,
+                after=0 if dep else prev_direct,
+            ))
+            if not dep:
+                prev_direct = i
+        return Plan(out)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("多意图规则后处理失败，用原计划：%s", exc)
+        return plan
+
+
 # ---------------------------------------------------------------------------
 # 批次派生（契约派生，非语言规则：由条目顺序确定当前可执行批）
 # ---------------------------------------------------------------------------
@@ -694,7 +728,8 @@ def _steps_from_batch(batch: list[Intent],
         # 用原句而非改写 q：与 hcTools 透传口径一致，下游检索/改写服务吃原话。
         if tool_name != _TURNSLOW_QA_TOOL and isinstance(params, dict):
             dom = it.domain or catalog.domain_of_tool(tool_name)
-            src = it.src or it.query or query
+            # 多意图时用本步子句（与 step.retext 同口径），否则整句复合原话会灌进每一步。
+            src = (it.src if single else (it.query or it.src)) or query
             names = catalog.param_names_for(dom, tool_name)
             if src:
                 for k in catalog.system_filled(tool_name):
@@ -776,7 +811,10 @@ class TraceStateMachine:
             logger.error("首轮计划 LLM 失败：%s", exc)
             return Plan()
         raw = message.get("content")
-        return parse_plan(raw if isinstance(raw, str) else str(raw or ""))
+        plan = parse_plan(raw if isinstance(raw, str) else str(raw or ""))
+        if get_settings().multi_rules:
+            plan = _apply_multi_rules(query, plan)
+        return plan
 
     async def _continue(self, key: str, query: str,
                         history: list[dict[str, Any]] | None) -> tuple[list[Intent], bool]:
