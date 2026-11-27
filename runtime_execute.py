@@ -596,7 +596,7 @@ def _batch_run_one(i: int, row: dict[str, str], *, qcol: str, feature_code: str,
     """批处理单条：跑一次 runtime 取首工具。
 
     random_each=True(--device-random-all)：本条用独立随机 device，隔离短记忆/多轮上下文；
-    否则统一用传入的 device_id（--device-random 时为全体共用的同一随机数，默认为固定 id）。
+    否则统一用传入的 device_id（传 --device-id 时为指定 id，不传时为全体共用的同一随机 id）。
     """
     q = row.get(qcol, "")
     did = random_device_id() if random_each else device_id
@@ -749,9 +749,9 @@ def main() -> int:
     parser.add_argument("--feature-code", default=DEFAULT_FEATURE_CODE)
     device_group = parser.add_mutually_exclusive_group()
     device_group.add_argument("--device-id", default=None, metavar="SUFFIX",
-                              help="用指定数字替换默认 deviceId 的末尾几位")
+                              help="用指定数字替换默认 deviceId 的末尾几位；不传则随机生成")
     device_group.add_argument("--device-random", action="store_true",
-                              help="随机替换默认 deviceId 的最后 4 位")
+                              help="随机替换默认 deviceId 的最后 4 位（不传 --device-id 时默认即如此，保留兼容）")
     parser.add_argument("--client-sid", default=None)
     parser.add_argument("--tv-mode", default="0")
     parser.add_argument("--expect-steps", dest="expect_steps", type=int, default=None,
@@ -776,10 +776,9 @@ def main() -> int:
             device_id = device_id_with_suffix(args.device_id)
         except ValueError as exc:
             parser.error(str(exc))
-    elif args.device_random:
-        device_id = random_device_id()
     else:
-        device_id = DEFAULT_DEVICE_ID
+        # 未传 --device-id：随机生成（--device-random 与默认行为相同，保留兼容）
+        device_id = random_device_id()
 
     # 批处理模式：--csv-in 存在时逐条跑 runtime，输出 csv，忽略位置参数 retext。
     # --csv-out 保留 --csv-in 的全部原始列，结果列(序号/首工具域/工具链/参数/err)追加在其后。

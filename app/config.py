@@ -62,6 +62,9 @@ class Settings(BaseSettings):
     #   逐步修补 d/tool/params（儿歌等落 audio_search、泛指音乐落 recommend、音量/循环等参数口径）；
     #   不增删、不拆分、不重排步骤（拆句由模型完成）；不增加 LLM 调用；出错降级为原计划。默认关；HC_MULTI_RULES=1 开启（需重启）。
     multi_rules: bool = False
+    # 单意图规则后处理（app/single_rules.patch）：LLM 给出单条计划后，按稳定口径修补 tool/params
+    #   （vod 点播/检索、少儿历史、音乐榜单/K歌、问答兜底 fan 等）。不改步数、不增加 LLM 调用。HC_SINGLE_RULES=1 开启。
+    single_rules: bool = False
     # 实体链接（需 fewshot_enabled）：按词典最长匹配 query 里的名字（歌曲/歌手/影视/少儿/人名）。
     #   · 检索：原句 + 名字换成类型占位符的句子各检一次，合并去重（库句同样离线换占位符）；
     #   · fewshot_entity_hint：首轮 system 末尾追加「实体参考」块（名字 → 类型）。

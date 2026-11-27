@@ -394,6 +394,25 @@ def _apply_multi_rules(query: str, plan: Plan) -> Plan:
         return plan
 
 
+def _apply_single_rules(query: str, plan: Plan) -> Plan:
+    """HC_SINGLE_RULES=1：模型只给出 1 条可执行计划时，用 single_rules.patch 修补 d/tool/params。出错 → 原计划。"""
+    if len(plan.intents) != 1 or not plan.intents[0].tool:
+        return plan
+    it = plan.intents[0]
+    try:
+        from . import single_rules
+        dom, tool, params = single_rules.patch(query, it.domain, it.tool, dict(it.params or {}),
+                                               _now_dt(_REQ_TS.get()))
+        if tool != it.tool:
+            logger.info("单意图规则：%s → %s  query=%r", it.tool, tool, query)
+            if tool != _TURNSLOW_QA_TOOL:
+                dom = catalog.domain_of_tool(tool) or dom
+        it.domain, it.tool, it.params = dom, tool, params
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("单意图规则后处理失败，用原计划：%s", exc)
+    return plan
+
+
 # ---------------------------------------------------------------------------
 # 批次派生（契约派生，非语言规则：由条目顺序确定当前可执行批）
 # ---------------------------------------------------------------------------
@@ -736,6 +755,11 @@ def _steps_from_batch(batch: list[Intent],
                     if k in names:              # retext / audio_search.query = 用户原句
                         params = {**params, k: src}
 
+        # 枚举/重复值归一（music version 大小写、tag→version、数组去重）；不改步骤结构。
+        if tool_name and isinstance(params, dict):
+            from . import multi_rules
+            params = multi_rules.normalize_params(tool_name, params)
+
         # 串行预测第二步：把上一步结果写入 current_media（与 hcAgent 同口径）。
         if it.include_tool_result and it.tool_result:
             params = dict(params) if isinstance(params, dict) else {}
@@ -814,6 +838,8 @@ class TraceStateMachine:
         plan = parse_plan(raw if isinstance(raw, str) else str(raw or ""))
         if get_settings().multi_rules:
             plan = _apply_multi_rules(query, plan)
+        if get_settings().single_rules:
+            plan = _apply_single_rules(query, plan)
         return plan
 
     async def _continue(self, key: str, query: str,

@@ -566,7 +566,7 @@ def multi_context_block(query: str) -> str:
     eb = entity_block(query)
     if eb:
         parts.append(eb)
-    for c in clauses:                                  # 子句级规则提示（去重）
+    for c in [query] + clauses:                        # 整句 + 子句级规则提示（去重）
         r = rules_block(c)
         if r and r not in parts:
             parts.append(r)

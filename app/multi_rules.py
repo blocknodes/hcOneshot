@@ -23,6 +23,7 @@ VOL_RE = re.compile(r"声音|音量|大点声|小点声|大声|小声")
 SCREEN_OFF = re.compile(r"熄屏|息屏|关屏|黑屏|闭屏|关闭屏幕|关掉画面|关闭画面|关画面")
 ORD_RE = re.compile(r"第([一二三四五六七八九十\d]+)(首|个|部|条|集|曲)|最后一(首|个)")
 CORRECT_RE = re.compile(r"换成|改成|不对|算了|还是|不要了|不是|改为")
+WAKE_RE = re.compile(r"^(你好哈利|海信小聚|你好小聚|小聚小聚|哈利哈利|你好|哈利)[，, ]*$")
 NAV_RE = re.compile(r"^(把)?(返回|回到|回|进入|打开|切换到|去)(.*)(主页|首页|专区|历史|记录|收藏|频道)")
 
 _DEV = {"date_time": "", "device": "", "location": ""}
@@ -133,9 +134,92 @@ def _hallucinated_generic(s):
     return bool(vals) and not any(v in s.get("q", "") for v in vals) and bool(re.search(r"(音乐|歌曲|歌)$", s.get("q", "")))
 
 
+_VERSION_FIX = {"dj": "dj版", "DJ": "dj版", "dj版": "dj版", "DJ版": "dj版", "Dj版": "dj版", "remix": "remix版", "Remix版": "remix版",
+                "live": "live版", "Live版": "live版", "LIVE版": "live版", "免费": "免费版"}
+
+
+def normalize_params(tool: str, params):
+    """枚举/重复值归一（不改结构）：music_* 的 version 大小写与 tag→version（dj/免费）、数组去重。"""
+    if not isinstance(params, dict) or not tool.startswith("music_"):
+        return params
+    p = dict(params)
+    for k, v in list(p.items()):
+        if isinstance(v, list):
+            seen = []
+            for x in v:
+                if x not in seen:
+                    seen.append(x)
+            p[k] = seen
+    if tool == "music_song_search":
+        ver = [_VERSION_FIX.get(x, x) for x in (p.get("version") or [])]
+        tags = []
+        for t in (p.get("tag") or []):
+            if _VERSION_FIX.get(t) in ("dj版", "免费版"):
+                ver.append(_VERSION_FIX[t])
+            else:
+                tags.append(t)
+        if ver:
+            p["version"] = list(dict.fromkeys(ver))
+        if "tag" in p:
+            if tags:
+                p["tag"] = tags
+            else:
+                p.pop("tag")
+    return p
+
+
+def _educ_title(params) -> str:
+    """educ_search_all 的 query 树里取 title 叶子的值（educ→music 归一时当歌名）。"""
+    def walk(n):
+        if isinstance(n, dict):
+            if n.get("field") == "title" and n.get("value"):
+                return str(n["value"])
+            for v in n.values():
+                r = walk(v)
+                if r:
+                    return r
+        elif isinstance(n, list):
+            for v in n:
+                r = walk(v)
+                if r:
+                    return r
+        return ""
+    return walk(params or {})
+
+
+def _trim(query: str, steps: list[dict]) -> list[dict]:
+    """模型已拆出 ≥3 步时，剔除不属于「内容 + 设备」口径的多余步：关机步、页面跳转步、被改口替换的前一步。
+    只删不增、不改写、不重排；不足 3 步原样返回。"""
+    if len(steps) < 3:
+        return steps
+    steps = [s for s in steps if not (_is_power_off(s) and len(steps) > 1)]
+    steps = [s for s in steps if not (s["tool"] == "fan_knowledge_agent" and WAKE_RE.search(s.get("q", "")) and len(steps) > 2)]
+    if len(steps) > 2:
+        steps = [s for s in steps if s["tool"] != "common_control"]
+    if len(steps) > 2 and any(s["tool"] in ("music_song_search", "music_song_recommend", "audio_search") for s in steps):
+        steps = [s for s in steps if s["tool"] != "vod_search_all"]
+    while len(steps) > 2 and steps[0]["tool"] in MEDIA and NAV_RE.search(steps[0].get("q", "")):
+        steps = steps[1:]
+    if len(steps) > 2 and steps[0]["tool"] in ("music_song_history", "audio_history"):
+        steps = steps[1:]
+    if CORRECT_RE.search(query):
+        def grp(t):
+            return "media" if t in SEARCHY or t == "audio_search" else t
+        out: list[dict] = []
+        for s in steps:
+            if out and grp(out[-1]["tool"]) == grp(s["tool"]) and grp(s["tool"]) in ("media", "numeric_adjust"):
+                out[-1] = s
+            else:
+                out.append(s)
+        steps = out
+    return steps
+
+
 def patch(query: str, steps: list[dict]) -> list[dict]:
-    """服务端用（HC_MULTI_RULES）：只修补模型已给出的每一步的 d/tool/params。
-    不增、不删、不拆、不重排步骤，也不改各步 q —— 拆句与步骤结构完全由模型决定。"""
+    """服务端用（HC_MULTI_RULES）：只修补模型已给出的计划。
+    · 每步的 d/tool/params 逐步修补；
+    · 模型已拆出 ≥3 步时，只【删除】多余步（关机/页面跳转/被改口替换的步）；
+    不拆、不增、不重排步骤，也不改各步 q —— 拆句与步骤结构由模型决定。"""
     # 前提：模型已拆出 ≥2 个意图。单意图计划一律原样返回，不做任何修改。
     if len(steps) < 2:
         return [dict(s) for s in steps]
@@ -148,7 +232,7 @@ def patch(query: str, steps: list[dict]) -> list[dict]:
             b = dict(a)
         res.append({**a, "d": b.get("d", a.get("d")), "tool": b.get("tool", a.get("tool")),
                     "params": b.get("params", a.get("params"))})
-    return res
+    return _trim(query, res)
 
 
 def postprocess(query: str, steps: list[dict], patch_only: bool = False) -> list[dict]:
@@ -167,7 +251,8 @@ def postprocess(query: str, steps: list[dict], patch_only: bool = False) -> list
         elif t == "audio_history" and not kids:
             s.update(tool="music_song_history", d="music", params={"retext": s.get("q") or q})
         elif t == "educ_search_all":
-            s.update(tool="music_song_search", d="music")
+            title = _educ_title(s.get("params"))
+            s.update(tool="music_song_search", d="music", params={"song": [title]} if title else {})
         elif t == "music_ksong_search" and not re.search(r"K歌|k歌|卡拉|点歌|伴奏|麦克风", q):
             s.update(tool="music_song_search", d="music")
         if s["tool"] == "music_song_search" and (_generic_search(s) or _hallucinated_generic(s)):
@@ -208,8 +293,19 @@ def postprocess(query: str, steps: list[dict], patch_only: bool = False) -> list
             p["operation"] = "提高"; s["params"] = p
         elif t == "numeric_adjust" and p.get("operation") == "设置" and re.search(r"关到", q):
             p["operation"] = "降低"; s["params"] = p
+        elif t == "playback_control" and p.get("operation") == "下" and ORD_RE.search(s.get("q", "") + q):
+            s["params"] = {"operation": "下", "object": "播放列表"}
         elif t == "numeric_adjust" and p.get("object") == "声音":
             p["object"] = "音量"; s["params"] = p
+        elif t == "numeric_adjust" and p.get("operation") == "设置" and not p.get("value") and p.get("object") == "音量":
+            p["operation"] = "提高"; s["params"] = p
+        elif t == "screensaver_control" and re.search(r"定时|倒计时|分钟后|小时后", q):
+            s["tool"] = "timer_control"; s["params"] = {"operation": "打开", "object": "熄屏"}
+        elif t == "source_switch" and re.search(r"U盘|u盘|USB|usb", s.get("q", "") + q):
+            p["value"] = "usb"
+            if p.get("operation") == "设置":
+                p["operation"] = "打开"
+            s["params"] = p
         if t in ("music_song_search",) and isinstance(p.get("tag"), list):
             tg = [x for x in p["tag"] if not MODE_RE.search(str(x))]
             if tg != p["tag"]:
@@ -221,6 +317,7 @@ def postprocess(query: str, steps: list[dict], patch_only: bool = False) -> list
 
     # ---- 2 剔除：关机 / 导航 / 无关兜底 ----
     steps = [s for s in steps if not (_is_power_off(s) and len(steps) > 1)]
+    steps = [s for s in steps if not (s["tool"] == "fan_knowledge_agent" and WAKE_RE.search(s.get("q", "")) and len(steps) > 2)]
     if len(steps) > 2:
         steps = [s for s in steps if s["tool"] != "common_control"]
     if len(steps) > 2 and any(s["tool"] in ("music_song_search", "music_song_recommend", "audio_search") for s in steps):

@@ -1,4 +1,48 @@
 ﻿id,domain,priority,match,require,exclude,entity,text
+m3_playmode,device,0,单曲循环|循环播放|随机播放|顺序播放|列表循环|重新播放,,^(?:请|帮我|给我|把|麻烦)*(?:单曲循环|循环播放|随机播放|顺序播放|列表循环|重新播放)(?:吧|一下|模式)?$,,"【口径提示：点播内容 + 播放模式 → 必须拆 2 步】用户一句话里既要放某内容、又带了播放模式词（循环播放/单曲循环/随机播放/顺序播放/列表循环/重新播放），必须输出 2 步，不能只输出内容一步，也不要把模式词写进内容步的 tag/song/keywords：第1步=内容检索，第2步=device:playback_control。
+内容步选工具：具体歌名/歌手/专辑→music:music_song_search（song/singer/album 数组，如 {""song"":[""海阔天空""]}）；泛指「音乐/歌曲/歌/唱歌/放歌/听歌/其它音乐」无具体名→music:music_song_recommend（params 为 {}）；儿歌/童谣/评书/相声/故事/动画角色名(如小鸡)→audio:audio_search（{""action"":""play""}）；「打开QQ音乐」→music:music_song_qqmusic_search（{""keywords"":[""热门""]}；后面接的「随机播放一首/循环播放」是播放模式，不是第二个内容步）。「X歌曲/X音乐」里 X 只是运营/抽象描述词（推送、赠送、反乌托邦…）而不是歌名/歌手/曲风时，按泛指→music_song_recommend{}；曲风/乐器类（摇滚、民谣、钢琴曲→tag 钢琴）仍填 tag；带版本词（DJ版/免费版/live版）→music_song_search 且 version 用枚举小写（""dj版""/""免费版""/""live版""），不要退成 recommend。
+playback_control 参数：循环播放→{""operation"":""循环播放"",""object"":""播放列表""}；单曲循环→{""operation"":""单曲循环"",""object"":""播放列表""}；随机播放→{""operation"":""随机播放"",""object"":""播放列表""}；顺序播放→{""operation"":""顺序播放"",""object"":""播放列表""}；重新播放→{""operation"":""重播"",""object"":""播放控制""}。
+例：海阔天空循环播放 → [{""q"":""播放海阔天空"",""d"":""music"",""vt"":""music:music_song_search"",""params"":{""song"":[""海阔天空""]}},{""q"":""循环播放"",""d"":""device"",""vt"":""device:playback_control"",""params"":{""operation"":""循环播放"",""object"":""播放列表""}}]
+例：播放音乐随机播放 → [{""q"":""播放音乐"",""d"":""music"",""vt"":""music:music_song_recommend"",""params"":{}},{""q"":""随机播放"",""d"":""device"",""vt"":""device:playback_control"",""params"":{""operation"":""随机播放"",""object"":""播放列表""}}]
+例：循环播放周杰伦的晴天 → 同样 2 步（先 music_song_search{""singer"":[""周杰伦""],""song"":[""晴天""]}，再 playback_control 循环播放）。"
+m3_volume,device,0,声音|音量|大点声|小点声|大声点|小声点,,^(?:请|帮我|把|将|给我|麻烦|电视|电视机|的|再)*(?:声音|音量|大点声|小点声|大声点|小声点)[^播放听唱歌曲音乐儿歌评书相声故事]*$,,"【口径提示：内容 + 音量 → 必须拆 2 步】请求里既有要播放/收听的内容（歌名、歌手、「音乐/歌曲」、儿歌、评书、故事、动画角色名等；哪怕没有「播放」动词，如「逆战声音调到8」「小鸡声音大一点」「唱歌声音大一点」），又有音量调节时，必须输出 2 步：内容检索 + device:numeric_adjust，不能漏掉任何一步，内容步里不要带音量词；步骤顺序按用户说话顺序。
+内容步选工具：具体歌名/歌手/专辑→music:music_song_search（song/singer/album 数组，如 {""song"":[""海阔天空""]}）；泛指「音乐/歌曲/歌/唱歌/放歌/听歌/其它音乐」无具体名→music:music_song_recommend（params 为 {}）；儿歌/童谣/评书/相声/故事/动画角色名(如小鸡)→audio:audio_search（{""action"":""play""}）；「打开QQ音乐」→music:music_song_qqmusic_search（{""keywords"":[""热门""]}；后面接的「随机播放一首/循环播放」是播放模式，不是第二个内容步）。「X歌曲/X音乐」里 X 只是运营/抽象描述词（推送、赠送、反乌托邦…）而不是歌名/歌手/曲风时，按泛指→music_song_recommend{}；曲风/乐器类（摇滚、民谣、钢琴曲→tag 钢琴）仍填 tag；带版本词（DJ版/免费版/live版）→music_song_search 且 version 用枚举小写（""dj版""/""免费版""/""live版""），不要退成 recommend。
+音量步参数：调到/开到N→{""operation"":""设置"",""object"":""音量"",""value"":""N""}（N 用阿拉伯数字，「十」写 ""10""）；加N→{""operation"":""提高"",""object"":""音量"",""value"":""N""}；大一点/大点声/调大→{""operation"":""提高"",""object"":""音量""}；小一点/小点声/调小→{""operation"":""降低"",""object"":""音量""}；只说「调一下音量」→提高。
+例：播放七里香声音调到20 → [music_song_search{""song"":[""七里香""]}, numeric_adjust{""operation"":""设置"",""object"":""音量"",""value"":""20""}]
+例：音乐声音大一点 → [music_song_recommend{}, numeric_adjust{""operation"":""提高"",""object"":""音量""}]
+例：儿歌声音小一点 → [audio_search{""action"":""play""}, numeric_adjust{""operation"":""降低"",""object"":""音量""}]"
+m3_screen,device,0,熄屏|息屏|关屏|黑屏|闭屏|关闭屏幕|关掉屏幕|屏幕关掉|关掉画面|关闭画面|关画面|全屏,,^(?:请|帮我|把|将|给我|麻烦|海信小聚)*(?:熄屏|息屏|关屏|黑屏|闭屏|关闭屏幕|关掉屏幕|全屏)(?:吧|一下)?$,,"【口径提示：屏幕操作 + 内容 → 拆 2 步，按用户说话顺序】熄屏/息屏/关屏/黑屏/闭屏/关闭屏幕/关掉画面 → device:screensaver_control{""operation"":""关闭"",""object"":""屏幕""}（不是 power_control 关机，不是 mode_control/audio_control）；全屏 → device:screen_layout{""operation"":""打开"",""object"":""全屏""}。
+屏幕词在前、内容在后（「熄屏播放X」「全屏播放X」「熄屏遇君」）→ 屏幕步在前；内容在前、屏幕词在后（「播放X熄屏」）→ 内容步在前。「海信小聚」是唤醒词，忽略；「可以…吗」是客气说法。
+屏幕词后面剩下的词若不是设备词，就是内容名（「熄屏遇君」→ 歌曲遇君 music_song_search{""song"":[""遇君""]}；「闭屏播放我们都拥有海洋」→ song 我们都拥有海洋）。
+内容步选工具：具体歌名/歌手/专辑→music:music_song_search（song/singer/album 数组，如 {""song"":[""海阔天空""]}）；泛指「音乐/歌曲/歌/唱歌/放歌/听歌/其它音乐」无具体名→music:music_song_recommend（params 为 {}）；儿歌/童谣/评书/相声/故事/动画角色名(如小鸡)→audio:audio_search（{""action"":""play""}）；「打开QQ音乐」→music:music_song_qqmusic_search（{""keywords"":[""热门""]}；后面接的「随机播放一首/循环播放」是播放模式，不是第二个内容步）。「X歌曲/X音乐」里 X 只是运营/抽象描述词（推送、赠送、反乌托邦…）而不是歌名/歌手/曲风时，按泛指→music_song_recommend{}；曲风/乐器类（摇滚、民谣、钢琴曲→tag 钢琴）仍填 tag；带版本词（DJ版/免费版/live版）→music_song_search 且 version 用枚举小写（""dj版""/""免费版""/""live版""），不要退成 recommend。
+例：熄屏听音乐 → [screensaver_control{""operation"":""关闭"",""object"":""屏幕""}, music_song_recommend{}]
+例：播放儿歌熄屏 → [audio_search{""action"":""play""}, screensaver_control{""operation"":""关闭"",""object"":""屏幕""}]
+例：全屏播放晴天 → [screen_layout{""operation"":""打开"",""object"":""全屏""}, music_song_search{""song"":[""晴天""]}]
+例：音乐打开全屏 → [music_song_recommend{}, screen_layout{""operation"":""打开"",""object"":""全屏""}]"
+m3_poweron,device,0,开机|重启,,关机|定时|还有|多久|分钟|小时|^(?:请|帮我|把|将|给我|麻烦)*(?:开机|重启)(?:吧|一下)?$,,"【口径提示：开机/重启 + 内容 → 拆 2 步，先开机】「开机X」「重启听音乐」= power_control 在前，内容在后：开机→{""operation"":""打开"",""object"":""开机""}；重启→{""operation"":""关闭"",""object"":""重启""}。
+内容步选工具：具体歌名/歌手/专辑→music:music_song_search（song/singer/album 数组，如 {""song"":[""海阔天空""]}）；泛指「音乐/歌曲/歌/唱歌/放歌/听歌/其它音乐」无具体名→music:music_song_recommend（params 为 {}）；儿歌/童谣/评书/相声/故事/动画角色名(如小鸡)→audio:audio_search（{""action"":""play""}）；「打开QQ音乐」→music:music_song_qqmusic_search（{""keywords"":[""热门""]}；后面接的「随机播放一首/循环播放」是播放模式，不是第二个内容步）。「X歌曲/X音乐」里 X 只是运营/抽象描述词（推送、赠送、反乌托邦…）而不是歌名/歌手/曲风时，按泛指→music_song_recommend{}；曲风/乐器类（摇滚、民谣、钢琴曲→tag 钢琴）仍填 tag；带版本词（DJ版/免费版/live版）→music_song_search 且 version 用枚举小写（""dj版""/""免费版""/""live版""），不要退成 recommend。
+例：开机海阔天空 → [power_control{""operation"":""打开"",""object"":""开机""}, music_song_search{""song"":[""海阔天空""]}]
+例：听音乐开机 → [power_control{""operation"":""打开"",""object"":""开机""}, music_song_recommend{}]（开机类动作永远排最前）"
+m3_poweroff,device,0,关机|关闭电视|关电视|关掉电视,播放|放|听|唱,定时|倒计时|还有|分钟后|小时后|多久|多长|剩余,,"【口径提示：「关机/关电视」+ 点播内容 → 不输出关机步】关机类指令与后面的点播/调节并列时，关机步不输出，只输出其余意图（内容检索、音量、全屏、熄屏、循环播放等）。
+例：关机，播放儿歌，声音大一点 → [audio_search{""action"":""play""}, numeric_adjust{""operation"":""提高"",""object"":""音量""}]
+例：关机播放晴天单曲循环 → [music_song_search{""song"":[""晴天""]}, playback_control{""operation"":""单曲循环"",""object"":""播放列表""}]
+只有「定时关机/倒计时关机/还有多久关机」才是 timer_control，不在此规则内。"
+m3_nav,device,0,"(?:返回|回到|回|进入|打开|切换到|去)\S{0,8}(?:主页|首页|专区|历史|记录|收藏)",播放|放|听|唱|看,第[一二三四五六七八九十\d]+(?:首|个|部|条|集|曲),,"【口径提示：页面跳转 + 点播 → 页面跳转步不输出】「返回主页/回到首页/打开有声专区/打开音乐历史/打开喜马拉雅首页」后面还跟着点播具体内容时，页面跳转步不输出（不要 common_control、不要 music_song_history/audio_history/vod_history 凑数），只输出点播内容及其后的设备操作。
+例：返回主页，播放晴天，单曲循环 → [music_song_search{""song"":[""晴天""]}, playback_control{""operation"":""单曲循环"",""object"":""播放列表""}]
+例：打开音乐历史，播放刀郎的罗刹海市，声音调到15 → [music_song_search{""singer"":[""刀郎""],""song"":[""罗刹海市""]}, numeric_adjust{""operation"":""设置"",""object"":""音量"",""value"":""15""}]
+例外：「打开我的收藏/历史，播放第N首」是按序号选历史/收藏内容，见序号选择规则，两步都保留。"
+m3_correct,device,0,"换成|改成|不对|算了|还是|不要了|改为|不，|不要.{0,4}调到",播放|放|听|唱|音量|声音|亮度|调,,,"【口径提示：改口只保留最后一次】用户先说一个再改口（「播放A，换成B」「放A，算了还是放B」「亮度调到50，不要了，调到30」「声音大一点，不对，小一点」），被改掉的前一个意图不输出，只输出最终意图（同类意图只留最后一个），其余无关意图正常保留。
+例：播放晴天，换成稻香，声音加三 → [music_song_search{""song"":[""稻香""]}, numeric_adjust{""operation"":""提高"",""object"":""音量"",""value"":""3""}]
+例：声音大一点，不对，小一点，播放儿歌 → [numeric_adjust{""operation"":""降低"",""object"":""音量""}, audio_search{""action"":""play""}]"
+m3_ordinal,device,0,第[一二三四五六七八九十\d]+(?:首|个|部|条|集|曲)|最后一(?:首|个)|从第,播放|放|听|选|开始,,,"【口径提示：先检索/打开列表，再按序号选 → 2 步，序号不再重复检索】「搜索X，播放第N首」「找几段X，播放第N个」「打开我的收藏/历史，播放第一首」= 第1步检索（或打开收藏/历史），第2步 device:playback_control 按序号选择，不要再输出第二个检索步。
+第1步：搜索/找 类用 search（有声 audio_search{""action"":""search""}）；打开音乐收藏→music:music_song_favorite_search；打开音乐历史→music:music_song_history；打开有声收听历史→audio:audio_history{""action"":""search""}；「X专辑有哪些歌」→music_song_search{""album"":[X]}。
+第2步参数：第一个/第一首→{""operation"":""播放"",""object"":""播放列表"",""value"":""1""}；带「从第N个开始」或「专辑…第N首」→{""operation"":""跳转"",""object"":""播放控制"",""value"":""N""}；其他「第N个/最后一首」→{""operation"":""下"",""object"":""播放列表""}。
+例：搜索周杰伦的歌，播放第二首 → [music_song_search{""singer"":[""周杰伦""]}, playback_control{""operation"":""下"",""object"":""播放列表""}]
+例：打开我的音乐收藏，播放第一首 → [music_song_favorite_search{}, playback_control{""operation"":""播放"",""object"":""播放列表"",""value"":""1""}]"
+m3_wake,device,0,你好哈利|海信小聚|哈利哈利|小聚小聚,,,,"【口径提示：唤醒词忽略】「你好哈利/海信小聚」是唤醒词，不是意图，不要为它输出任何步骤（不要 fan_knowledge_agent），只处理唤醒词后面的真正指令。
+例：你好哈利播放汪峰的无处安放音量调到15 → [music_song_search{""singer"":[""汪峰""],""song"":[""无处安放""]}, numeric_adjust{""operation"":""设置"",""object"":""音量"",""value"":""15""}]"
+m3_usb,device,0,U盘|u盘|USB|usb,,,,"【口径提示：U盘/USB】「打开U盘」= device:source_switch{""operation"":""打开"",""object"":""信号源"",""value"":""usb""}（不是 common_control）；后面还有听歌/播放等内容时再追加内容步。
+例：打开U盘放首音乐 → [source_switch{""operation"":""打开"",""object"":""信号源"",""value"":""usb""}, music_song_recommend{}]"
 audio_listen_kids,audio,1,"(?:(?<!视)听|收听).{0,12}(?:少儿|儿童|孩子|宝宝|宝贝|幼儿|小朋友|早教|启蒙|儿歌|绘本|动画|动漫|卡通|童话|汪汪队|佩奇|熊出没|喜羊羊|超级飞侠|奥特曼|贝瓦|宝宝巴士|巧虎|海底小纵队|猪猪侠|小马宝莉|迪迦|葫芦娃|托马斯|布鲁伊|巴巴爸爸|小猪|艾莎|冰雪奇缘|芭比|变形警车|故事|童话|成语|寓言|绘本|睡前|凯叔|小学生|儿童)|(?:少儿|儿童|孩子|宝宝|宝贝|幼儿|小朋友|早教|启蒙|儿歌|绘本|动画|动漫|卡通|童话|汪汪队|佩奇|熊出没|喜羊羊|超级飞侠|奥特曼|贝瓦|宝宝巴士|巧虎|海底小纵队|猪猪侠|小马宝莉|迪迦|葫芦娃|托马斯|布鲁伊|巴巴爸爸|小猪|艾莎|冰雪奇缘|芭比|变形警车|故事|童话|成语|寓言|绘本|睡前|凯叔|小学生|儿童).{0,12}(?:(?<!视)听|收听)",,"收藏|歌|曲|音乐|MV|mv|听过|刚才听|上次听|昨天.{0,4}听|历史|记录|看",,"【口径提示：「听」+ 少儿内容 → 有声（audio:audio_search）】
 - 用户说「听/收听」少儿内容（儿童故事、睡前故事、童话、成语故事、绘本、凯叔、小学生听的…）时是有声收听 → audio:audio_search，不要走 children:educ_search_all 或 fan_knowledge_agent。
 - 「看/播放 + 少儿动画/片名」仍走少儿检索；说的是「儿歌/歌」走音乐；「听过的/刚才听的」走 audio_history。"
